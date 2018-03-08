@@ -10,5 +10,5 @@ package mkl_shop.connection;
  * @author jkero
  */
 public class DBConnection {
-    
+  int a=2;
 }
