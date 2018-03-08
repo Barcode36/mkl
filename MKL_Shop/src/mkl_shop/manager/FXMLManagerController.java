@@ -8,6 +8,7 @@ package mkl_shop.manager;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import mkl_shop.connection.DBConnection;
 
 /**
  * FXML Controller class
@@ -19,9 +20,11 @@ public class FXMLManagerController implements Initializable {
     /**
      * Initializes the controller class.
      */
+     private DBConnection dc;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       dc = new DBConnection();
+          java.sql.Connection conn = dc.Connect();
     }    
     
 }
