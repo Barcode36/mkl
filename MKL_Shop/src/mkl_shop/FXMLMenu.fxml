@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.FXMLMenuController">
+<AnchorPane id="AnchorPane" prefHeight="311.0" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="mkl_shop.FXMLMenuController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+        <Button fx:id="bAdmin" layoutX="128.0" layoutY="32.0" onAction="#otworzAdmin" text="Admin" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <Button fx:id="bManager" layoutX="134.0" layoutY="95.0" mnemonicParsing="false" onAction="#otworzManager" text="Manager" />
+      <Button fx:id="bKierownik" layoutX="134.0" layoutY="156.0" mnemonicParsing="false" onAction="#otworzKierownik" text="Kierownik" />
+      <Button fx:id="bPracownik" layoutX="134.0" layoutY="215.0" mnemonicParsing="false" onAction="#otworzPracownik" text="Pracownik" />
     </children>
 </AnchorPane>

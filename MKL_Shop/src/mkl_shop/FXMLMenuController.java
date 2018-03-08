@@ -5,12 +5,20 @@
  */
 package mkl_shop;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -20,16 +28,79 @@ public class FXMLMenuController implements Initializable {
     
     @FXML
     private Label label;
-    
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+    private Button bAdmin;
+    @FXML
+    private Button bManager;
+    @FXML
+    private Button bKierownik;
+    @FXML
+    private Button bPracownik;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
+
+    @FXML
+    private void otworzAdmin(ActionEvent event) throws IOException {
+                Stage stage;
+        Parent root;
+        
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("admin/FXMLAdmin.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Panel administracyjny");
+        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(bAdmin.getScene().getWindow());
+        stage.showAndWait();
+    }
+
+    @FXML
+    private void otworzManager(ActionEvent event) throws IOException {
+                Stage stage;
+        Parent root;
+        
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("manager/FXMLManager.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Panel managera");
+        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(bManager.getScene().getWindow());
+        stage.showAndWait();
+    }
+
+    @FXML
+    private void otworzKierownik(ActionEvent event) throws IOException {
+                Stage stage;
+        Parent root;
+        
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("kierownik/FXMLKierownik.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Panel kierownika");
+        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(bKierownik.getScene().getWindow());
+        stage.showAndWait();
+    }
+
+    @FXML
+    private void otworzPracownik(ActionEvent event) throws IOException {
+                Stage stage;
+        Parent root;
+        
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("pracownik/FXMLPracownik.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Panel pracownika");
+        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(bPracownik.getScene().getWindow());
+        stage.showAndWait();
+    }
     
 }
