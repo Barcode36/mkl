@@ -63,13 +63,13 @@ public class FXMLPracownikController implements Initializable {
 
     @FXML
     private void wylogujSie(ActionEvent event) {
-        
+        Stage stage = (Stage) bWyjscie.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
     private void otworzKlient(ActionEvent event) {
-        Stage stage = (Stage) bWyjscie.getScene().getWindow();
-        stage.close();
+        
     }
     
 }
