@@ -5,9 +5,13 @@
  */
 package mkl_shop.pracownik;
 
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -16,12 +20,56 @@ import javafx.fxml.Initializable;
  */
 public class FXMLPracownikController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private JFXButton bZakupy;
+    @FXML
+    private JFXButton bReklamacje;
+    @FXML
+    private JFXButton bProdukty;
+    @FXML
+    private JFXButton bWyjscie;
+    @FXML
+    private JFXButton bKlient;
+
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        bZakupy.setFocusTraversable(false);
+        bKlient.setFocusTraversable(false);
+        bProdukty.setFocusTraversable(false);
+        bReklamacje.setFocusTraversable(false);
+        bWyjscie.setFocusTraversable(false);
+        
+        
     }    
+
+    @FXML
+    private void zrobZakupy(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void otworzReklamacje(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void otworzProdukty(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void wylogujSie(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void otworzKlient(ActionEvent event) {
+        Stage stage = (Stage) bWyjscie.getScene().getWindow();
+        stage.close();
+    }
     
 }
