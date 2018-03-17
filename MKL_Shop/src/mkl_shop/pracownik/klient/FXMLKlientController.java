@@ -5,8 +5,12 @@
  */
 package mkl_shop.pracownik.klient;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -16,12 +20,35 @@ import javafx.fxml.Initializable;
  */
 public class FXMLKlientController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private JFXButton bNowyKlient;
+    @FXML
+    private JFXButton bEdycja;
+    @FXML
+    private JFXTextField tfWyszukaj;
+
+    
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        bEdycja.setDisable(true);
+        bEdycja.setFocusTraversable(false);
+        bNowyKlient.setFocusTraversable(false);
+        tfWyszukaj.setFocusTraversable(false);
+        
     }    
+
+    @FXML
+    private void dodajKlienta(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void edytujKlienta(ActionEvent event) {
+        
+    }
     
 }

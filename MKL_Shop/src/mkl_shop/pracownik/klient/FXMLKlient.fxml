@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.net.URL?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="mkl_shop.pracownik.klient.FXMLKlientController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.klient.FXMLKlientController">
     <stylesheets>
         <URL value="@fxmlklient.css" />
     </stylesheets>
    <children>
-      <JFXButton layoutX="248.0" layoutY="169.0" />
+      <JFXButton fx:id="bNowyKlient" contentDisplay="TOP" layoutX="314.0" layoutY="510.0" onAction="#dodajKlienta" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Nowy klient">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="USER_PLUS" size="35" />
+         </graphic></JFXButton>
+      <JFXButton fx:id="bEdycja" contentDisplay="TOP" layoutX="691.0" layoutY="510.0" onAction="#edytujKlienta" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Nowa karta/edycja">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="EDIT" size="35" />
+         </graphic>
+      </JFXButton>
+      <JFXTextField fx:id="tfWyszukaj" labelFloat="true" layoutX="134.0" layoutY="35.0" prefHeight="47.0" prefWidth="510.0" promptText="Wyszukaj klienta po ...">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </JFXTextField>
    </children>
 </AnchorPane>
