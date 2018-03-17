@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -111,7 +112,7 @@ public class FXMLPracownikController implements Initializable {
         root = FXMLLoader.load(getClass().getResource("klient/FXMLKlient.fxml"));
         stage.setScene(new Scene(root));
         stage.setTitle("Panel klientów");
-        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(bKlient.getScene().getWindow());
         stage.showAndWait();

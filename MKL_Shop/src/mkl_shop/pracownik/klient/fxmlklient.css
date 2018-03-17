@@ -9,6 +9,14 @@
 }
 
 
+#numerKarty:hover {
+    -fx-fill : #FFFFFF;    
+}
+
+#numerKarty:pressed {
+    -fx-fill : -fx-secondary;
+}
+
 
 .jfx-text-field {
     -fx-prompt-text-fill: -fx-primarytext;
