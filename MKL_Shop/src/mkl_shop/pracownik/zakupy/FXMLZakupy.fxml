@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.zakupy.FXMLZakupyController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="mkl_shop.pracownik.zakupy.FXMLZakupyController">
     <stylesheets>
-        <URL value="@fxmlzakupy.css"/>
+        <URL value="@fxmlzakupy.css" />
     </stylesheets>
+   <children>
+      <JFXButton layoutX="248.0" layoutY="145.0" />
+   </children>
 </AnchorPane>
