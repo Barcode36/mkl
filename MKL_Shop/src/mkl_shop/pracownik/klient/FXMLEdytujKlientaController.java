@@ -44,6 +44,9 @@ public class FXMLEdytujKlientaController implements Initializable {
     @FXML
     private FontAwesomeIconView bNumerKarty;
 
+    
+    
+    private Boolean nowaKarta;
     /**
      * Initializes the controller class.
      */
@@ -51,7 +54,7 @@ public class FXMLEdytujKlientaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         bZapisz.setFocusTraversable(false);
         bWyjscie.setFocusTraversable(false);
-        
+        nowaKarta = false;
         
         //wczytac stary numer karty i pola
         
@@ -70,6 +73,8 @@ public class FXMLEdytujKlientaController implements Initializable {
     private void zapiszZmiany(ActionEvent event) {
         
         //usunac stara karte z bazy, lub wyzerowac je stan i nadac nowy numer
+        // if nowakarta true wyrobic nowa, jak false to nie
+        
         
         
     }
@@ -78,6 +83,7 @@ public class FXMLEdytujKlientaController implements Initializable {
     private void generujNumer(MouseEvent event) {
         System.out.println("generuje nowy numer karty");
         
+        nowaKarta = true;
         
         
     }
