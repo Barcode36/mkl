@@ -5,3 +5,74 @@
 .mainFxmlClass {
 
 }
+
+
+/*
+
+/* 
+    Created on : 11 Nov, 2017, 4:42:53 AM
+    Author     : afsal villan
+*/
+/*
+* {
+    -fx-primary : #2A2E37;
+    -fx-secondary : #FFFF8D;
+    -fx-primarytext : #B2B2B2;
+}
+*/
+/*context-menu*/
+/*
+.context-menu {
+    -fx-font-size : 20px;
+    -fx-font-weight : bold;
+    -fx-background-color : -fx-primary;
+}
+
+.menu-item .label {
+  -fx-text-fill: -fx-primarytext;
+}
+
+.menu-item:focused .label {  
+  -fx-text-fill : -fx-primary; 
+}
+
+.menu-item:focused {
+    -fx-background-color : -fx-secondary;
+}
+*/
+
+/*listview*/
+
+/*
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
+
+.list-cell:even { 
+    -fx-background-color: -fx-primary;
+}
+
+.list-view {
+     -fx-background-color: -fx-primary ;
+}
+
+.list-cell:odd {
+    -fx-background-color : #323742;
+}
+
+.list-cell {
+    -fx-text-fill : -fx-primarytext;    
+    -fx-font-size : 15px;
+    -fx-font-weight : bold;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
+
+
+*/
+

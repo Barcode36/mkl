@@ -7,15 +7,21 @@ package mkl_shop.pracownik.produkty;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -94,8 +100,21 @@ public class FXMLProduktyController implements Initializable {
     }
 
     @FXML
-    private void zamowNowyProdukt(ActionEvent event) {
+    private void zamowNowyProdukt(ActionEvent event) throws IOException {
         //wyslanie wiadomosci do góry o prośbie dodania nowego produktu
+        
+        Stage stage;
+        Parent root;
+        
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("FXMLDodajNowyProdukt.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Panel zamawiania produktu");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(bNowyProdukt.getScene().getWindow());
+        stage.showAndWait();
+        
     }
     
 }

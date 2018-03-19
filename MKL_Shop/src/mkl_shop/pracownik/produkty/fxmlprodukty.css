@@ -56,6 +56,11 @@
     -fx-text-inner-color: -fx-primarytext;
 }
 
+.jfx-text-area {
+    -fx-prompt-text-fill: -fx-primarytext;
+    -fx-text-inner-color: -fx-primarytext;
+}
+
 
 
 /*context-menu*/

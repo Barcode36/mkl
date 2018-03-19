@@ -5,9 +5,15 @@
  */
 package mkl_shop.pracownik.produkty;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -15,6 +21,19 @@ import javafx.fxml.Initializable;
  * @author BlackHawk
  */
 public class FXMLDodajNowyProduktController implements Initializable {
+
+    @FXML
+    private JFXButton bWyjscie;
+    @FXML
+    private JFXTextField tfNazwa;
+    @FXML
+    private JFXTextField tfCena;
+    @FXML
+    private JFXTextField tfIlosc;
+    @FXML
+    private JFXTextArea tfOpis;
+    @FXML
+    private JFXButton bZamowProdukt;
 
     /**
      * Initializes the controller class.
@@ -26,5 +45,17 @@ public class FXMLDodajNowyProduktController implements Initializable {
         
         
     }    
+
+    @FXML
+    private void zamknijOkno(ActionEvent event) {
+        Stage stage = (Stage) bWyjscie.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void zamowProdukt(ActionEvent event) {
+        //wyslanie prosby o zamowienie nowego produktu do kierownika placówki
+        
+    }
     
 }
