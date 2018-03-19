@@ -32,7 +32,7 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <JFXButton fx:id="bWyjscie" contentDisplay="TOP" layoutX="952.0" layoutY="530.0" onAction="#zamknijOkno" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Wyjście" AnchorPane.bottomAnchor="50.0">
+      <JFXButton fx:id="bWyjscie" contentDisplay="TOP" focusTraversable="false" layoutX="952.0" layoutY="530.0" onAction="#zamknijOkno" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Wyjście" AnchorPane.bottomAnchor="50.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
@@ -45,7 +45,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXButton fx:id="bNowyProdukt" contentDisplay="TOP" layoutX="613.0" layoutY="540.0" onAction="#zamowNowyProdukt" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Zamów nowy produkt">
+      <JFXButton fx:id="bNowyProdukt" contentDisplay="TOP" focusTraversable="false" layoutX="613.0" layoutY="540.0" onAction="#zamowNowyProdukt" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Zamów nowy produkt">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>

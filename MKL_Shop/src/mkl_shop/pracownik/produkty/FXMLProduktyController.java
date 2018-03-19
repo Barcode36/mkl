@@ -95,7 +95,7 @@ public class FXMLProduktyController implements Initializable {
 
     @FXML
     private void zglosZapotrzebowanie(ActionEvent event) {
-        //wyslanie wiadomosci do gory o brakach w magazynie
+        //wyslanie wiadomosci do gory o brakach w magazynie i wyswietlenie komunikatu o wysłąniu prośby
         
     }
 
