@@ -2,77 +2,42 @@
  * Empty Stylesheet file.
  */
 
-.mainFxmlClass {
 
-}
-
-
-/*
-
-/* 
-    Created on : 11 Nov, 2017, 4:42:53 AM
-    Author     : afsal villan
-*/
-/*
 * {
     -fx-primary : #2A2E37;
     -fx-secondary : #FFFF8D;
     -fx-primarytext : #B2B2B2;
 }
-*/
-/*context-menu*/
-/*
-.context-menu {
-    -fx-font-size : 20px;
-    -fx-font-weight : bold;
+
+.root {
     -fx-background-color : -fx-primary;
+    -fx-border-width: 2 2 2 2;
+    -fx-border-color: -fx-secondary;
 }
 
-.menu-item .label {
-  -fx-text-fill: -fx-primarytext;
+.glyph-icon {
+    -fx-fill : -fx-primarytext;
 }
 
-.menu-item:focused .label {  
-  -fx-text-fill : -fx-primary; 
+.button {
+    -fx-text-fill : -fx-primarytext;
 }
 
-.menu-item:focused {
+/*button specific*/
+
+.menu-button{
+    -fx-border-color : -fx-secondary;
+    -fx-border-width: 2 2 2 2;
+    -fx-border-radius : 20px;
+    -fx-background-radius: 20px;
+}
+
+.menu-button:hover {
+    -fx-border-color : -fx-secondary;
     -fx-background-color : -fx-secondary;
-}
-*/
-
-/*listview*/
-
-/*
-
-.list-cell:filled:selected:focused, .list-cell:filled:selected {
-    -fx-background-color: -fx-secondary;
-    -fx-text-fill: -fx-primary;
+    -fx-text-fill : -fx-primary;    
 }
 
-.list-cell:even { 
-    -fx-background-color: -fx-primary;
+.menu-button:hover .glyph-icon {
+    -fx-fill : -fx-primary
 }
-
-.list-view {
-     -fx-background-color: -fx-primary ;
-}
-
-.list-cell:odd {
-    -fx-background-color : #323742;
-}
-
-.list-cell {
-    -fx-text-fill : -fx-primarytext;    
-    -fx-font-size : 15px;
-    -fx-font-weight : bold;
-}
-
-.list-cell:filled:hover {
-    -fx-background-color: -fx-secondary;
-    -fx-text-fill: -fx-primary;
-}
-
-
-*/
-

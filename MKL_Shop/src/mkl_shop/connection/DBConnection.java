@@ -14,12 +14,13 @@ import java.sql.SQLException;
  * @author jkero
  */
 public class DBConnection {
-  private final String DRIVER = "oracle.jdbc.driver.OracleDriver";
+        static String daneZBazy;
+  private final String DRIVER = "com.mysql.jdbc.Driver";
     public Connection Connect() {
         try {
             Class.forName(DRIVER);
             System.out.println("1.Zarejestrowano sterownik");
-            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","Admin","admin");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://sql.urz.nazwa.pl?user=urz_45&password=LgQbdX@fNH&C");
             return conn;
         } catch (ClassNotFoundException ex) {
             System.err.println("Niewłasciwy sterownik lub jego brak");
