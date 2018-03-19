@@ -91,7 +91,7 @@ public class FXMLPracownikController implements Initializable {
         root = FXMLLoader.load(getClass().getResource("produkty/FXMLProdukty.fxml"));
         stage.setScene(new Scene(root));
         stage.setTitle("Panel produktów");
-        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(bProdukty.getScene().getWindow());
         stage.showAndWait();

@@ -1,14 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.net.URL?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="mkl_shop.pracownik.produkty.FXMLProduktyController">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.produkty.FXMLProduktyController">
     <stylesheets>
         <URL value="@fxmlprodukty.css" />
     </stylesheets>
    <children>
-      <JFXButton layoutX="260.0" layoutY="142.0" />
+      <TableView fx:id="tableProdukty" layoutX="38.0" layoutY="38.0" prefHeight="401.0" prefWidth="902.0" AnchorPane.bottomAnchor="269.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+        <columns>
+          <TableColumn fx:id="columnIDProduktu" prefWidth="104.0" text="ID Produktu" />
+          <TableColumn fx:id="columnNazwa" prefWidth="247.0" text="Nazwa" />
+            <TableColumn fx:id="columnCena" prefWidth="137.0" text="Cena" />
+            <TableColumn fx:id="columnIlosc" prefWidth="103.0" text="Ilość" />
+            <TableColumn fx:id="columnOpis" prefWidth="580.0" text="Opis" />
+        </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem fx:id="miZapotrzebowanie" mnemonicParsing="false" onAction="#zglosZapotrzebowanie" text="Zgłoś zapotrzebowanie na produkt" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+      <JFXButton fx:id="bWyjscie" contentDisplay="TOP" layoutX="952.0" layoutY="530.0" onAction="#zamknijOkno" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Wyjście" AnchorPane.bottomAnchor="50.0">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="CLOSE" size="35" />
+         </graphic>
+      </JFXButton>
+      <JFXTextField fx:id="tfSzukaj" focusColor="#ffff8d" focusTraversable="false" labelFloat="true" layoutX="52.0" layoutY="493.0" prefHeight="47.0" prefWidth="482.0" promptText="Wyszukaj po ID lub nazwie" unFocusColor="#ffff8d">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="bNowyProdukt" contentDisplay="TOP" layoutX="613.0" layoutY="540.0" onAction="#zamowNowyProdukt" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Zamów nowy produkt">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIconView glyphName="CUBES" size="35" />
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

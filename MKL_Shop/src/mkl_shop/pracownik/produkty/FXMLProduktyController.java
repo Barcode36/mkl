@@ -5,9 +5,17 @@
  */
 package mkl_shop.pracownik.produkty;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -16,12 +24,78 @@ import javafx.fxml.Initializable;
  */
 public class FXMLProduktyController implements Initializable {
 
+    @FXML
+    private TableView<?> tableProdukty;
+    @FXML
+    private TableColumn<?, ?> columnIDProduktu;
+    @FXML
+    private TableColumn<?, ?> columnNazwa;
+    @FXML
+    private TableColumn<?, ?> columnCena;
+    @FXML
+    private TableColumn<?, ?> columnIlosc;
+    @FXML
+    private TableColumn<?, ?> columnOpis;
+    @FXML
+    private JFXButton bWyjscie;
+    @FXML
+    private JFXTextField tfSzukaj;
+    @FXML
+    private MenuItem miZapotrzebowanie;
+    @FXML
+    private JFXButton bNowyProdukt;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        
+        
+                /*
+        
+        FilteredList<Produkty> filteredProdukt = new FilteredList <>(listView.getItems(), e->true);
+        tfSzukaj.setOnKeyReleased(e->{
+            tfSzukaj.textProperty().addListener((observableValue, oldValue, newValue) ->{
+                filteredProdukt.setPredicate((Predicate<? super Produkty>) k->{
+                    if (newValue==null || newValue.isEmpty()){
+                        return true;
+                    }
+                    String lcFilter = newValue.toLowerCase();
+                    if (k.getNazwa().toLowerCase().contains(lcFilter) || k.getIdProduktu().toLowerCase().contains(lcFilter) ){
+                        return true;
+                    }
+                    return false;
+                });
+                });
+            SortedList<Produkty> sortedProdukty = new SortedList<>(filteredProdukt);            
+            tableProdukty.setItems(sortedProdukty);            
+        });
+        
+        */
+        
+        
+        
+        
     }    
+
+    @FXML
+    private void zamknijOkno(ActionEvent event) {
+          Stage stage = (Stage) bWyjscie.getScene().getWindow();
+        stage.close();
+        
+    }
+
+    @FXML
+    private void zglosZapotrzebowanie(ActionEvent event) {
+        //wyslanie wiadomosci do gory o brakach w magazynie
+        
+    }
+
+    @FXML
+    private void zamowNowyProdukt(ActionEvent event) {
+        //wyslanie wiadomosci do góry o prośbie dodania nowego produktu
+    }
     
 }
