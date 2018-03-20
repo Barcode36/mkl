@@ -76,7 +76,7 @@ public class FXMLPracownikController implements Initializable {
         root = FXMLLoader.load(getClass().getResource("reklamacje/FXMLReklamacje.fxml"));
         stage.setScene(new Scene(root));
         stage.setTitle("Panel reklamacji");
-        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(bReklamacje.getScene().getWindow());
         stage.showAndWait();
