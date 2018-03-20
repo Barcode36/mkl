@@ -5,9 +5,13 @@
  */
 package mkl_shop.pracownik.zakupy;
 
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -16,6 +20,11 @@ import javafx.fxml.Initializable;
  */
 public class FXMLListaPrzedmiotowController implements Initializable {
 
+    @FXML
+    private JFXButton bWyjscie;
+    @FXML
+    private JFXButton bDodaj;
+
     /**
      * Initializes the controller class.
      */
@@ -23,5 +32,15 @@ public class FXMLListaPrzedmiotowController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void zamknijOkno(ActionEvent event) {
+        Stage stage = (Stage) bWyjscie.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void dodajDoRachunku(ActionEvent event) {
+    }
     
 }
