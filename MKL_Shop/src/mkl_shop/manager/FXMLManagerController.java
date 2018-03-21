@@ -6,11 +6,18 @@
 package mkl_shop.manager;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import mkl_shop.connection.DBConnection;
 
 /**
@@ -23,41 +30,81 @@ public class FXMLManagerController implements Initializable {
     /**
      * Initializes the controller class.
      */
-     private DBConnection dc;
+    private DBConnection dc;
     @FXML
-    private JFXButton bZakupy;
+    private JFXButton Button_Placowki;
     @FXML
-    private JFXButton bReklamacje;
+    private JFXButton Button_Wiadomosci;
     @FXML
-    private JFXButton bProdukty;
+    private JFXButton Button_Finase;
     @FXML
-    private JFXButton bWyjscie;
+    private JFXButton Button_Wyjscie;
     @FXML
-    private JFXButton bKlient;
+    private JFXButton Button_Pracownicy;
+    @FXML
+    private JFXButton Button_Raporty;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       dc = new DBConnection();
-          java.sql.Connection conn = dc.Connect();
-    }    
+        dc = new DBConnection();
+        java.sql.Connection conn = dc.Connect();
 
-    @FXML
-    private void zrobZakupy(ActionEvent event) {
+        Button_Placowki.setFocusTraversable(false);
+        Button_Wiadomosci.setFocusTraversable(false);
+        Button_Finase.setFocusTraversable(false);
+        Button_Wyjscie.setFocusTraversable(false);
+        Button_Pracownicy.setFocusTraversable(false);
+        Button_Raporty.setFocusTraversable(false);
+
     }
 
     @FXML
-    private void otworzReklamacje(ActionEvent event) {
+    private void goPlacowki(ActionEvent event) throws IOException {
+        Stage stage;
+        Parent root;
+
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("placowki/FXMLPlacowki.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Panel Pracownikow");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(Button_Pracownicy.getScene().getWindow());
+        stage.showAndWait();
     }
 
     @FXML
-    private void otworzProdukty(ActionEvent event) {
+    private void goWiadomosci(ActionEvent event) {
     }
 
     @FXML
-    private void wylogujSie(ActionEvent event) {
+    private void goFinase(ActionEvent event) {
     }
 
     @FXML
-    private void otworzKlient(ActionEvent event) {
+    private void Wyjscie(ActionEvent event) {
+        Stage stage = (Stage) Button_Wyjscie.getScene().getWindow();
+        stage.close();
     }
-    
+
+    @FXML
+    private void goPracownicy(ActionEvent event) throws IOException {
+        Stage stage;
+        Parent root;
+
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("pracownicy/FXMLPracownicy.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Panel Pracownikow");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(Button_Pracownicy.getScene().getWindow());
+        stage.showAndWait();
+
+    }
+
+    @FXML
+    private void goRaporty(ActionEvent event) {
+    }
+
 }

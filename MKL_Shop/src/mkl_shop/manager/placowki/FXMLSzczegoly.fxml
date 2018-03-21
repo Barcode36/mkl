@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="mkl_shop.manager.placowki.FXMLSzczegolyController">
+    <stylesheets>
+        <URL value="@fxmlplacowki.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="14.0" layoutY="14.0" prefHeight="700.0" prefWidth="150.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <JFXButton prefHeight="100.0" prefWidth="150.0" text="Główna" />
+            <JFXButton prefHeight="100.0" prefWidth="150.0" text="Pracownicy" />
+            <JFXButton prefHeight="100.0" prefWidth="150.0" text="Produkty" />
+            <JFXButton prefHeight="100.0" prefWidth="150.0" text="Sprzedaż" />
+            <JFXButton prefHeight="100.0" prefWidth="150.0" text="Wstecz" />
+         </children>
+      </VBox>
+      <Pane layoutX="216.0" layoutY="14.0" prefHeight="200.0" prefWidth="1055.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+   </children>
+</AnchorPane>

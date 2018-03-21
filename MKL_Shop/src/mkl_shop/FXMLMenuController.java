@@ -67,7 +67,7 @@ public class FXMLMenuController implements Initializable {
         root = FXMLLoader.load(getClass().getResource("manager/FXMLManager.fxml"));
         stage.setScene(new Scene(root));
         stage.setTitle("Panel managera");
-        //stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(bManager.getScene().getWindow());
         stage.showAndWait();
