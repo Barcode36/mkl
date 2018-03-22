@@ -25,7 +25,7 @@ import javafx.stage.StageStyle;
  * @author jkero
  */
 public class FXMLMenuController implements Initializable {
-    
+
     @FXML
     private Label label;
     @FXML
@@ -36,18 +36,17 @@ public class FXMLMenuController implements Initializable {
     private Button bKierownik;
     @FXML
     private Button bPracownik;
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
+
+    }
 
     @FXML
     private void otworzAdmin(ActionEvent event) throws IOException {
-                Stage stage;
+        Stage stage;
         Parent root;
-        
+
         stage = new Stage();
         root = FXMLLoader.load(getClass().getResource("admin/FXMLAdmin.fxml"));
         stage.setScene(new Scene(root));
@@ -60,9 +59,9 @@ public class FXMLMenuController implements Initializable {
 
     @FXML
     private void otworzManager(ActionEvent event) throws IOException {
-                Stage stage;
+        Stage stage;
         Parent root;
-        
+
         stage = new Stage();
         root = FXMLLoader.load(getClass().getResource("manager/FXMLManager.fxml"));
         stage.setScene(new Scene(root));
@@ -75,9 +74,9 @@ public class FXMLMenuController implements Initializable {
 
     @FXML
     private void otworzKierownik(ActionEvent event) throws IOException {
-                Stage stage;
+        Stage stage;
         Parent root;
-        
+
         stage = new Stage();
         root = FXMLLoader.load(getClass().getResource("kierownik/FXMLKierownik.fxml"));
         stage.setScene(new Scene(root));
@@ -90,9 +89,9 @@ public class FXMLMenuController implements Initializable {
 
     @FXML
     private void otworzPracownik(ActionEvent event) throws IOException {
-                Stage stage;
+        Stage stage;
         Parent root;
-        
+
         stage = new Stage();
         root = FXMLLoader.load(getClass().getResource("pracownik/FXMLPracownik.fxml"));
         stage.setScene(new Scene(root));
@@ -102,5 +101,5 @@ public class FXMLMenuController implements Initializable {
         stage.initOwner(bPracownik.getScene().getWindow());
         stage.showAndWait();
     }
-    
+
 }

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.manager.wiadomosci.FXMLWiadomosciController">
+    <stylesheets>
+        <URL value="@fxmlwiadomosci.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="6.0" layoutY="6.0" prefHeight="300.0" prefWidth="150.0" AnchorPane.bottomAnchor="290.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <JFXButton id="." fx:id="Button_Skrzynka" focusTraversable="false" onAction="#goSkrzynka" prefHeight="100.0" prefWidth="150.0" styleClass="menu-button" text="Skrzynka">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="Button_Wyslane" focusTraversable="false" onAction="#goWyslanie" prefHeight="100.0" prefWidth="150.0" styleClass="menu-button" text="Wysłane">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="Button_Wiadomosci" focusTraversable="false" onAction="#goNowaWiadomosc" prefHeight="100.0" prefWidth="150.0" styleClass="menu-button" text="Nowa wiadomość" textAlignment="CENTER" wrapText="true">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="Button_Wstecz" focusTraversable="false" onAction="#goWstecz" prefHeight="100.0" prefWidth="150.0" styleClass="menu-button" text="Wstecz">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic>
+            </JFXButton>
+         </children>
+      </VBox>
+      <Pane fx:id="Pane_Skrzynka" layoutX="156.0" layoutY="14.0" prefHeight="200.0" prefWidth="1098.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <TableView fx:id="Tabela_Wiadomosci" layoutY="14.0" prefHeight="300.0" prefWidth="1073.0">
+              <columns>
+                <TableColumn fx:id="Tab_Lp" prefWidth="75.0" text="Lp." />
+                <TableColumn fx:id="Tab_Nadawca" prefWidth="301.0" text="Nadawca" />
+                  <TableColumn fx:id="Tab_Temat" prefWidth="517.0" text="Temat" />
+                  <TableColumn fx:id="Tab_Data" prefWidth="102.0" text="Data" />
+              </columns>
+            </TableView>
+            <Pane fx:id="Pane_tresc" layoutY="348.0" prefHeight="337.0" prefWidth="1097.0">
+               <children>
+                  <VBox prefHeight="337.0" prefWidth="1097.0">
+                     <children>
+                        <JFXTextField fx:id="Text_Field_Nadawca" disable="true" focusColor="#ffff8d" labelFloat="true" promptText="Nadawaca" unFocusColor="#ffff8d">
+                           <VBox.margin>
+                              <Insets bottom="5.0" right="800.0" top="5.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="Text_Field_Temat" disable="true" focusColor="#ffff8d" unFocusColor="#ffff8d">
+                           <VBox.margin>
+                              <Insets bottom="5.0" right="700.0" top="10.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextArea fx:id="Text_Area_Wiadomosc" focusColor="#ffff8d" promptText="Wiadomośc..." unFocusColor="#ffff8d">
+                           <VBox.margin>
+                              <Insets bottom="10.0" right="100.0" top="10.0" />
+                           </VBox.margin>
+                        </JFXTextArea>
+                        <HBox prefHeight="89.0" prefWidth="1097.0">
+                           <children>
+                              <JFXButton fx:id="Button_Odpisz" onAction="#goOdpisz" prefHeight="50.0" prefWidth="100.0" text="Odpisz">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="800.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <FontAwesomeIconView />
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="Button_Usun" onAction="#goUsun" prefHeight="50.0" prefWidth="100.0" text="Usun">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <FontAwesomeIconView />
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="Pane_Wyslane" layoutX="156.0" layoutY="14.0" prefHeight="200.0" prefWidth="1098.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <TableView fx:id="Tabela_Wyslane" layoutY="14.0" prefHeight="300.0" prefWidth="1073.0">
+               <columns>
+                  <TableColumn fx:id="Tab_Lp_Wyslane" prefWidth="75.0" text="Lp." />
+                  <TableColumn fx:id="Tab_Adresta_Wyslane" prefWidth="301.0" text="Nadawca" />
+                  <TableColumn fx:id="Tab_Temat_Wyslane" prefWidth="517.0" text="Temat" />
+                  <TableColumn fx:id="Tab_Data_Wyslane" prefWidth="168.0" text="Data" />
+               </columns>
+            </TableView>
+            <Pane fx:id="Pane_tresc_wyslane" layoutY="348.0" prefHeight="337.0" prefWidth="1097.0">
+               <children>
+                  <VBox prefHeight="337.0" prefWidth="1097.0">
+                     <children>
+                        <JFXTextField fx:id="Text_Field_Adresta" disable="true" focusColor="#ffff8d" labelFloat="true" promptText="Nadawaca" unFocusColor="#ffff8d">
+                           <VBox.margin>
+                              <Insets bottom="5.0" right="800.0" top="5.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextField fx:id="Text_Field_Temat_Wyslane" disable="true" focusColor="#ffff8d" unFocusColor="#ffff8d">
+                           <VBox.margin>
+                              <Insets bottom="5.0" right="700.0" top="10.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXTextArea fx:id="Text_Area_Wiadomosc_Wyslane" disable="true" focusColor="#ffff8d" promptText="Wiadomośc..." unFocusColor="#ffff8d">
+                           <VBox.margin>
+                              <Insets bottom="10.0" right="100.0" top="10.0" />
+                           </VBox.margin>
+                        </JFXTextArea>
+                        <HBox prefHeight="89.0" prefWidth="1097.0">
+                           <children>
+                              <JFXButton fx:id="Button_Usun_Wyslanie" onAction="#goUsun" prefHeight="50.0" prefWidth="100.0" text="Usun">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="1000.0" top="10.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <FontAwesomeIconView />
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="Pane_Wiadomosci" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <VBox prefHeight="696.0" prefWidth="1116.0">
+               <children>
+                  <JFXTextField fx:id="Text_Nadawca" disable="true" focusColor="#ffff8d" labelFloat="true" unFocusColor="#ffff8d">
+                     <VBox.margin>
+                        <Insets bottom="10.0" right="800.0" top="15.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="Text_Odbioraca" focusColor="#ffff8d" labelFloat="true" promptText="Adresat" unFocusColor="#ffff8d">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" right="800.0" top="15.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="Text_Temat" focusColor="#ffff8d" labelFloat="true" promptText="Temat" unFocusColor="#ffff8d">
+                     <VBox.margin>
+                        <Insets bottom="10.0" right="700.0" top="15.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <JFXTextArea fx:id="Text_Tresc_Wiadomosci" focusColor="#ffff8d" promptText="Wiadomość..." unFocusColor="#ffff8d">
+                     <VBox.margin>
+                        <Insets bottom="5.0" right="200.0" top="5.0" />
+                     </VBox.margin>
+                  </JFXTextArea>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton fx:id="Button_Wyslij_Nowa" prefHeight="50.0" prefWidth="150.0" text="Wyślij">
+                           <graphic>
+                              <FontAwesomeIconView />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="800.0" right="15.0" top="25.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                        <JFXButton fx:id="Button_Anuluj" onAction="#Anuluj_wyslanie" prefHeight="50.0" prefWidth="150.0" text="Anuluj">
+                           <graphic>
+                              <FontAwesomeIconView />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="15.0" right="15.0" top="25.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

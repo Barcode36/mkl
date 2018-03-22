@@ -74,7 +74,18 @@ public class FXMLManagerController implements Initializable {
     }
 
     @FXML
-    private void goWiadomosci(ActionEvent event) {
+    private void goWiadomosci(ActionEvent event) throws IOException {
+         Stage stage;
+        Parent root;
+
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("wiadomosci/FXMLWiadomosci.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Panel Pracownikow");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(Button_Pracownicy.getScene().getWindow());
+        stage.showAndWait();
     }
 
     @FXML

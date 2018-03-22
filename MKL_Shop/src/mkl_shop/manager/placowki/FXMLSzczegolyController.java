@@ -6,13 +6,25 @@
 package mkl_shop.manager.placowki;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.chart.AreaChart;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -39,6 +51,40 @@ public class FXMLSzczegolyController implements Initializable {
     private Pane Pane_Produkty;
     @FXML
     private Pane Pane_Sprzedaz;
+    @FXML
+    private JFXComboBox<?> Combo_pracownik;
+    @FXML
+    private JFXTextField Text_Stanowisko;
+    @FXML
+    private JFXTextField Text_Imie;
+    @FXML
+    private JFXTextField Text_Nazwisko;
+    @FXML
+    private JFXTextField Text_Telefon;
+    @FXML
+    private JFXTextField Text_Pesel;
+    @FXML
+    private JFXButton Button_Statystyki;
+    @FXML
+    private TableView<?> Tabela_Produkty;
+    @FXML
+    private TableColumn<?, ?> Tab_Lp;
+    @FXML
+    private TableColumn<?, ?> Tab_NazwaProdukty;
+    @FXML
+    private TableColumn<?, ?> Tab_CenaProduktu;
+    @FXML
+    private TableColumn<?, ?> Tab_OpisProduktu;
+    @FXML
+    private TableColumn<?, ?> Tab_Dostepnosc;
+    @FXML
+    private JFXDatePicker Data_Od;
+    @FXML
+    private JFXDatePicker Data_Do;
+    @FXML
+    private JFXButton Button_Szukaj;
+    @FXML
+    private AreaChart<?, ?> Wykres_SprzedazyProduktuow;
 
     /**
      * Initializes the controller class.
@@ -88,6 +134,30 @@ public class FXMLSzczegolyController implements Initializable {
     private void wstecz(ActionEvent event) {
         Stage stage = (Stage) Button_Wstecz.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void goSzukajPracownika(ActionEvent event) {
+    }
+
+    @FXML
+    private void goStatystykiPracownika(ActionEvent event) throws IOException {
+         Stage stage;
+        Parent root;
+
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getClassLoader().getResource("src/mkl_shop/manager/pracownicy/FXMLSzczegoly.fxml"));//odnieść się do pakietu pracownicy do pliku FXMLSZCZEGOLY 
+        stage.setScene(new Scene(root));
+        stage.setTitle("Panel Pracownikow");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(Button_Statystyki.getScene().getWindow());
+        stage.showAndWait();
+        
+    }
+
+    @FXML
+    private void goStatystkiProduktu(ActionEvent event) {
     }
 
 }

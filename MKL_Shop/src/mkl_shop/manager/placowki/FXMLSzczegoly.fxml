@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.AreaChart?>
@@ -28,14 +29,29 @@
    <children>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="700.0" prefWidth="150.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="10.0">
          <children>
-            <JFXButton fx:id="Button_Glowna" onAction="#goGlowna" prefHeight="100.0" prefWidth="150.0" text="Główna" />
-            <JFXButton fx:id="Button_Pracownicy" onAction="#goPracownicy" prefHeight="100.0" prefWidth="150.0" text="Pracownicy" />
-            <JFXButton fx:id="Button_Produkty" onAction="#goProdukty" prefHeight="100.0" prefWidth="150.0" text="Produkty" />
-            <JFXButton fx:id="Button_Sprzedaz" onAction="#goSprzedaz" prefHeight="100.0" prefWidth="150.0" text="Sprzedaż" />
-            <JFXButton fx:id="Button_Wstecz" onAction="#wstecz" prefHeight="100.0" prefWidth="150.0" text="Wstecz" />
+            <JFXButton fx:id="Button_Glowna" onAction="#goGlowna" prefHeight="100.0" prefWidth="150.0" text="Główna">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic></JFXButton>
+            <JFXButton fx:id="Button_Pracownicy" onAction="#goPracownicy" prefHeight="100.0" prefWidth="150.0" text="Pracownicy">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic></JFXButton>
+            <JFXButton fx:id="Button_Produkty" onAction="#goProdukty" prefHeight="100.0" prefWidth="150.0" text="Produkty">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic></JFXButton>
+            <JFXButton fx:id="Button_Sprzedaz" onAction="#goSprzedaz" prefHeight="100.0" prefWidth="150.0" text="Sprzedaż">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic></JFXButton>
+            <JFXButton fx:id="Button_Wstecz" onAction="#wstecz" prefHeight="100.0" prefWidth="150.0" text="Wstecz">
+               <graphic>
+                  <FontAwesomeIconView />
+               </graphic></JFXButton>
          </children>
       </VBox>
-      <Pane fx:id="Pane_Glowna" layoutX="216.0" layoutY="14.0" prefHeight="200.0" prefWidth="1055.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Pane fx:id="Pane_Glowna" disable="true" layoutX="216.0" layoutY="14.0" prefHeight="200.0" prefWidth="1055.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
       <Pane fx:id="Pane_Pracownicy" layoutX="194.0" layoutY="40.0" prefHeight="200.0" prefWidth="1055.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <GridPane layoutX="145.0" layoutY="154.0" prefHeight="239.0" prefWidth="612.0">
@@ -53,7 +69,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXComboBox prefHeight="31.0" prefWidth="312.0" GridPane.columnIndex="1" />
+                  <JFXComboBox fx:id="Combo_pracownik" focusColor="#ffff8d" onAction="#goSzukajPracownika" prefHeight="31.0" prefWidth="312.0" unFocusColor="#ffff8d" GridPane.columnIndex="1" />
                   <Label prefHeight="21.0" prefWidth="268.0" text="Wybierz pracownika" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -84,25 +100,28 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <JFXTextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <JFXButton prefHeight="31.0" prefWidth="158.0" text="Statystyki" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <JFXTextField fx:id="Text_Stanowisko" disable="true" focusColor="#ffff8d" unFocusColor="#ffff8d" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="Text_Imie" disable="true" focusColor="#ffff8d" unFocusColor="#ffff8d" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <JFXTextField fx:id="Text_Nazwisko" disable="true" focusColor="#ffff8d" unFocusColor="#ffff8d" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <JFXTextField fx:id="Text_Telefon" disable="true" focusColor="#ffff8d" unFocusColor="#ffff8d" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <JFXTextField fx:id="Text_Pesel" disable="true" focusColor="#ffff8d" unFocusColor="#ffff8d" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <JFXButton fx:id="Button_Statystyki" onAction="#goStatystykiPracownika" prefHeight="31.0" prefWidth="158.0" text="Statystyki" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <graphic>
+                        <FontAwesomeIconView />
+                     </graphic></JFXButton>
                </children>
             </GridPane>
          </children>
       </Pane>
       <Pane fx:id="Pane_Produkty" layoutX="184.0" layoutY="30.0" prefHeight="200.0" prefWidth="1055.0" visible="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
-            <TableView layoutX="14.0" layoutY="14.0" prefHeight="490.0" prefWidth="1086.0">
+            <TableView fx:id="Tabela_Produkty" layoutX="14.0" layoutY="14.0" prefHeight="490.0" prefWidth="1086.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Lp." />
-                <TableColumn prefWidth="190.0" text="Nazwa produktu" />
-                  <TableColumn prefWidth="417.0" text="Cena produktu" />
-                  <TableColumn prefWidth="253.0" text="Opis produktu" />
-                  <TableColumn prefWidth="139.0" text="Dostępność" />
+                <TableColumn fx:id="Tab_Lp" prefWidth="75.0" text="Lp." />
+                <TableColumn fx:id="Tab_NazwaProdukty" prefWidth="190.0" text="Nazwa produktu" />
+                  <TableColumn fx:id="Tab_CenaProduktu" prefWidth="417.0" text="Cena produktu" />
+                  <TableColumn fx:id="Tab_OpisProduktu" prefWidth="253.0" text="Opis produktu" />
+                  <TableColumn fx:id="Tab_Dostepnosc" prefWidth="139.0" text="Dostępność" />
               </columns>
             </TableView>
          </children>
@@ -124,7 +143,7 @@
                         <Insets left="25.0" right="25.0" top="50.0" />
                      </HBox.margin>
                   </Label>
-                  <JFXDatePicker>
+                  <JFXDatePicker fx:id="Data_Od">
                      <HBox.margin>
                         <Insets left="25.0" right="25.0" top="50.0" />
                      </HBox.margin>
@@ -137,19 +156,19 @@
                         <Insets left="25.0" right="25.0" top="50.0" />
                      </HBox.margin>
                   </Label>
-                  <JFXDatePicker>
+                  <JFXDatePicker fx:id="Data_Do">
                      <HBox.margin>
                         <Insets left="25.0" right="25.0" top="50.0" />
                      </HBox.margin>
                   </JFXDatePicker>
-                  <JFXButton prefHeight="31.0" prefWidth="156.0" text="Znajdź">
+                  <JFXButton fx:id="Button_Szukaj" onAction="#goStatystkiProduktu" prefHeight="31.0" prefWidth="156.0" text="Znajdź">
                      <HBox.margin>
                         <Insets left="25.0" right="25.0" top="50.0" />
                      </HBox.margin>
                   </JFXButton>
                </children>
             </HBox>
-            <AreaChart layoutX="14.0" layoutY="225.0" prefHeight="400.0" prefWidth="1077.0">
+            <AreaChart fx:id="Wykres_SprzedazyProduktuow" layoutX="14.0" layoutY="225.0" prefHeight="400.0" prefWidth="1077.0">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>

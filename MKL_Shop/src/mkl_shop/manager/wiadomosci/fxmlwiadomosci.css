@@ -37,8 +37,8 @@
 .menu-button{
     -fx-border-color : -fx-secondary;
     -fx-border-width: 2 2 2 2;
-    -fx-border-radius : 20px;
-    -fx-background-radius: 20px;
+    -fx-border-radius : 4px;
+    -fx-background-radius: 4px;
 }
 
 .menu-button:hover {
@@ -187,5 +187,19 @@
 {
     -fx-base: -fx-primary;
 }
+.menu-button{
+    -fx-border-color : -fx-secondary;
+    -fx-border-width: 2 2 2 2;
+    -fx-border-radius : 20px;
+    -fx-background-radius: 20px;
+}
 
+.menu-button:hover {
+    -fx-border-color : -fx-secondary;
+    -fx-background-color : -fx-secondary;
+    -fx-text-fill : -fx-primary;    
+}
 
+.menu-button:hover .glyph-icon {
+    -fx-fill : -fx-primary
+}
