@@ -29,8 +29,9 @@
     -fx-background-color : -fx-primary;
     -fx-border-width: 2 2 2 2;
     -fx-border-color: -fx-secondary;
-
 }
+
+
 
 .glyph-icon {
     -fx-fill : -fx-primarytext;
@@ -40,8 +41,26 @@
     -fx-fill : -fx-green;
 }
 
+.glyph-remove {
+    -fx-fill : -fx-red;
+}
+
 .button {
     -fx-text-fill : -fx-primarytext;
+}
+
+.add-button {
+    -fx-border-radius : 50px;
+    -fx-border-color : -fx-secondary;
+    -fx-border-width: 2 2 2 2;
+    -fx-background-radius: 50px;
+}
+
+.cancel-button {
+    -fx-border-radius : 50px;
+    -fx-border-color : -fx-secondary;
+    -fx-border-width: 2 2 2 2;
+    -fx-background-radius: 50px;
 }
 
 
@@ -200,3 +219,43 @@
     -fx-base: -fx-primary;
 }
 
+
+
+
+/* komunikat */
+
+/*Dialog styling*/
+.dialog-button{
+    -fx-border-color: -fx-green;
+    -fx-text-fill: white;
+    -fx-border-radius: 1px;
+    -fx-background-radius: 3px;
+}
+
+.dialog-button:hover{
+    -fx-background-color: -fx-green;
+    -fx-border-color: derive(-fx-green, -20%);
+    -fx-text-fill: white;
+}
+
+.jfx-layout-actions
+{
+    -fx-hgap:8;
+}
+/*JFXDialog styling*/
+.jfx-layout-heading
+{
+    -fx-background-color: -fx-green;
+}
+.jfx-layout-heading .label
+{
+    -fx-text-fill: white;
+}
+.jfx-layout-body, .jfx-layout-actions{
+    -fx-background-color: -fx-primary;   
+}
+.jfx-layout-body .label
+{
+    -fx-text-fill: white;
+    -fx-padding: 20px 0 0 0;
+}

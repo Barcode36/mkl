@@ -3,29 +3,51 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.net.URL?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.zakupy.FXMLZakupyController">
-    <stylesheets>
-        <URL value="@fxmlzakupy.css" />
-    </stylesheets>
+
+<StackPane fx:id="spMain" stylesheets="@fxmlzakupy.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.zakupy.FXMLZakupyController">
    <children>
-      <JFXButton fx:id="bDoRachunku" focusTraversable="false" layoutX="924.0" layoutY="64.0" onAction="#dodajDoRachunku" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="  Dodaj produkt" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIconView glyphName="CART_PLUS" size="35" styleClass="glyph-add" />
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="bWyjscie" contentDisplay="TOP" focusTraversable="false" layoutX="952.0" layoutY="532.0" onAction="#zamknijOkno" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="  Wyjście">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIconView glyphName="CLOSE" size="35" />
-         </graphic>
-      </JFXButton>
+      <AnchorPane id="AnchorPane" fx:id="apMain" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass">
+          <stylesheets>
+              <URL value="@fxmlzakupy.css" />
+          </stylesheets>
+         <children>
+            <JFXButton fx:id="bDoRachunku" focusTraversable="false" layoutX="231.0" layoutY="532.0" onAction="#dodajDoRachunku" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="  Dodaj produkt" AnchorPane.rightAnchor="773.0" AnchorPane.topAnchor="532.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="CART_PLUS" size="35" styleClass="glyph-add" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="bWyjscie" contentDisplay="TOP" focusTraversable="false" layoutX="952.0" layoutY="532.0" onAction="#zamknijOkno" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="  Wyjście">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="CLOSE" size="35" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="bUsunPrzedmiot" focusTraversable="false" layoutX="585.0" layoutY="532.0" onAction="#usunZRachunku" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="  Usuń produkt">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="CART_ARROW_DOWN" size="35" styleClass="glyph-remove" />
+               </graphic>
+            </JFXButton>
+            <TableView fx:id="tableRachunek" layoutX="54.0" layoutY="54.0" onMouseClicked="#zaznaczonyPrzedmiot" prefHeight="277.0" prefWidth="1176.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>
