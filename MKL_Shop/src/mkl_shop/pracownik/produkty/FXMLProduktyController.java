@@ -19,6 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -50,6 +52,10 @@ public class FXMLProduktyController implements Initializable {
     private MenuItem miZapotrzebowanie;
     @FXML
     private JFXButton bNowyProdukt;
+    @FXML
+    private StackPane spMain;
+    @FXML
+    private AnchorPane apMain;
 
     /**
      * Initializes the controller class.

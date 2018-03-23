@@ -10,56 +10,62 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.reklamacje.FXMLReklamacjeController">
-    <stylesheets>
-        <URL value="@fxmlreklamacje.css" />
-    </stylesheets>
+
+<StackPane fx:id="spMain" stylesheets="@fxmlreklamacje.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.reklamacje.FXMLReklamacjeController">
    <children>
-      <TableView fx:id="tableReklamacje" layoutX="54.0" layoutY="54.0" prefHeight="261.0" prefWidth="1176.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="52.0">
-        <columns>
-          <TableColumn fx:id="columnIdReklamacji" prefWidth="115.0" text="ID Reklamacji" />
-          <TableColumn fx:id="columnOpis" prefWidth="292.0" text="Opis" />
-            <TableColumn fx:id="columnIdProduktu" prefWidth="99.0" text="ID Produktu" />
-            <TableColumn fx:id="columnNazwaProduktu" prefWidth="228.0" text="Nazwa produktu" />
-            <TableColumn fx:id="columnCenaProduktu" prefWidth="101.0" text="Cena" />
-            <TableColumn fx:id="columnData" prefWidth="107.0" text="Data" />
-            <TableColumn fx:id="columnStatus" prefWidth="121.0" text="Status" />
-        </columns>
-         <contextMenu>
-            <ContextMenu>
-              <items>
-                <MenuItem fx:id="cmFinalizacja" mnemonicParsing="false" onAction="#finalizujReklamacje" text="Finalizuj reklamację" />
-              </items>
-            </ContextMenu>
-         </contextMenu>
-      </TableView>
-      <JFXButton fx:id="bNowaReklamacja" contentDisplay="TOP" focusTraversable="false" layoutX="145.0" layoutY="546.0" onAction="#nowaReklamacja" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Nowa reklamacja">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIconView glyphName="EXCHANGE" size="35" />
-         </graphic>
-      </JFXButton>
-      <JFXButton fx:id="bWyjscie" contentDisplay="TOP" focusTraversable="false" layoutX="822.0" layoutY="546.0" onAction="#zamknijOkno" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Wyjście">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIconView glyphName="CLOSE" size="35" />
-         </graphic>
-      </JFXButton>
-      <JFXTextField fx:id="tfWyszukaj" focusColor="#ffff8d" focusTraversable="false" labelFloat="true" layoutX="54.0" layoutY="377.0" prefHeight="47.0" prefWidth="493.0" promptText="Wyszukaj reklamację po id, dacie lub nazwie produktu" unFocusColor="#ffff8d">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextArea fx:id="tfOpis" focusColor="#ffff8d" focusTraversable="false" labelFloat="true" layoutX="733.0" layoutY="360.0" prefHeight="128.0" prefWidth="493.0" promptText="Opis reklamacji" unFocusColor="#ffff8d" wrapText="true">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXTextArea>
+      <AnchorPane id="AnchorPane" fx:id="apMain" prefHeight="720.0" prefWidth="1280.0">
+          <stylesheets>
+              <URL value="@fxmlreklamacje.css" />
+          </stylesheets>
+         <children>
+            <TableView fx:id="tableReklamacje" layoutX="54.0" layoutY="54.0" prefHeight="261.0" prefWidth="1176.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="52.0">
+              <columns>
+                <TableColumn fx:id="columnIdReklamacji" prefWidth="115.0" text="ID Reklamacji" />
+                <TableColumn fx:id="columnOpis" prefWidth="292.0" text="Opis" />
+                  <TableColumn fx:id="columnIdProduktu" prefWidth="99.0" text="ID Produktu" />
+                  <TableColumn fx:id="columnNazwaProduktu" prefWidth="228.0" text="Nazwa produktu" />
+                  <TableColumn fx:id="columnCenaProduktu" prefWidth="101.0" text="Cena" />
+                  <TableColumn fx:id="columnData" prefWidth="107.0" text="Data" />
+                  <TableColumn fx:id="columnStatus" prefWidth="121.0" text="Status" />
+              </columns>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem fx:id="cmFinalizacja" mnemonicParsing="false" onAction="#finalizujReklamacje" text="Finalizuj reklamację" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TableView>
+            <JFXButton fx:id="bNowaReklamacja" contentDisplay="TOP" focusTraversable="false" layoutX="145.0" layoutY="546.0" onAction="#nowaReklamacja" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Nowa reklamacja">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="EXCHANGE" size="35" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="bWyjscie" contentDisplay="TOP" focusTraversable="false" layoutX="822.0" layoutY="546.0" onAction="#zamknijOkno" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Wyjście">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="CLOSE" size="35" />
+               </graphic>
+            </JFXButton>
+            <JFXTextField fx:id="tfWyszukaj" focusColor="#ffff8d" focusTraversable="false" labelFloat="true" layoutX="54.0" layoutY="377.0" prefHeight="47.0" prefWidth="493.0" promptText="Wyszukaj reklamację po id, dacie lub nazwie produktu" unFocusColor="#ffff8d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextArea fx:id="tfOpis" focusColor="#ffff8d" focusTraversable="false" labelFloat="true" layoutX="733.0" layoutY="360.0" prefHeight="128.0" prefWidth="493.0" promptText="Opis reklamacji" unFocusColor="#ffff8d" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXTextArea>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

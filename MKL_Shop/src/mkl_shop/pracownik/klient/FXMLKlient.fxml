@@ -8,42 +8,49 @@
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.klient.FXMLKlientController">
-    <stylesheets>
-        <URL value="@fxmlklient.css" />
-    </stylesheets>
+
+<StackPane fx:id="spMain" stylesheets="@fxmlklient.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.klient.FXMLKlientController">
    <children>
-      <JFXButton fx:id="bNowyKlient" contentDisplay="TOP" layoutX="845.0" layoutY="198.0" onAction="#dodajKlienta" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Nowy klient">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIconView glyphName="USER_PLUS" size="35" />
-         </graphic></JFXButton>
-      <JFXButton fx:id="bWyjscie" contentDisplay="TOP" layoutX="845.0" layoutY="394.0" onAction="#zamknijOkno" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Wyjście">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-         <graphic>
-            <FontAwesomeIconView glyphName="CLOSE" size="35" />
-         </graphic>
-      </JFXButton>
-      <JFXTextField fx:id="tfWyszukaj" focusColor="#ffff8d" labelFloat="true" layoutX="742.0" layoutY="52.0" prefHeight="47.0" prefWidth="482.0" promptText="Wyszukaj klienta po imieniu, nazwisku lub numerze karty" unFocusColor="#ffff8d">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXTextField>
-      <JFXListView fx:id="lvKlienci" layoutX="30.0" layoutY="26.0" prefHeight="629.0" prefWidth="594.0" AnchorPane.bottomAnchor="50.0" AnchorPane.topAnchor="50.0">
-         <contextMenu>
-            <ContextMenu>
-              <items>
-                <MenuItem fx:id="cmEdytuj" mnemonicParsing="false" onAction="#edytuj" text="Edytuj/nowa karta" />
-                  <MenuItem fx:id="cmUsun" mnemonicParsing="false" onAction="#usun" text="Usuń" />
-              </items>
-            </ContextMenu>
-         </contextMenu>
-      </JFXListView>
+      <AnchorPane id="AnchorPane" fx:id="apMain" prefHeight="720.0" prefWidth="1280.0">
+          <stylesheets>
+              <URL value="@fxmlklient.css" />
+          </stylesheets>
+         <children>
+            <JFXButton fx:id="bNowyKlient" contentDisplay="TOP" layoutX="845.0" layoutY="198.0" onAction="#dodajKlienta" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Nowy klient">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="USER_PLUS" size="35" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="bWyjscie" contentDisplay="TOP" layoutX="845.0" layoutY="394.0" onAction="#zamknijOkno" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Wyjście">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="CLOSE" size="35" />
+               </graphic>
+            </JFXButton>
+            <JFXTextField fx:id="tfWyszukaj" focusColor="#ffff8d" labelFloat="true" layoutX="742.0" layoutY="52.0" prefHeight="47.0" prefWidth="482.0" promptText="Wyszukaj klienta po imieniu, nazwisku lub numerze karty" unFocusColor="#ffff8d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXListView fx:id="lvKlienci" layoutX="30.0" layoutY="26.0" prefHeight="629.0" prefWidth="594.0" AnchorPane.bottomAnchor="50.0" AnchorPane.topAnchor="50.0">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem fx:id="cmEdytuj" mnemonicParsing="false" onAction="#edytuj" text="Edytuj/nowa karta" />
+                        <MenuItem fx:id="cmUsun" mnemonicParsing="false" onAction="#usun" text="Usuń" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </JFXListView>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

@@ -14,6 +14,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -47,6 +49,10 @@ public class FXMLEdytujKlientaController implements Initializable {
     
     
     private Boolean nowaKarta;
+    @FXML
+    private StackPane spMain;
+    @FXML
+    private AnchorPane apMain;
     /**
      * Initializes the controller class.
      */

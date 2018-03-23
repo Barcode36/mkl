@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane stylesheets="@fxmlzakupy.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.zakupy.FXMLFinalizacjaController">
+<StackPane fx:id="spMain" stylesheets="@fxmlzakupy.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.zakupy.FXMLFinalizacjaController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass">
+      <AnchorPane id="AnchorPane" fx:id="apMain" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass">
           <stylesheets>
               <URL value="@fxmlzakupy.css" />
           </stylesheets>

@@ -17,6 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.InputMethodEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import mkl_shop.sprawdzanie.Sprawdzanie;
 
@@ -47,6 +49,10 @@ public class FXMLListaPrzedmiotowController implements Initializable {
     private JFXTextField tfWyszukaj;
     @FXML
     private JFXTextField tfIlosc;
+    @FXML
+    private StackPane spMain;
+    @FXML
+    private AnchorPane apMain;
 
     /**
      * Initializes the controller class.

@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -30,6 +32,10 @@ public class FXMLPrzedmiotyController implements Initializable {
     private JFXTextField tfWyszukaj;
     @FXML
     private JFXButton bWybierz;
+    @FXML
+    private StackPane spMain;
+    @FXML
+    private AnchorPane apMain;
 
     /**
      * Initializes the controller class.

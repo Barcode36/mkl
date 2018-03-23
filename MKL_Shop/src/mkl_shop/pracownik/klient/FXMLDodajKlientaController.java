@@ -12,6 +12,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -39,6 +41,10 @@ public class FXMLDodajKlientaController implements Initializable {
     private JFXTextField tfNrTelefonu;
     @FXML
     private JFXTextField tfNazwisko;
+    @FXML
+    private StackPane spMain;
+    @FXML
+    private AnchorPane apMain;
 
     
     
