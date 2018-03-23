@@ -65,6 +65,33 @@
 
 
 
+.cancel-button:hover {
+    -fx-border-color : -fx-secondary;
+    -fx-background-color : -fx-secondary;
+    -fx-text-fill : -fx-primary;    
+}
+
+.cancel-button:hover .glyph-icon {
+    -fx-fill : -fx-primary
+}
+
+.add-button:hover {
+    -fx-border-color : -fx-secondary;
+    -fx-background-color : -fx-secondary;
+    -fx-text-fill : -fx-primary;    
+}
+
+.add-button:hover .glyph-icon {
+    -fx-fill : -fx-primary
+}
+
+
+
+
+
+
+/* */
+
 .menu-button{
     -fx-border-color : -fx-secondary;
     -fx-border-width: 2 2 2 2;
