@@ -20,7 +20,7 @@ public class DBConnection {
         try {
             Class.forName(DRIVER);
             System.out.println("1.Zarejestrowano sterownik");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://sql.urz.nazwa.pl?user=urz_45&password=LgQbdX@fNH&C");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/mkl_database","root","");
             return conn;
         } catch (ClassNotFoundException ex) {
             System.err.println("Niewłasciwy sterownik lub jego brak");
