@@ -25,12 +25,24 @@
     -fx-green:#2E7D32;
 }
 
+#lista-przedmiotow:hover {
+    -fx-fill : #FFFFFF;    
+}
+
+#lista-przedmiotow:pressed {
+    -fx-fill : -fx-secondary;
+}
+
 .root {
     -fx-background-color : -fx-primary;
     -fx-border-width: 2 2 2 2;
     -fx-border-color: -fx-secondary;
 }
 
+.label {
+    -fx-text-fill : -fx-primarytext;
+    
+}
 
 
 .glyph-icon {
@@ -155,6 +167,37 @@
     -fx-background-color: -fx-primary;
 }
 
+
+
+/*listview*/
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
+
+.list-cell:even { 
+    -fx-background-color: -fx-primary;
+}
+
+.list-view {
+     -fx-background-color: -fx-primary ;
+}
+
+.list-cell:odd {
+    -fx-background-color : #323742;
+}
+
+.list-cell {
+    -fx-text-fill : -fx-primarytext;    
+    -fx-font-size : 15px;
+    -fx-font-weight : bold;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
 
 
 /*Text styling*/

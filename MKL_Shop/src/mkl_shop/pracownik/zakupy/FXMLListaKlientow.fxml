@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="spMain" prefHeight="720.0" prefWidth="1280.0" stylesheets="@fxmlzakupy.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.zakupy.FXMLListaKlientowController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="apMain" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass">
+          <stylesheets>
+              <URL value="@fxmlzakupy.css" />
+          </stylesheets>
+         <children>
+            <JFXButton fx:id="bWyjscie" contentDisplay="TOP" focusTraversable="false" layoutX="845.0" layoutY="487.0" onAction="#zamknijOkno" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Wyjście">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="CLOSE" size="35" />
+               </graphic>
+            </JFXButton>
+            <JFXTextField fx:id="tfWyszukaj" focusColor="#ffff8d" focusTraversable="false" labelFloat="true" layoutX="742.0" layoutY="81.0" prefHeight="47.0" prefWidth="482.0" promptText="Wyszukaj klienta po imieniu, nazwisku lub numerze karty" unFocusColor="#ffff8d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXListView fx:id="lvKlienci" layoutX="44.0" layoutY="44.0" prefHeight="629.0" prefWidth="594.0" />
+            <JFXButton fx:id="bWybierz" contentDisplay="TOP" focusTraversable="false" layoutX="845.0" layoutY="245.0" onAction="#wybierzKlienta" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Wybierz">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="CHECK" size="35" styleClass="glyph-add" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

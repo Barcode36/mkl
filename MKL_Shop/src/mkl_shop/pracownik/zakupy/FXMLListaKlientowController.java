@@ -3,16 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mkl_shop.pracownik.produkty;
+package mkl_shop.pracownik.zakupy;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -20,26 +23,27 @@ import javafx.stage.Stage;
  *
  * @author BlackHawk
  */
-public class FXMLDodajNowyProduktController implements Initializable {
+public class FXMLListaKlientowController implements Initializable {
 
     @FXML
     private JFXButton bWyjscie;
     @FXML
-    private JFXTextField tfNazwa;
+    private JFXTextField tfWyszukaj;
     @FXML
-    private JFXTextArea tfOpis;
+    private JFXListView<?> lvKlienci;
     @FXML
-    private JFXButton bZamowProdukt;
+    private JFXButton bWybierz;
+    @FXML
+    private StackPane spMain;
+    @FXML
+    private AnchorPane apMain;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        
-        
+        // TODO
     }    
 
     @FXML
@@ -48,10 +52,9 @@ public class FXMLDodajNowyProduktController implements Initializable {
         stage.close();
     }
 
+
     @FXML
-    private void zamowProdukt(ActionEvent event) {
-        //wyslanie prosby o zamowienie nowego produktu do kierownika placówki
-        
+    private void wybierzKlienta(ActionEvent event) {
     }
     
 }
