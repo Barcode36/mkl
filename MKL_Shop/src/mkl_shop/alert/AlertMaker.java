@@ -115,7 +115,7 @@ public class AlertMaker {
     }
 
     public static void showMaterialDialog(StackPane root, Node nodeToBeBlurred, List<JFXButton> controls, String header, String body) {
-        BoxBlur blur = new BoxBlur(3, 3, 3);
+        BoxBlur blur = new BoxBlur(5, 5, 5);
         if (controls.isEmpty()) {
             controls.add(new JFXButton("Okay"));
         }
