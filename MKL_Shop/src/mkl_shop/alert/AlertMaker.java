@@ -124,6 +124,7 @@ public class AlertMaker {
 
         controls.forEach(controlButton -> {
             controlButton.getStyleClass().add("dialog-button");
+            
             controlButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
                 dialog.close();
             });
