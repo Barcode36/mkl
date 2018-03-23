@@ -226,7 +226,7 @@
 
 /*Dialog styling*/
 .dialog-button{
-    -fx-border-color: -fx-green;
+    -fx-border-color: -fx-primary;
     -fx-text-fill: white;
     -fx-border-radius: 1px;
     -fx-background-radius: 3px;
