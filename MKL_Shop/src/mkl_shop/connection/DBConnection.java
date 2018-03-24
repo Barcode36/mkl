@@ -14,11 +14,11 @@ import java.sql.SQLException;
  * @author jkero
  */
 public class DBConnection {
-        static String daneZBazy;
-  private final String DRIVER = "com.mysql.jdbc.Driver";
-    public Connection Connect() {
+        //static String daneZBazy;
+  //private String DRIVER = "com.mysql.jdbc.Driver";
+    public static Connection Connect() {
         try {
-            Class.forName(DRIVER);
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("1.Zarejestrowano sterownik");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/mkl_database","root","");
             return conn;

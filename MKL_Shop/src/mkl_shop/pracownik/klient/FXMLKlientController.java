@@ -10,7 +10,10 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +26,8 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import mkl_shop.connection.DBConnection;
+import mkl_shop.pracownik.modele.Klient;
 
 /**
  * FXML Controller class
@@ -38,7 +43,7 @@ public class FXMLKlientController implements Initializable {
     @FXML
     private JFXButton bWyjscie;
     @FXML
-    private JFXListView<?> lvKlienci;
+    private JFXListView<Klient> lvKlienci;
     @FXML
     private MenuItem cmEdytuj;
     @FXML
@@ -50,6 +55,7 @@ public class FXMLKlientController implements Initializable {
 
     
     
+    private ObservableList <Klient> dataKlienci;
     
     
     @Override
@@ -58,6 +64,10 @@ public class FXMLKlientController implements Initializable {
         bWyjscie.setFocusTraversable(false);
         bNowyKlient.setFocusTraversable(false);
         tfWyszukaj.setFocusTraversable(false);
+        
+        dataKlienci = FXCollections.observableArrayList();
+        
+        Connection conn = DBConnection.Connect();
         
         
         /*

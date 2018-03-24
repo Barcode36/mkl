@@ -112,12 +112,15 @@ public class FXMLZakupyController implements Initializable {
         
         JFXButton bOkay = new JFXButton("Tak, usuń");
         JFXButton bCancel = new JFXButton("Anuluj");
-        AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay,bCancel), "Czy na pewno chcesz uusnąć ten wpis?", "Wybierz odpowiedź");
+        AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay,bCancel), "Potwierdź decyzję", "Czy na pewno chcesz usunąć wpis?");
         bOkay.setOnAction((ActionEvent event1) -> {
             try {
                 //zrobic usuniecie, ak problem to wywali błąd
+                
+                
+                
             } catch (Exception exp) {
-                AlertMaker.showErrorMessage("Problem z usunięciem", "Nie można usunąć pozycji");
+                AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bCancel), "Błąd", "Nie można usunąć pozycji");
             }
         });
 
