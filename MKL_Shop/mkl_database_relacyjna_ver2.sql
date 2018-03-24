@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 24 Mar 2018, 14:24
+-- Czas generowania: 24 Mar 2018, 14:48
 -- Wersja serwera: 10.1.31-MariaDB
 -- Wersja PHP: 7.2.3
 
@@ -34,7 +34,7 @@ CREATE TABLE `klient` (
   `nazwisko_klienta` varchar(125) NOT NULL,
   `kod_pocztowy_klienta` varchar(6) NOT NULL,
   `miejscowosc_klienta` varchar(125) NOT NULL,
-  `adres__klienta` varchar(125) NOT NULL,
+  `adres_klienta` varchar(125) NOT NULL,
   `telefon_klienta` varchar(12) DEFAULT NULL,
   `numer_karty` varchar(12) DEFAULT NULL,
   `liczba_punktow` int(5) DEFAULT NULL
