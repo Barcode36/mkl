@@ -90,7 +90,8 @@
 }
 
 .list-view {
-     -fx-background-color: -fx-primary ;
+     -fx-background-color: -fx-primary ;  
+     -fx-border-color : -fx-primarytext;
 }
 
 .list-cell:odd {
@@ -99,7 +100,7 @@
 
 .list-cell {
     -fx-text-fill : -fx-primarytext;    
-    -fx-font-size : 15px;
+    -fx-font-size : 18px;
     -fx-font-weight : bold;
 }
 
