@@ -95,6 +95,7 @@ public class FXMLSzczegolyController implements Initializable {
         Pane_Pracownicy.setVisible(false);
         Pane_Produkty.setVisible(false);
         Pane_Sprzedaz.setVisible(false);
+        
     }
 
     @FXML

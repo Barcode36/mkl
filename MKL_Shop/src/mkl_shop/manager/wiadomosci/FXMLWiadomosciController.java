@@ -123,6 +123,7 @@ public class FXMLWiadomosciController implements Initializable {
         Pane_Skrzynka.setVisible(true);
         Pane_Wiadomosci.setVisible(false);
         Pane_Wyslane.setVisible(false);
+     
 
     }
 
