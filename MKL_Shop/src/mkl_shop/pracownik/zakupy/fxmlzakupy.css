@@ -25,12 +25,25 @@
     -fx-green:#2E7D32;
 }
 
+#lista-przedmiotow:hover {
+    -fx-fill : #FFFFFF;    
+}
+
+#lista-przedmiotow:pressed {
+    -fx-fill : -fx-secondary;
+}
+
 .root {
     -fx-background-color : -fx-primary;
     -fx-border-width: 2 2 2 2;
     -fx-border-color: -fx-secondary;
-
 }
+
+.label {
+    -fx-text-fill : -fx-primarytext;
+    
+}
+
 
 .glyph-icon {
     -fx-fill : -fx-primarytext;
@@ -40,11 +53,56 @@
     -fx-fill : -fx-green;
 }
 
+.glyph-remove {
+    -fx-fill : -fx-red;
+}
+
 .button {
     -fx-text-fill : -fx-primarytext;
 }
 
+.add-button {
+    -fx-border-radius : 50px;
+    -fx-border-color : -fx-secondary;
+    -fx-border-width: 2 2 2 2;
+    -fx-background-radius: 50px;
+}
 
+.cancel-button {
+    -fx-border-radius : 50px;
+    -fx-border-color : -fx-secondary;
+    -fx-border-width: 2 2 2 2;
+    -fx-background-radius: 50px;
+}
+
+
+
+.cancel-button:hover {
+    -fx-border-color : -fx-secondary;
+    -fx-background-color : -fx-secondary;
+    -fx-text-fill : -fx-primary;    
+}
+
+.cancel-button:hover .glyph-icon {
+    -fx-fill : -fx-primary
+}
+
+.add-button:hover {
+    -fx-border-color : -fx-secondary;
+    -fx-background-color : -fx-secondary;
+    -fx-text-fill : -fx-primary;    
+}
+
+.add-button:hover .glyph-icon {
+    -fx-fill : -fx-primary
+}
+
+
+
+
+
+
+/* */
 
 .menu-button{
     -fx-border-color : -fx-secondary;
@@ -109,6 +167,37 @@
     -fx-background-color: -fx-primary;
 }
 
+
+
+/*listview*/
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
+
+.list-cell:even { 
+    -fx-background-color: -fx-primary;
+}
+
+.list-view {
+     -fx-background-color: -fx-primary ;
+}
+
+.list-cell:odd {
+    -fx-background-color : #323742;
+}
+
+.list-cell {
+    -fx-text-fill : -fx-primarytext;    
+    -fx-font-size : 15px;
+    -fx-font-weight : bold;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
 
 
 /*Text styling*/
@@ -200,3 +289,49 @@
     -fx-base: -fx-primary;
 }
 
+
+
+
+/* komunikat */
+
+/*Dialog styling*/
+.dialog-button{
+    -fx-border-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-border-radius: 1px;
+    -fx-background-radius: 3px;
+    -fx-font-size : 20px;
+    -fx-font-weight : bold;
+}
+
+.dialog-button:hover{
+    -fx-background-color: -fx-green;
+    -fx-border-color: derive(-fx-green, -20%);
+    -fx-text-fill: white;
+    
+}
+
+.jfx-layout-actions
+{
+    -fx-hgap:22;
+}
+/*JFXDialog styling*/
+.jfx-layout-heading
+{
+    -fx-background-color: -fx-green;
+    -fx-font-size : 25px;
+}
+.jfx-layout-heading .label
+{
+    -fx-text-fill: white;
+}
+.jfx-layout-body, .jfx-layout-actions{
+    -fx-background-color: -fx-primary; 
+    
+}
+.jfx-layout-body .label
+{
+    -fx-text-fill: white;
+    -fx-font-size : 20px;
+    -fx-padding: 20px 0 0 0;
+}

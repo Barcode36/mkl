@@ -25,6 +25,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import mkl_shop.MKL_Shop;
 
 /**
  * FXML Controller class
@@ -147,7 +148,7 @@ public class FXMLSzczegolyController implements Initializable {
         Parent root;
 
         stage = new Stage();
-        root = FXMLLoader.load(getClass().getClassLoader().getResource("src/mkl_shop/manager/pracownicy/FXMLSzczegoly.fxml"));//odnieść się do pakietu pracownicy do pliku FXMLSZCZEGOLY 
+        root = FXMLLoader.load(MKL_Shop.class.getResource("manager/pracownicy/FXMLSzczegoly.fxml"));//odnieść się do pakietu pracownicy do pliku FXMLSZCZEGOLY 
         stage.setScene(new Scene(root));
         stage.setTitle("Panel Pracownikow");
         stage.initStyle(StageStyle.UNDECORATED);

@@ -6,12 +6,21 @@
 package mkl_shop.pracownik.zakupy;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import mkl_shop.sprawdzanie.Sprawdzanie;
 
 /**
  * FXML Controller class
@@ -24,13 +33,46 @@ public class FXMLListaPrzedmiotowController implements Initializable {
     private JFXButton bWyjscie;
     @FXML
     private JFXButton bDodaj;
+    @FXML
+    private TableView<?> tablePrzedmioty;
+    @FXML
+    private TableColumn<?, ?> columnIdPrzedmiotu;
+    @FXML
+    private TableColumn<?, ?> columnNazwa;
+    @FXML
+    private TableColumn<?, ?> columnOpis;
+    @FXML
+    private TableColumn<?, ?> columnNaStanie;
+    @FXML
+    private TableColumn<?, ?> columnCena;
+    @FXML
+    private JFXTextField tfWyszukaj;
+    @FXML
+    private JFXTextField tfIlosc;
+    @FXML
+    private StackPane spMain;
+    @FXML
+    private AnchorPane apMain;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        //odblokowac przy wyborze przedmiotu z tabeli oraz wpisaniu ilosci produktow (domyslnie uzupelniac 1)
+        
+        tfIlosc.setText("1");
+        tfIlosc.setFocusTraversable(true);
+        
+        tfIlosc.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (newValue.isEmpty() || !Sprawdzanie.czyLiczby(newValue)) bDodaj.setDisable(true);
+                else bDodaj.setDisable(false);
+            }
+        });
+        
     }    
 
     @FXML
@@ -41,6 +83,9 @@ public class FXMLListaPrzedmiotowController implements Initializable {
 
     @FXML
     private void dodajDoRachunku(ActionEvent event) {
+        //dodanie do poprzedniego okna do tabeli produktu
     }
+
+
     
 }

@@ -30,7 +30,7 @@ public class FXMLManagerController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    private DBConnection dc;
+    //private DBConnection dc;
     @FXML
     private JFXButton Button_Placowki;
     @FXML
@@ -46,8 +46,8 @@ public class FXMLManagerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        dc = new DBConnection();
-        java.sql.Connection conn = dc.Connect();
+        //dc = new DBConnection();
+        java.sql.Connection conn = DBConnection.Connect();
 
         Button_Placowki.setFocusTraversable(false);
         Button_Wiadomosci.setFocusTraversable(false);
