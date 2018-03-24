@@ -38,7 +38,7 @@ public class FXMLPracownikController implements Initializable {
     private JFXButton bKlient;
 
     
-    public static Integer idPlacowki;
+    public static Integer idPlacowki = 1; //tymczasowo
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

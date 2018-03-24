@@ -14,10 +14,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -106,37 +109,37 @@ public class FXMLProduktyController implements Initializable {
             
         
         
-        columnIDProduktu.setCellValueFactory(new PropertyValueFactory<>("tytuł"));
-        columnNazwa.setCellValueFactory(new PropertyValueFactory<>("tytuł"));
-        columnIlosc.setCellValueFactory(new PropertyValueFactory<>("tytuł"));
-        columnCena.setCellValueFactory(new PropertyValueFactory<>("tytuł"));
-        columnOpis.setCellValueFactory(new PropertyValueFactory<>("tytuł"));
+        columnIDProduktu.setCellValueFactory(new PropertyValueFactory<>("id_produktu"));
+        columnNazwa.setCellValueFactory(new PropertyValueFactory<>("nazwa_produktu"));
+        columnIlosc.setCellValueFactory(new PropertyValueFactory<>("ilosc_produktow"));
+        columnCena.setCellValueFactory(new PropertyValueFactory<>("cena_produktu"));
+        columnOpis.setCellValueFactory(new PropertyValueFactory<>("opis_produktu"));
         
         tableProdukty.setItems(null);
         tableProdukty.setItems(dataProdukt);
             
             
-            /*
+         
             
-            FilteredList<Produkty> filteredProdukt = new FilteredList <>(listView.getItems(), e->true);
+            FilteredList<Produkt> filteredProdukt = new FilteredList <>(tableProdukty.getItems(), e->true);
             tfSzukaj.setOnKeyReleased(e->{
             tfSzukaj.textProperty().addListener((observableValue, oldValue, newValue) ->{
-            filteredProdukt.setPredicate((Predicate<? super Produkty>) k->{
+            filteredProdukt.setPredicate((Predicate<? super Produkt>) k->{
             if (newValue==null || newValue.isEmpty()){
             return true;
             }
             String lcFilter = newValue.toLowerCase();
-            if (k.getNazwa().toLowerCase().contains(lcFilter) || k.getIdProduktu().toLowerCase().contains(lcFilter) ){
+            if (k.getNazwa_produktu().toLowerCase().contains(lcFilter) || k.getId_produktu().toString().toLowerCase().contains(lcFilter) ){
             return true;
             }
             return false;
             });
             });
-            SortedList<Produkty> sortedProdukty = new SortedList<>(filteredProdukt);
+            SortedList<Produkt> sortedProdukty = new SortedList<>(filteredProdukt);
             tableProdukty.setItems(sortedProdukty);
             });
             
-            */
+         
        
         
         

@@ -158,7 +158,7 @@ public class Klient {
 
     @Override
     public String toString() {
-        return imie_klienta + " " + nazwisko_klienta + ", " + kod_pocztowy_klienta + " " + miejscowosc_klienta + "\n" + adres_klienta + "\n Tel. " + telefon_klienta + "\n Nr karty : " + numer_karty + ", punkty : " + liczba_punktow;
+        return imie_klienta.get() + " " + nazwisko_klienta.get() + ", " + kod_pocztowy_klienta.get() + " " + miejscowosc_klienta.get() + "\n" + adres_klienta.get() + "\n Tel. " + telefon_klienta.get() + "\n Nr karty : " + numer_karty.get() + ", punkty : " + liczba_punktow.get();
     }
     
     
