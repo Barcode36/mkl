@@ -72,7 +72,7 @@ public class Klient {
         return telefon_klienta.get();
     }
     
-    public int getNumer_karty(){
+    public Integer getNumer_karty(){
         return numer_karty.get();
     }
     

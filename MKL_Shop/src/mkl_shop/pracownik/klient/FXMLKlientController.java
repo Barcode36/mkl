@@ -15,10 +15,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,7 +62,7 @@ public class FXMLKlientController implements Initializable {
     private AnchorPane apMain;
 
     
-    
+    public static Integer idKlienta;
     //private ObservableList <Klient> dataKlienci;
     
     
@@ -98,27 +101,27 @@ public class FXMLKlientController implements Initializable {
             
             
             
-            /*
             
-            FilteredList<Klient> filteredKlient = new FilteredList <>(listView.getItems(), e->true);
-            txSzukaj.setOnKeyReleased(e->{
-            txSzukaj.textProperty().addListener((observableValue, oldValue, newValue) ->{
-            filteredKlient.setPredicate((Predicate<? super Klient>) k->{
-            if (newValue==null || newValue.isEmpty()){
-            return true;
-            }
-            String lcFilter = newValue.toLowerCase();
-            if (k.getImie().toLowerCase().contains(lcFilter) || k.getNazwisko().toLowerCase().contains(lcFilter) || k.getNrKarty().toLowerCase().contains(lcFilter)){
-            return true;
-            }
-            return false;
-            });
-            });
-            SortedList<Klient> sortedKlient = new SortedList<>(filteredKlient);
-            listView.setItems(sortedKlient);
+            
+            FilteredList<Klient> filteredKlient = new FilteredList <>(lvKlienci.getItems(), e->true);
+            tfWyszukaj.setOnKeyReleased(e->{
+                tfWyszukaj.textProperty().addListener((observableValue, oldValue, newValue) ->{
+                    filteredKlient.setPredicate((Predicate<? super Klient>) k->{
+                        if (newValue==null || newValue.isEmpty()){
+                            return true;
+                        }
+                        String lcFilter = newValue.toLowerCase();
+                        if (k.getImie_klienta().toLowerCase().contains(lcFilter) || k.getNazwisko_klienta().toLowerCase().contains(lcFilter) || k.getNumer_karty().toString().contains(lcFilter)){
+                            return true;
+                        }
+                        return false;
+                        });
+                    });
+                SortedList<Klient> sortedKlient = new SortedList<>(filteredKlient);
+                lvKlienci.setItems(sortedKlient);
             });
             
-            */
+            
         
         
               
@@ -150,25 +153,33 @@ public class FXMLKlientController implements Initializable {
 
     @FXML
     private void edytuj(ActionEvent event) throws IOException {
-        Stage stage;
-        Parent root;
+        if (lvKlienci.getSelectionModel().getSelectedItem() != null){
         
-        stage = new Stage();
-        root = FXMLLoader.load(getClass().getResource("FXMLEdytujKlienta.fxml"));
-        stage.setScene(new Scene(root));
-        stage.setTitle("Panel dodawania klienta");
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(bNowyKlient.getScene().getWindow());
-        stage.showAndWait();
+            idKlienta = lvKlienci.getSelectionModel().getSelectedItem().getId_klienta();
+
+
+            Stage stage;
+            Parent root;
+
+            stage = new Stage();
+            root = FXMLLoader.load(getClass().getResource("FXMLEdytujKlienta.fxml"));
+            stage.setScene(new Scene(root));
+            stage.setTitle("Panel dodawania klienta");
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initOwner(bNowyKlient.getScene().getWindow());
+            stage.showAndWait();
         
-        
+        }
     }
 
     @FXML
     private void usun(ActionEvent event) {
         //okno dialogowe TAK/NIE czy usunac klienta
         
+         if (lvKlienci.getSelectionModel().getSelectedItem() != null){
+             
+         }
         
     }
     
