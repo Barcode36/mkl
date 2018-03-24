@@ -23,14 +23,14 @@ public class Klient {
     private StringProperty miejscowosc_klienta;
     private StringProperty adres_klienta;
     private StringProperty telefon_klienta;
-    private IntegerProperty id_karty;
+    private IntegerProperty numer_karty;
     private IntegerProperty liczba_punktow;
     
     
     
     //      ***Konstruktory***
     
-    public Klient (int id_klienta, String imie_klienta,String nazwisko_klienta, String kod_pocztowy_klienta, String miejscowosc_klienta, String adres_klienta, String telefon_klienta, int id_karty, int liczba_punktow){
+    public Klient (int id_klienta, String imie_klienta,String nazwisko_klienta, String kod_pocztowy_klienta, String miejscowosc_klienta, String adres_klienta, String telefon_klienta, int numer_karty, int liczba_punktow){
         this.id_klienta = new SimpleIntegerProperty(id_klienta);
         this.imie_klienta = new SimpleStringProperty(imie_klienta);
         this.nazwisko_klienta = new SimpleStringProperty(nazwisko_klienta);
@@ -38,7 +38,7 @@ public class Klient {
         this.miejscowosc_klienta = new SimpleStringProperty(miejscowosc_klienta);
         this.adres_klienta = new SimpleStringProperty(adres_klienta);
         this.telefon_klienta = new SimpleStringProperty(telefon_klienta);
-        this.id_karty = new SimpleIntegerProperty(id_karty);
+        this.numer_karty = new SimpleIntegerProperty(numer_karty);
         this.liczba_punktow = new SimpleIntegerProperty(liczba_punktow);
     }
     
@@ -72,8 +72,8 @@ public class Klient {
         return telefon_klienta.get();
     }
     
-    public int getId_karty(){
-        return id_karty.get();
+    public int getNumer_karty(){
+        return numer_karty.get();
     }
     
     public int getLiczba_punktow(){
@@ -108,8 +108,8 @@ public class Klient {
         telefon_klienta.set(value);
     }
     
-    public void setId_karty (int value){
-        id_karty.set(value);
+    public void setNumer_karty (int value){
+        numer_karty.set(value);
     }
     
     public void setLiczba_punktow (int value){
@@ -148,8 +148,8 @@ public class Klient {
         return telefon_klienta;
     }
     
-    public IntegerProperty id_kartyProperty(){
-        return id_karty;
+    public IntegerProperty numer_kartyProperty(){
+        return numer_karty;
     }
     
     public IntegerProperty liczba_punktowProperty(){
@@ -158,7 +158,7 @@ public class Klient {
 
     @Override
     public String toString() {
-        return imie_klienta + " " + nazwisko_klienta + ", " + kod_pocztowy_klienta + " " + miejscowosc_klienta + "\n" + adres_klienta + "\n Tel. " + telefon_klienta + "\n Nr karty : " + id_karty + ", punkty : " + liczba_punktow;
+        return imie_klienta + " " + nazwisko_klienta + ", " + kod_pocztowy_klienta + " " + miejscowosc_klienta + "\n" + adres_klienta + "\n Tel. " + telefon_klienta + "\n Nr karty : " + numer_karty + ", punkty : " + liczba_punktow;
     }
     
     

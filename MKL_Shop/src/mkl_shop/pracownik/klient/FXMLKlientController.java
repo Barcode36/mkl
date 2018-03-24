@@ -11,7 +11,12 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -55,7 +60,7 @@ public class FXMLKlientController implements Initializable {
 
     
     
-    private ObservableList <Klient> dataKlienci;
+    //private ObservableList <Klient> dataKlienci;
     
     
     @Override
@@ -65,37 +70,62 @@ public class FXMLKlientController implements Initializable {
         bNowyKlient.setFocusTraversable(false);
         tfWyszukaj.setFocusTraversable(false);
         
-        dataKlienci = FXCollections.observableArrayList();
+        //dataKlienci = FXCollections.observableArrayList();
         
         Connection conn = DBConnection.Connect();
         
         
-        /*
-        
-        FilteredList<Klient> filteredKlient = new FilteredList <>(listView.getItems(), e->true);
-        txSzukaj.setOnKeyReleased(e->{
+        try {
+            Statement ps = conn.createStatement();
+            ResultSet rs = ps.executeQuery("SELECT id_klienta, imie_klienta, nazwisko_klienta, kod_pocztowy_klienta, "
+                    + "miejscowosc_klienta, adres_klienta, telefon_klienta, numer_karty, liczba_punktow "
+                    + "FROM klient;");
+            
+            
+            while (rs.next()){
+                lvKlienci.getItems().add(new Klient(rs.getInt(0), rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7), rs.getInt(8)));
+            }
+            
+            ps.close();
+            rs.close();
+            conn.close();
+            
+            } catch (SQLException ex) {
+                Logger.getLogger(FXMLKlientController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
+            
+            
+            
+            /*
+            
+            FilteredList<Klient> filteredKlient = new FilteredList <>(listView.getItems(), e->true);
+            txSzukaj.setOnKeyReleased(e->{
             txSzukaj.textProperty().addListener((observableValue, oldValue, newValue) ->{
-                filteredKlient.setPredicate((Predicate<? super Klient>) k->{
-                    if (newValue==null || newValue.isEmpty()){
-                        return true;
-                    }
-                    String lcFilter = newValue.toLowerCase();
-                    if (k.getImie().toLowerCase().contains(lcFilter) || k.getNazwisko().toLowerCase().contains(lcFilter) || k.getNrKarty().toLowerCase().contains(lcFilter)){
-                        return true;
-                    }
-                    return false;
-                });
-                });
-            SortedList<Klient> sortedKlient = new SortedList<>(filteredKlient);            
-            listView.setItems(sortedKlient);            
-        });
-        
-        */
-        
-        
+            filteredKlient.setPredicate((Predicate<? super Klient>) k->{
+            if (newValue==null || newValue.isEmpty()){
+            return true;
+            }
+            String lcFilter = newValue.toLowerCase();
+            if (k.getImie().toLowerCase().contains(lcFilter) || k.getNazwisko().toLowerCase().contains(lcFilter) || k.getNrKarty().toLowerCase().contains(lcFilter)){
+            return true;
+            }
+            return false;
+            });
+            });
+            SortedList<Klient> sortedKlient = new SortedList<>(filteredKlient);
+            listView.setItems(sortedKlient);
+            });
+            
+            */
         
         
-    }    
+              
+    }   
+    
+    
+    
 
     @FXML
     private void dodajKlienta(ActionEvent event) throws IOException {
