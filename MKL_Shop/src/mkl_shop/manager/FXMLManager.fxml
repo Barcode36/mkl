@@ -19,17 +19,9 @@
             <Font name="System Bold" size="35.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="Button_Wiadomosci" contentDisplay="TOP" focusTraversable="false" layoutX="522.0" layoutY="360.0" onAction="#goWiadomosci" prefHeight="142.0" prefWidth="237.0" styleClass="menu-button" text="Wiadomości" AnchorPane.bottomAnchor="218.0" AnchorPane.leftAnchor="522.0">
+      <JFXButton fx:id="Button_Wiadomosci" contentDisplay="TOP" focusTraversable="false" layoutX="260.0" layoutY="366.0" onAction="#goWiadomosci" prefHeight="142.0" prefWidth="237.0" styleClass="menu-button" text="Wiadomości" AnchorPane.bottomAnchor="212.0" AnchorPane.leftAnchor="260.0">
          <graphic>
             <FontAwesomeIconView glyphName="LINE_CHART" size="50" text="" />
-         </graphic>
-         <font>
-            <Font name="System Bold" size="35.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="Button_Finase" contentDisplay="TOP" focusTraversable="false" layoutX="526.0" layoutY="198.0" onAction="#goFinase" prefHeight="138.0" prefWidth="233.0" styleClass="menu-button" text="Finase" AnchorPane.bottomAnchor="382.0" AnchorPane.leftAnchor="524.0" AnchorPane.rightAnchor="523.0">
-         <graphic>
-            <FontAwesomeIconView glyphName="EUR" size="50" />
          </graphic>
          <font>
             <Font name="System Bold" size="35.0" />
@@ -43,7 +35,7 @@
             <Font name="System Bold" size="35.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="Button_Pracownicy" contentDisplay="TOP" focusTraversable="false" layoutX="805.0" layoutY="198.0" onAction="#goPracownicy" prefHeight="142.0" prefWidth="237.0" styleClass="menu-button" text="Pracownicy" AnchorPane.bottomAnchor="380.0" AnchorPane.rightAnchor="260.0" AnchorPane.topAnchor="198.0">
+      <JFXButton fx:id="Button_Pracownicy" contentDisplay="TOP" focusTraversable="false" layoutX="522.0" layoutY="202.0" onAction="#goPracownicy" prefHeight="142.0" prefWidth="237.0" styleClass="menu-button" text="Pracownicy" AnchorPane.bottomAnchor="384.0" AnchorPane.rightAnchor="521.0" AnchorPane.topAnchor="202.0">
          <graphic>
             <FontAwesomeIconView glyphName="USER_ALT" size="50" />
          </graphic>
@@ -51,7 +43,7 @@
             <Font name="System Bold" size="35.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="Button_Raporty" contentDisplay="TOP" focusTraversable="false" layoutX="260.0" layoutY="360.0" onAction="#goRaporty" prefHeight="142.0" prefWidth="237.0" styleClass="menu-button" text="Raporty">
+      <JFXButton fx:id="Button_Raporty" contentDisplay="TOP" focusTraversable="false" layoutX="781.0" layoutY="198.0" onAction="#goRaporty" prefHeight="142.0" prefWidth="237.0" styleClass="menu-button" text="Raporty">
          <graphic>
             <FontAwesomeIconView glyphName="LINE_CHART" size="50" />
          </graphic>

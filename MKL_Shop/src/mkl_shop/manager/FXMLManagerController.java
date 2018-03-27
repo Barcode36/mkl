@@ -35,8 +35,7 @@ public class FXMLManagerController implements Initializable {
     private JFXButton Button_Placowki;
     @FXML
     private JFXButton Button_Wiadomosci;
-    @FXML
-    private JFXButton Button_Finase;
+
     @FXML
     private JFXButton Button_Wyjscie;
     @FXML
@@ -51,7 +50,7 @@ public class FXMLManagerController implements Initializable {
 
         Button_Placowki.setFocusTraversable(false);
         Button_Wiadomosci.setFocusTraversable(false);
-        Button_Finase.setFocusTraversable(false);
+
         Button_Wyjscie.setFocusTraversable(false);
         Button_Pracownicy.setFocusTraversable(false);
         Button_Raporty.setFocusTraversable(false);
@@ -75,7 +74,7 @@ public class FXMLManagerController implements Initializable {
 
     @FXML
     private void goWiadomosci(ActionEvent event) throws IOException {
-         Stage stage;
+        Stage stage;
         Parent root;
 
         stage = new Stage();
@@ -86,10 +85,6 @@ public class FXMLManagerController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(Button_Pracownicy.getScene().getWindow());
         stage.showAndWait();
-    }
-
-    @FXML
-    private void goFinase(ActionEvent event) {
     }
 
     @FXML
@@ -115,7 +110,18 @@ public class FXMLManagerController implements Initializable {
     }
 
     @FXML
-    private void goRaporty(ActionEvent event) {
+    private void goRaporty(ActionEvent event) throws IOException {
+        Stage stage;
+        Parent root;
+
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("raporty/FXMLRaporty.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Panel Pracownikow");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(Button_Pracownicy.getScene().getWindow());
+        stage.showAndWait();
     }
 
 }
