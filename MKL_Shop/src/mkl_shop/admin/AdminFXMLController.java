@@ -5,20 +5,19 @@
  */
 package mkl_shop.admin;
 
-import java.io.IOException;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
+import mkl_shop.admin.modele.Pracownik;
+import mkl_shop.admin.modele.Placowka;
 /**
  * FXML Controller class
  *
@@ -27,15 +26,73 @@ import javafx.stage.StageStyle;
 public class AdminFXMLController implements Initializable {
 
     @FXML
-    private Button btnZarzadzajKontami;
+    private TableView<Pracownik> tableKonta;
     @FXML
-    private Button btnZarzadzajPlacowkami;
+    private TableColumn<Pracownik, String> colImie;
     @FXML
-    private Button btnZarzadzajTowarami;
+    private TableColumn<Pracownik, String> colNazwisko;
     @FXML
-    private Button btnWiadomosci;
+    private TableColumn<Pracownik, Integer> colPesel;
     @FXML
-    private Button btnWyjscie;
+    private TableColumn<Pracownik, Integer> colNrTel;
+    @FXML
+    private TableColumn<Pracownik, Integer> colPlacowka;
+    @FXML
+    private TableColumn<Pracownik, String> colLogin;
+    @FXML
+    private JFXTextField txSzukaj;
+    @FXML
+    private JFXButton btnDodajKonto;
+    @FXML
+    private JFXButton btnUsunKonto;
+    @FXML
+    private JFXButton btnWyczyscKonta;
+    @FXML
+    private JFXButton btnAktualizujKonto;
+    @FXML
+    private JFXTextField txImie;
+    @FXML
+    private JFXTextField txNazwisko;
+    @FXML
+    private JFXTextField txPesel;
+    @FXML
+    private JFXTextField txNumerTel;
+    @FXML
+    private JFXTextField txPlacowka;
+    @FXML
+    private JFXTextField txLogin;
+    @FXML
+    private JFXTextField txHaslo;
+    @FXML
+    private TableView<Placowka> tablePlacowki;
+    @FXML
+    private TableColumn<Placowka, String> colMiejscowosc;
+    @FXML
+    private TableColumn<Placowka, String> colAdres;
+    @FXML
+    private TableColumn<Placowka, String> colKodPocztowy;
+    @FXML
+    private TableColumn<Placowka, Integer> colTelKontaktowyPlacowki;
+    @FXML
+    private JFXTextField txMiejscowosc;
+    @FXML
+    private JFXTextField txAdres;
+    @FXML
+    private JFXTextField txKodPocztowy;
+    @FXML
+    private JFXTextField txTelefonKontaktowyPlacowki;
+    @FXML
+    private JFXButton btnDodajPlacowke;
+    @FXML
+    private JFXButton btnUsunPlacowke;
+    @FXML
+    private JFXButton btnAktualizujPlacowke;
+    @FXML
+    private JFXButton btnWyczyscPlacowka;
+    @FXML
+    private JFXButton btnWyjscie;
+    @FXML
+    private JFXComboBox<?> cbRola;
 
     /**
      * Initializes the controller class.
@@ -46,63 +103,39 @@ public class AdminFXMLController implements Initializable {
     }
 
     @FXML
-    private void PressedKonta(MouseEvent event) throws IOException {
-        Stage stage;
-        Parent root;
-        stage = new Stage();
-        root = FXMLLoader.load(getClass().getResource("konta/FXMLKonta.fxml"));
-        stage.setScene(new Scene(root));
-        stage.setTitle("Zarządzaj kontami");
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(btnZarzadzajKontami.getScene().getWindow());
-        stage.showAndWait();
+    private void DodajKonto(ActionEvent event) {
     }
 
     @FXML
-    private void PressedPlacowki(MouseEvent event) throws IOException {
-        Stage stage;
-        Parent root;
-        stage = new Stage();
-        root = FXMLLoader.load(getClass().getResource("placowki/FXMLPlacowki.fxml"));
-        stage.setScene(new Scene(root));
-        stage.setTitle("Placówki");
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(btnZarzadzajPlacowkami.getScene().getWindow());
-        stage.showAndWait();
+    private void UsunKonto(ActionEvent event) {
     }
 
     @FXML
-    private void PressedTowar(MouseEvent event) throws IOException {
-        Stage stage;
-        Parent root;
-        stage = new Stage();
-        root = FXMLLoader.load(getClass().getResource("towar/FXMLTowar.fxml"));
-        stage.setScene(new Scene(root));
-        stage.setTitle("Towar");
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(btnZarzadzajTowarami.getScene().getWindow());
-        stage.showAndWait();
+    private void WyczyscPolaKonta(ActionEvent event) {
     }
 
     @FXML
-    private void PressedWiadomosci(MouseEvent event) throws IOException {
-        Stage stage;
-        Parent root;
-        stage = new Stage();
-        root = FXMLLoader.load(getClass().getResource("wiadomosci/FXMLWiadomosci.fxml"));
-        stage.setScene(new Scene(root));
-        stage.setTitle("Wiadomości");
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(btnWiadomosci.getScene().getWindow());
-        stage.showAndWait();
+    private void AktualizujKonto(ActionEvent event) {
     }
 
     @FXML
-    private void PressedWyjdz(MouseEvent event) {
+    private void DodajPlacowke(ActionEvent event) {
+    }
+
+    @FXML
+    private void UsunPlacowke(ActionEvent event) {
+    }
+
+    @FXML
+    private void AktualizujPlacowke(ActionEvent event) {
+    }
+
+    @FXML
+    private void WyczyscPolaPlacowka(ActionEvent event) {
+    }
+
+    @FXML
+    private void Wyjscie(ActionEvent event) {
         Stage stage = (Stage) btnWyjscie.getScene().getWindow();
         stage.close();
     }
