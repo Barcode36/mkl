@@ -14,6 +14,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -31,6 +37,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import mkl_shop.MKL_Shop;
 import mkl_shop.alert.AlertMaker;
+import mkl_shop.pracownik.modele.Klient;
+import mkl_shop.pracownik.modele.Produkt;
+import static mkl_shop.pracownik.zakupy.FXMLListaKlientowController.k;
 
 /**
  * FXML Controller class
@@ -46,7 +55,7 @@ public class FXMLZakupyController implements Initializable {
     @FXML
     private JFXButton bUsunPrzedmiot;
     @FXML
-    private TableView<?> tableRachunek;
+    private TableView<Produkt> tableRachunek;
     @FXML
     private StackPane spMain;
     @FXML
@@ -58,17 +67,17 @@ public class FXMLZakupyController implements Initializable {
     @FXML
     private Label lSumaWartosc;
     @FXML
-    private TableColumn<?, ?> columnIdProduktu;
+    private TableColumn<Produkt, Integer> columnIdProduktu;
     @FXML
-    private TableColumn<?, ?> columnNazwa;
+    private TableColumn<Produkt, String> columnNazwa;
     @FXML
-    private TableColumn<?, ?> columnOpis;
+    private TableColumn<Produkt, String> columnOpis;
     @FXML
-    private TableColumn<?, ?> columnCenaSzt;
+    private TableColumn<Produkt, Double> columnCenaSzt;
     @FXML
-    private TableColumn<?, ?> columnIlosc;
+    private TableColumn<Produkt, Integer> columnIlosc;
     @FXML
-    private TableColumn<?, ?> columnCena;
+    private TableColumn<Produkt, Double> columnCena;
     @FXML
     private JFXCheckBox cStalyKlient;
     @FXML
@@ -76,11 +85,44 @@ public class FXMLZakupyController implements Initializable {
     @FXML
     private FontAwesomeIconView bListaKlientow;
 
+    //public FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLZakupy.fxml"));
+    public static ObservableList<Produkt> dataRachunek;
+    public static Klient k1;
+    Integer idKlienta;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        //System.out.println(FXMLListaPrzedmiotowController.p.getOpis_produktu());
         //bUsunPrzedmiot.setDisable(true);
 
+        //lStalyKlient.setText("c");
+        dataRachunek = FXCollections.observableArrayList();
+        odswiezRachunek();
+
+        // ***
+        if (FXMLListaKlientowController.k != null) {
+            lStalyKlient.setText(k1.getImie_klienta() + " " + k1.getNazwisko_klienta() + " (" + k1.getNumer_karty() + ")");
+        }
+        // ***
+
+        
+        dataRachunek.addListener(new ListChangeListener<Produkt>() {
+            @Override
+            public void onChanged(ListChangeListener.Change<? extends Produkt> c) {
+                Double suma = 0.0;
+                while (c.next()) {
+
+                    for (Produkt p1 : dataRachunek) {
+                        suma += p1.getSuma();
+                    }
+                    lSumaWartosc.setText(suma.toString() + " zł");
+                }
+            }
+
+            });
+        
+        
+        
     }
 
     @FXML
@@ -107,29 +149,28 @@ public class FXMLZakupyController implements Initializable {
     @FXML
     private void usunZRachunku(ActionEvent event) {
         //usuwanie wybranego przedmiotu + komunikat tak/nie
-        
-        
-        
+
         JFXButton bOkay = new JFXButton("Tak, usuń");
         JFXButton bCancel = new JFXButton("Anuluj");
-        AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay,bCancel), "Potwierdź decyzję", "Czy na pewno chcesz usunąć wpis?");
+        AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay, bCancel), "Potwierdź decyzję", "Czy na pewno chcesz usunąć wpis?");
         bOkay.setOnAction((ActionEvent event1) -> {
             try {
                 //zrobic usuniecie, ak problem to wywali błąd
-                
-                
-                
+
+                tableRachunek.getItems().remove(tableRachunek.getSelectionModel().getSelectedIndex());
+                //update nowej ceny rachunku :)
             } catch (Exception exp) {
                 AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bCancel), "Błąd", "Nie można usunąć pozycji");
             }
         });
-
 
     }
 
     @FXML
     private void zaznaczonyPrzedmiot(MouseEvent event) {
         // jak zaznaczony obiekt z tabeli to odblokowac przycisk usuwania
+
+        //odswiezRachunek();
     }
 
     @FXML
@@ -144,10 +185,11 @@ public class FXMLZakupyController implements Initializable {
 
     @FXML
     private void wybierzKlienta(ActionEvent event) {
-        if (cStalyKlient.isSelected())
+        if (cStalyKlient.isSelected()) {
             bListaKlientow.setDisable(false);
-        else
+        } else {
             bListaKlientow.setDisable(true);
+        }
     }
 
     @FXML
@@ -162,7 +204,28 @@ public class FXMLZakupyController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(bDoRachunku.getScene().getWindow());
         stage.showAndWait();
-        
+
+    }
+
+    public void setKlient(Klient k) {
+        idKlienta = k.getId_klienta();
+        //System.out.println(idKlienta);
+        //this.lStalyKlient.setText("1iofajeof aewfjewoif");
+        //lStalyKlient.setText(k1.getImie_klienta()+ " " + k1.getNazwisko_klienta() + " (" + k1.getNumer_karty() + ")");
+    }
+
+    public void odswiezRachunek() {
+
+        columnIdProduktu.setCellValueFactory(new PropertyValueFactory<>("id_produktu"));
+        columnNazwa.setCellValueFactory(new PropertyValueFactory<>("nazwa_produktu"));
+        columnCenaSzt.setCellValueFactory(new PropertyValueFactory<>("cena_produktu"));
+        columnOpis.setCellValueFactory(new PropertyValueFactory<>("opis_produktu"));
+        columnIlosc.setCellValueFactory(new PropertyValueFactory<>("sztuki"));
+        columnCena.setCellValueFactory(new PropertyValueFactory<>("suma"));
+
+        tableRachunek.setItems(null);
+        tableRachunek.setItems(dataRachunek);
+
     }
 
 }

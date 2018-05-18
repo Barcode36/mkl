@@ -58,6 +58,9 @@ public class FXMLDodajNowyProduktController implements Initializable {
     private void zamowProdukt(ActionEvent event) {
         //wyslanie prosby o zamowienie nowego produktu do kierownika placówki
         
+        
+        
+        
     }
     
 }

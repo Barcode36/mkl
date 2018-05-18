@@ -65,7 +65,7 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="lSumaWartosc" alignment="CENTER" layoutX="1070.0" layoutY="438.0" prefHeight="62.0" prefWidth="157.0">
+            <Label fx:id="lSumaWartosc" alignment="CENTER" layoutX="1070.0" layoutY="438.0" prefHeight="62.0" prefWidth="157.0" text="0.0 zł">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -75,7 +75,7 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </JFXCheckBox>
-            <Label fx:id="lStalyKlient" alignment="CENTER" layoutX="289.0" layoutY="430.0" prefHeight="62.0" prefWidth="410.0" text="Imie nazwisko (nr karty)">
+            <Label fx:id="lStalyKlient" alignment="CENTER" layoutX="289.0" layoutY="430.0" prefHeight="62.0" prefWidth="410.0">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
