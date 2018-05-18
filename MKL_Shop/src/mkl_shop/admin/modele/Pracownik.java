@@ -24,13 +24,13 @@ public class Pracownik {
     private StringProperty login;
     private StringProperty haslo;
     private StringProperty rola;
-    private IntegerProperty id_placowki;
+    private StringProperty adres_placowki;
     
     
     
     //      ***Konstruktory***
     
-    public Pracownik (int id_pracownika, String imie_pracownika,String nazwisko_pracownika, int pesel_pracownika, int telefon_pracownika, String login, String haslo, String rola, int id_placowki){
+    public Pracownik (int id_pracownika, String imie_pracownika,String nazwisko_pracownika, int pesel_pracownika, int telefon_pracownika, String login, String haslo, String rola, String adres_placowki){
         this.id_pracownika = new SimpleIntegerProperty(id_pracownika);
         this.imie_pracownika = new SimpleStringProperty(imie_pracownika);
         this.nazwisko_pracownika = new SimpleStringProperty(nazwisko_pracownika);
@@ -39,7 +39,7 @@ public class Pracownik {
         this.login = new SimpleStringProperty(login);
         this.haslo = new SimpleStringProperty(haslo);
         this.rola = new SimpleStringProperty(rola);
-        this.id_placowki = new SimpleIntegerProperty(id_placowki);
+        this.adres_placowki = new SimpleStringProperty(adres_placowki);
     }
     
     
@@ -76,8 +76,8 @@ public class Pracownik {
         return rola.get();
     }
     
-    public int getId_placowki(){
-        return id_placowki.get();
+    public String getAdres_placowki(){
+        return adres_placowki.get();
     }
     
     
@@ -112,8 +112,8 @@ public class Pracownik {
         rola.set(value);
     }
     
-    public void setId_placowki (int value){
-        id_placowki.set(value);
+    public void setAdres_placowki (String value){
+        adres_placowki.set(value);
     }
     
     
@@ -152,7 +152,7 @@ public class Pracownik {
         return rola;
     }
     
-    public IntegerProperty id_placowkiProperty(){
-        return id_placowki;
+    public StringProperty adres_placowkiProperty(){
+        return adres_placowki;
     }
 }
