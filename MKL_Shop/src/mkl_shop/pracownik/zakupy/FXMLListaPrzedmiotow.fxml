@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane fx:id="spMain" stylesheets="@fxmlzakupy.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.zakupy.FXMLListaPrzedmiotowController">
    <children>
       <AnchorPane id="AnchorPane" fx:id="apMain" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass">
@@ -34,7 +33,7 @@
                   <FontAwesomeIconView glyphName="CART_PLUS" size="35" styleClass="glyph-add" />
                </graphic>
             </JFXButton>
-            <TableView fx:id="tablePrzedmioty" layoutX="54.0" layoutY="54.0" prefHeight="358.0" prefWidth="1176.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="52.0">
+            <TableView fx:id="tablePrzedmioty" layoutX="54.0" layoutY="54.0" onMouseClicked="#zaznaczProdukt" prefHeight="358.0" prefWidth="1176.0" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="52.0">
               <columns>
                 <TableColumn fx:id="columnIdPrzedmiotu" prefWidth="102.0" text="ID Produktu" />
                 <TableColumn fx:id="columnNazwa" prefWidth="251.0" text="Nazwa" />

@@ -23,6 +23,8 @@ public class Produkt {
     private DoubleProperty cena_produktu;
     private StringProperty opis_produktu;
     private IntegerProperty ilosc_produktow;
+    private IntegerProperty sztuki;
+    private DoubleProperty suma;
     
     
     
@@ -35,6 +37,24 @@ public class Produkt {
         this.opis_produktu = new SimpleStringProperty(opis_produktu);
         this.ilosc_produktow = new SimpleIntegerProperty(ilosc_produktow);
     }
+    
+    public Produkt (int id_produktu, String nazwa_produktu, Double cena_produktu, String opis_produktu, int sztuki, Double suma){
+        this.id_produktu = new SimpleIntegerProperty(id_produktu);
+        this.nazwa_produktu = new SimpleStringProperty(nazwa_produktu);
+        this.cena_produktu = new SimpleDoubleProperty(cena_produktu);
+        this.opis_produktu = new SimpleStringProperty(opis_produktu);        
+        this.sztuki = new SimpleIntegerProperty(sztuki);
+        this.suma = new SimpleDoubleProperty(suma);
+    }
+    
+    public Produkt (int id_produktu, String nazwa_produktu, Double cena_produktu, String opis_produktu){
+         this.id_produktu = new SimpleIntegerProperty(id_produktu);
+        this.nazwa_produktu = new SimpleStringProperty(nazwa_produktu);
+        this.cena_produktu = new SimpleDoubleProperty(cena_produktu);
+        this.opis_produktu = new SimpleStringProperty(opis_produktu); 
+    }
+
+    
     
     //      ***Gettery***
     
@@ -58,6 +78,13 @@ public class Produkt {
         return ilosc_produktow.get();
     }
     
+    public int getSztuki(){
+        return sztuki.get();
+    }
+    
+    public Double getSuma(){
+        return suma.get();
+    }
     
     
     //      ***Settery***
@@ -101,6 +128,15 @@ public class Produkt {
     
     public IntegerProperty ilosc_produktowProperty(){
         return ilosc_produktow;
+    }
+    
+    public IntegerProperty sztukiProperty(){
+        return sztuki;
+        
+    }
+    
+    public DoubleProperty sumaProperty(){
+        return suma;
     }
     
     

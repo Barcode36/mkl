@@ -1,39 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="487.0" prefWidth="295.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="mkl_shop.admin.AdminFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="568.0" prefWidth="1122.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.admin.AdminFXMLController">
    <children>
-      <Button fx:id="btnZarzadzajKontami" mnemonicParsing="false" onMousePressed="#PressedKonta" prefHeight="102.0" prefWidth="340.0" text="KONTA">
+      <TabPane layoutY="-2.0" prefHeight="496.0" prefWidth="1122.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Zarządzaj kontami">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="455.0" prefWidth="1122.0">
+                     <children>
+                        <TableView fx:id="tableKonta" layoutX="14.0" layoutY="14.0" prefHeight="389.0" prefWidth="801.0">
+                          <columns>
+                            <TableColumn fx:id="colImie" prefWidth="120.0" text="Imię" />
+                            <TableColumn fx:id="colNazwisko" prefWidth="120.0" text="Nazwisko" />
+                              <TableColumn fx:id="colPesel" prefWidth="150.0" text="PESEL" />
+                              <TableColumn fx:id="colNrTel" prefWidth="150.0" text="Numer telefonu" />
+                              <TableColumn fx:id="colPlacowka" prefWidth="130.0" text="Placówka" />
+                              <TableColumn fx:id="colLogin" prefWidth="130.0" text="Login" />
+                          </columns>
+                        </TableView>
+                        <JFXTextField fx:id="txSzukaj" layoutX="867.0" layoutY="19.0" prefHeight="30.0" prefWidth="135.0" />
+                        <JFXButton fx:id="btnDodajKonto" layoutX="855.0" layoutY="76.0" onAction="#DodajKonto" text="Dodaj" />
+                        <JFXButton fx:id="btnUsunKonto" layoutX="910.0" layoutY="76.0" onAction="#UsunKonto" text="Usuń" />
+                        <JFXButton fx:id="btnWyczyscKonta" layoutX="1036.0" layoutY="76.0" onAction="#WyczyscPolaKonta" text="Wyczyść" />
+                        <JFXButton fx:id="btnAktualizujKonto" layoutX="965.0" layoutY="76.0" onAction="#AktualizujKonto" text="Aktualizuj" />
+                        <Label layoutX="865.0" layoutY="125.0" text="Imię:" />
+                        <Label layoutX="865.0" layoutY="165.0" text="Nazwisko:" />
+                        <Label layoutX="865.0" layoutY="205.0" text="PESEL:" />
+                        <Label layoutX="865.0" layoutY="245.0" text="Nr tel:" />
+                        <Label layoutX="865.0" layoutY="285.0" text="Placówka:" />
+                        <Label layoutX="865.0" layoutY="325.0" text="Login:" />
+                        <Label layoutX="865.0" layoutY="365.0" text="Hasło:" />
+                        <JFXTextField fx:id="txImie" layoutX="934.0" layoutY="115.0" prefHeight="25.0" prefWidth="154.0" />
+                        <JFXTextField fx:id="txNazwisko" layoutX="934.0" layoutY="155.0" prefHeight="25.0" prefWidth="154.0" />
+                        <JFXTextField fx:id="txPesel" layoutX="934.0" layoutY="195.0" prefHeight="25.0" prefWidth="154.0" />
+                        <JFXTextField fx:id="txNumerTel" layoutX="934.0" layoutY="235.0" prefHeight="25.0" prefWidth="154.0" />
+                        <JFXTextField fx:id="txPlacowka" layoutX="934.0" layoutY="275.0" prefHeight="25.0" prefWidth="154.0" />
+                        <JFXTextField fx:id="txLogin" layoutX="934.0" layoutY="315.0" prefHeight="25.0" prefWidth="154.0" />
+                        <JFXTextField fx:id="txHaslo" layoutX="934.0" layoutY="355.0" prefHeight="25.0" prefWidth="154.0" />
+                        <Label layoutX="868.0" layoutY="405.0" text="Rola:" />
+                        <JFXComboBox fx:id="cbRola" layoutX="934.0" layoutY="401.0" prefHeight="25.0" prefWidth="154.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Zgłoszenia">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXListView layoutX="40.0" layoutY="21.0" prefHeight="544.0" prefWidth="415.0" />
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Placówki">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="624.0" prefWidth="1212.0">
+                     <children>
+                        <TableView fx:id="tablePlacowki" layoutX="14.0" layoutY="14.0" prefHeight="317.0" prefWidth="634.0">
+                          <columns>
+                            <TableColumn fx:id="colMiejscowosc" prefWidth="190.0" text="Miejscowość" />
+                            <TableColumn fx:id="colAdres" prefWidth="190.0" text="Adres" />
+                              <TableColumn fx:id="colKodPocztowy" minWidth="0.0" prefWidth="100.0" text="Kod pocztowy" />
+                              <TableColumn fx:id="colTelKontaktowyPlacowki" prefWidth="153.0" text="Telefon kontaktowy" />
+                          </columns>
+                        </TableView>
+                        <JFXTextField fx:id="txMiejscowosc" layoutX="780.0" layoutY="100.0" prefHeight="25.0" prefWidth="160.0" />
+                        <JFXTextField fx:id="txAdres" layoutX="780.0" layoutY="140.0" prefHeight="25.0" prefWidth="160.0" />
+                        <JFXTextField fx:id="txKodPocztowy" layoutX="780.0" layoutY="180.0" prefHeight="25.0" prefWidth="160.0" />
+                        <JFXTextField fx:id="txTelefonKontaktowyPlacowki" layoutX="780.0" layoutY="220.0" prefHeight="25.0" prefWidth="160.0" />
+                        <JFXButton fx:id="btnDodajPlacowke" layoutX="670.0" layoutY="15.0" onAction="#DodajPlacowke" prefHeight="34.0" prefWidth="73.0" text="Dodaj" />
+                        <JFXButton fx:id="btnUsunPlacowke" layoutX="740.0" layoutY="15.0" onAction="#UsunPlacowke" prefHeight="34.0" prefWidth="73.0" text="Usuń" />
+                        <JFXButton fx:id="btnAktualizujPlacowke" layoutX="810.0" layoutY="15.0" onAction="#AktualizujPlacowke" prefHeight="34.0" prefWidth="73.0" text="Aktualizuj" />
+                        <JFXButton fx:id="btnWyczyscPlacowka" layoutX="880.0" layoutY="15.0" onAction="#WyczyscPolaPlacowka" prefHeight="34.0" prefWidth="73.0" text="Wyczyść" />
+                        <Label layoutX="676.0" layoutY="110.0" text="Miejscowość:" />
+                        <Label layoutX="693.0" layoutY="150.0" text="Adres:" />
+                        <Label layoutX="679.0" layoutY="190.0" text="Kod pocztowy:" />
+                        <Label layoutX="664.0" layoutY="230.0" text="Telefon kontaktowy:" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <JFXButton fx:id="btnWyjscie" layoutX="959.0" layoutY="485.0" onAction="#Wyjscie" prefHeight="61.0" prefWidth="129.0" text="Wyjście">
          <font>
-            <Font name="Impact" size="24.0" />
+            <Font size="18.0" />
          </font>
-      </Button>
-      <Button fx:id="btnZarzadzajPlacowkami" layoutY="102.0" mnemonicParsing="false" onMousePressed="#PressedPlacowki" prefHeight="102.0" prefWidth="340.0" text="PLACÓWKI">
-         <font>
-            <Font name="Impact" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnZarzadzajTowarami" layoutY="204.0" mnemonicParsing="false" onMousePressed="#PressedTowar" prefHeight="102.0" prefWidth="340.0" text="TOWAR">
-         <font>
-            <Font name="Impact" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnWiadomosci" layoutY="306.0" mnemonicParsing="false" onMousePressed="#PressedWiadomosci" prefHeight="102.0" prefWidth="340.0" text="WIADOMOŚCI">
-         <font>
-            <Font name="Impact" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnWyjscie" layoutY="408.0" mnemonicParsing="false" onMousePressed="#PressedWyjdz" prefHeight="102.0" prefWidth="340.0" text="WYJDŹ">
-         <font>
-            <Font name="Impact" size="24.0" />
-         </font>
-      </Button>
+      </JFXButton>
    </children>
 </AnchorPane>

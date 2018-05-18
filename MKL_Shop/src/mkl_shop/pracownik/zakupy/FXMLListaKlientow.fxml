@@ -29,7 +29,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXTextField>
-            <JFXListView fx:id="lvKlienci" layoutX="44.0" layoutY="44.0" prefHeight="629.0" prefWidth="594.0" />
+            <JFXListView fx:id="lvKlienci" layoutX="44.0" layoutY="44.0" onMouseClicked="#wybranyKlient" prefHeight="629.0" prefWidth="594.0" />
             <JFXButton fx:id="bWybierz" contentDisplay="TOP" focusTraversable="false" layoutX="845.0" layoutY="245.0" onAction="#wybierzKlienta" prefHeight="128.0" prefWidth="276.0" styleClass="menu-button" text="Wybierz">
                <font>
                   <Font name="System Bold" size="25.0" />

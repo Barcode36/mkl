@@ -1,43 +1,19 @@
-/*
- * Empty Stylesheet file.
- */
-
-
-* {
-    -fx-primary : #2A2E37;
-    -fx-secondary : #FFFF8D;
-    -fx-primarytext : #B2B2B2;
+.button{
+    -fx-background-color: 
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
 }
 
-.root {
-    -fx-background-color : -fx-primary;
-    -fx-border-width: 2 2 2 2;
-    -fx-border-color: -fx-secondary;
-}
 
-.glyph-icon {
-    -fx-fill : -fx-primarytext;
-}
+#AnchorPane{
+    -fx-background-color:white;
+    
+    
 
-.button {
-    -fx-text-fill : -fx-primarytext;
-}
-
-/*button specific*/
-
-.menu-button{
-    -fx-border-color : -fx-secondary;
-    -fx-border-width: 2 2 2 2;
-    -fx-border-radius : 20px;
-    -fx-background-radius: 20px;
-}
-
-.menu-button:hover {
-    -fx-border-color : -fx-secondary;
-    -fx-background-color : -fx-secondary;
-    -fx-text-fill : -fx-primary;    
-}
-
-.menu-button:hover .glyph-icon {
-    -fx-fill : -fx-primary
 }
