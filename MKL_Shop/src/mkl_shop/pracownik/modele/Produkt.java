@@ -47,6 +47,14 @@ public class Produkt {
         this.suma = new SimpleDoubleProperty(suma);
     }
     
+    public Produkt (int id_produktu, String nazwa_produktu, Double cena_produktu, String opis_produktu){
+         this.id_produktu = new SimpleIntegerProperty(id_produktu);
+        this.nazwa_produktu = new SimpleStringProperty(nazwa_produktu);
+        this.cena_produktu = new SimpleDoubleProperty(cena_produktu);
+        this.opis_produktu = new SimpleStringProperty(opis_produktu); 
+    }
+
+    
     
     //      ***Gettery***
     

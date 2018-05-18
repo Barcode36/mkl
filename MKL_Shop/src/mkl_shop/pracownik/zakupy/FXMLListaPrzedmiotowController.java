@@ -98,6 +98,8 @@ public class FXMLListaPrzedmiotowController implements Initializable {
         
         
         
+        
+        
 
         dataProdukt = FXCollections.observableArrayList();
 

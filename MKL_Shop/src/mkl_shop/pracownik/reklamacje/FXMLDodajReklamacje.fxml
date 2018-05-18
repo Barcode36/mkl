@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="spMain" stylesheets="@fxmlreklamacje.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.reklamacje.FXMLDodajReklamacjeController">
+<StackPane fx:id="spMain" onMouseEntered="#uzupelnijProdukt" stylesheets="@fxmlreklamacje.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.pracownik.reklamacje.FXMLDodajReklamacjeController">
    <children>
       <AnchorPane id="AnchorPane" fx:id="apMain" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass">
           <stylesheets>

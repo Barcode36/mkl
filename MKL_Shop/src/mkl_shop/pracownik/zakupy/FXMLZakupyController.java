@@ -100,12 +100,10 @@ public class FXMLZakupyController implements Initializable {
         odswiezRachunek();
 
         // ***
-        if (FXMLListaKlientowController.k != null) {
-            lStalyKlient.setText(k1.getImie_klienta() + " " + k1.getNazwisko_klienta() + " (" + k1.getNumer_karty() + ")");
-        }
+//        if (FXMLListaKlientowController.k != null) {
+//            lStalyKlient.setText(k1.getImie_klienta() + " " + k1.getNazwisko_klienta() + " (" + k1.getNumer_karty() + ")");
+//        }
         // ***
-
-        
         dataRachunek.addListener(new ListChangeListener<Produkt>() {
             @Override
             public void onChanged(ListChangeListener.Change<? extends Produkt> c) {
@@ -119,10 +117,8 @@ public class FXMLZakupyController implements Initializable {
                 }
             }
 
-            });
-        
-        
-        
+        });
+
     }
 
     @FXML
@@ -226,6 +222,12 @@ public class FXMLZakupyController implements Initializable {
         tableRachunek.setItems(null);
         tableRachunek.setItems(dataRachunek);
 
+    }
+
+    @FXML
+    private void uzupelnijKlienta(MouseEvent event) {
+        if (k1 != null)
+            lStalyKlient.setText(k1.getImie_klienta()+ " " + k1.getNazwisko_klienta() + " (" + k1.getNumer_karty() + ") " + k1.getLiczba_punktow() + "pkt");
     }
 
 }

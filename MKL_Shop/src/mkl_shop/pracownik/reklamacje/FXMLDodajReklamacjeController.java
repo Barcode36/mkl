@@ -24,6 +24,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import mkl_shop.pracownik.modele.Produkt;
 
 /**
  * FXML Controller class
@@ -46,7 +47,8 @@ public class FXMLDodajReklamacjeController implements Initializable {
     private JFXTextField tfPrzedmiotReklamacji;
     @FXML
     private FontAwesomeIconView bWybierzProdukt;
-
+    
+    public static Produkt p;
     /**
      * Initializes the controller class.
      */
@@ -60,6 +62,8 @@ public class FXMLDodajReklamacjeController implements Initializable {
 
     @FXML
     private void dodajReklamacje(ActionEvent event) {
+        //insert do bazy :)
+       
     }
 
     @FXML
@@ -80,6 +84,12 @@ public class FXMLDodajReklamacjeController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(bNowaReklamacja.getScene().getWindow());
         stage.showAndWait();
+    }
+
+    @FXML
+    private void uzupelnijProdukt(MouseEvent event) {
+        if (p != null)
+            tfPrzedmiotReklamacji.setText("[" + p.getId_produktu() + "] " +p.getNazwa_produktu() + " " + p.getCena_produktu() + " zł");
     }
     
 }
