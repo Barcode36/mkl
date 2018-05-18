@@ -52,13 +52,13 @@
 }
 
 .jfx-text-field {
-    -fx-prompt-text-fill: -fx-primarytext;
-    -fx-text-inner-color: -fx-primarytext;
+    -fx-prompt-text-fill: #ffffff;
+    -fx-text-inner-color: #ffffff;
 }
 
 .jfx-text-area {
-    -fx-prompt-text-fill: -fx-primarytext;
-    -fx-text-inner-color: -fx-primarytext;
+    -fx-prompt-text-fill: #ffffff;
+    -fx-text-inner-color: #ffffff;
 }
 
 
@@ -72,7 +72,7 @@
 }
 
 .menu-item .label {
-  -fx-text-fill: -fx-primarytext;
+  -fx-text-fill: #ffffff;
 }
 
 .menu-item:focused .label {  
@@ -81,6 +81,9 @@
 
 .menu-item:focused {
     -fx-background-color : -fx-secondary;
+}
+.label{
+  -fx-text-fill: #ffffff;   
 }
 
 
@@ -187,5 +190,6 @@
 {
     -fx-base: -fx-primary;
 }
+
 
 

@@ -84,8 +84,8 @@ public class FXMLManagerController implements Initializable {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(Button_Pracownicy.getScene().getWindow());
-        stage.showAndWait();
-    }
+       stage.showAndWait();
+  }
 
     @FXML
     private void Wyjscie(ActionEvent event) {

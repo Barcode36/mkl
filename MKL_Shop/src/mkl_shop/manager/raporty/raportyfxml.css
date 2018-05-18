@@ -188,4 +188,18 @@
     -fx-base: -fx-primary;
 }
 
+.jfx-combo-box {
+ -fx-prompt-text-fill: white;
+ -fx-text-base-color: white;
+}
+
+.jfx-combo-box {
+ -fx-prompt-text-fill: white;
+ -fx-text-base-color: white;
+}
+
+.default-color8.chart-bar { -fx-bar-fill: #babdb6; }
+.default-color9.chart-bar { -fx-bar-fill: #4e9a06; }
+
+
 

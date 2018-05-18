@@ -7,6 +7,14 @@
 /*
 * Empty Stylesheet file.
 */
+#moj_combox
+{
+     -fx-background-color : -fx-primary;  
+     -fx-fill : white;
+      -fx-text-fill: #ffffff; /*Yellow - input color*/
+    -fx-prompt-text-fill: #ffffff
+}
+
 
 * {
     -fx-primary : #2A2E37;
@@ -28,38 +36,29 @@
     -fx-fill : -fx-primarytext;
 }
 
-.button {
-    -fx-text-fill : -fx-primarytext;
-}
 
-
-
-.menu-button{
-    -fx-border-color : -fx-secondary;
-    -fx-border-width: 2 2 2 2;
-    -fx-border-radius : 4px;
-    -fx-background-radius: 4px;
-}
-
-.menu-button:hover {
-    -fx-border-color : -fx-secondary;
-    -fx-background-color : -fx-secondary;
-    -fx-text-fill : -fx-primary;    
-}
-
-.menu-button:hover .glyph-icon {
-    -fx-fill : -fx-primary
-}
 
 .jfx-text-field {
-    -fx-prompt-text-fill: -fx-primarytext;
-    -fx-text-inner-color: -fx-primarytext;
+    -fx-text-fill:#ffffff;
+    -fx-text-inner-color:#ffffff;
+}
+.text-field
+{   
+    -fx-text-fill: #ffffff; /*Yellow - input color*/
+    -fx-prompt-text-fill: #ffffff
 }
 
+
 .jfx-text-area {
-    -fx-prompt-text-fill: -fx-primarytext;
-    -fx-text-inner-color: -fx-primarytext;
+    -fx-text-fill: #ffffff; /*Yellow - input color*/
+    -fx-prompt-text-fill: #ffffff
 }
+.text-arrea{
+    -fx-text-fill: #ffffff; /*Yellow - input color*/
+    -fx-prompt-text-fill: #ffffff
+}
+
+
 
 
 
@@ -72,11 +71,11 @@
 }
 
 .menu-item .label {
-  -fx-text-fill: -fx-primarytext;
+    -fx-text-fill: -fx-primarytext;
 }
 
 .menu-item:focused .label {  
-  -fx-text-fill : -fx-primary; 
+    -fx-text-fill : -fx-primary; 
 }
 
 .menu-item:focused {
@@ -187,19 +186,4 @@
 {
     -fx-base: -fx-primary;
 }
-.menu-button{
-    -fx-border-color : -fx-secondary;
-    -fx-border-width: 2 2 2 2;
-    -fx-border-radius : 20px;
-    -fx-background-radius: 20px;
-}
 
-.menu-button:hover {
-    -fx-border-color : -fx-secondary;
-    -fx-background-color : -fx-secondary;
-    -fx-text-fill : -fx-primary;    
-}
-
-.menu-button:hover .glyph-icon {
-    -fx-fill : -fx-primary
-}

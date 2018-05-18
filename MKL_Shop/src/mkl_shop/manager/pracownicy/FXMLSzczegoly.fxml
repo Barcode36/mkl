@@ -21,7 +21,15 @@
    <children>
       <HBox prefHeight="50.0" prefWidth="1280.0" AnchorPane.topAnchor="25.0">
          <children>
-            <JFXTextField disable="true" focusColor="#ffff8d" labelFloat="true" prefHeight="50.0" prefWidth="300.0" text="Imie z bazy" unFocusColor="#ffff8d">
+            <JFXTextField fx:id="tf_imie" disable="true" focusColor="#ffff8d" labelFloat="true" prefHeight="50.0" prefWidth="300.0" unFocusColor="#ffff8d">
+               <HBox.margin>
+                  <Insets left="170.0" right="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="tf_nazwisko" disable="true" focusColor="#ffff8d" labelFloat="true" prefHeight="50.0" prefWidth="300.0" unFocusColor="#ffff8d">
                <HBox.margin>
                   <Insets left="15.0" right="15.0" />
                </HBox.margin>
@@ -29,15 +37,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXTextField>
-            <JFXTextField disable="true" focusColor="#ffff8d" labelFloat="true" prefHeight="50.0" prefWidth="300.0" text="Imie z bazy" unFocusColor="#ffff8d">
-               <HBox.margin>
-                  <Insets left="15.0" right="15.0" />
-               </HBox.margin>
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXTextField>
-            <JFXTextField disable="true" focusColor="#ffff8d" labelFloat="true" prefHeight="50.0" prefWidth="300.0" text="Imie z bazy" unFocusColor="#ffff8d">
+            <JFXTextField fx:id="tf_placowka" disable="true" focusColor="#ffff8d" labelFloat="true" prefHeight="50.0" prefWidth="300.0" unFocusColor="#ffff8d">
                <HBox.margin>
                   <Insets left="15.0" right="15.0" />
                </HBox.margin>
@@ -54,10 +54,10 @@
                   <Font name="System Bold" size="18.0" />
                </font>
                <HBox.margin>
-                  <Insets left="15.0" right="15.0" />
+                  <Insets left="170.0" right="15.0" />
                </HBox.margin>
             </Label>
-            <JFXDatePicker defaultColor="#ffff8d" prefHeight="50.0">
+            <JFXDatePicker fx:id="dataod" defaultColor="#ffff8d" prefHeight="50.0" prefWidth="201.0">
                <HBox.margin>
                   <Insets left="15.0" right="15.0" />
                </HBox.margin>
@@ -70,7 +70,7 @@
                   <Insets left="15.0" right="15.0" />
                </HBox.margin>
             </Label>
-            <JFXDatePicker defaultColor="#ffff8d" prefHeight="50.0">
+            <JFXDatePicker fx:id="datado" defaultColor="#ffff8d" prefHeight="50.0">
                <HBox.margin>
                   <Insets left="15.0" right="15.0" />
                </HBox.margin>
@@ -88,7 +88,7 @@
             </JFXButton>
          </children>
       </HBox>
-      <BarChart id="tytul_wykresu" layoutX="89.0" layoutY="247.0" maxWidth="1150.0" minWidth="1150.0" prefHeight="400.0" prefWidth="1150.0" stylesheets="@fxmlpracownicy.css" title="Efektywność" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="245.0">
+      <BarChart id="tytul_wykresu" fx:id="wykresefektywnosci" layoutX="20.0" layoutY="251.0" maxWidth="1249.0" minWidth="1150.0" prefHeight="400.0" prefWidth="1249.0" stylesheets="@fxmlpracownicy.css" title="Efektywność" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="249.0">
         <xAxis>
           <CategoryAxis label="Dni" side="BOTTOM" />
         </xAxis>

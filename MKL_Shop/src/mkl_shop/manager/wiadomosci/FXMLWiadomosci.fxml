@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
@@ -12,6 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.manager.wiadomosci.FXMLWiadomosciController">
     <stylesheets>
@@ -20,7 +22,7 @@
    <children>
       <VBox layoutX="6.0" layoutY="6.0" prefHeight="300.0" prefWidth="150.0" AnchorPane.bottomAnchor="290.0" AnchorPane.topAnchor="10.0">
          <children>
-            <JFXButton id="." fx:id="Button_Skrzynka" focusTraversable="false" onAction="#goSkrzynka" prefHeight="100.0" prefWidth="150.0" styleClass="menu-button" text="Skrzynka">
+            <JFXButton id="." fx:id="Button_Skrzynka" focusTraversable="false" onAction="#goSkrzynka" prefHeight="100.0" prefWidth="150.0" styleClass="menu-button" text="Skrzynka" textFill="WHITE">
                <graphic>
                   <FontAwesomeIconView />
                </graphic>
@@ -28,7 +30,7 @@
                   <Insets bottom="5.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="Button_Wyslane" focusTraversable="false" onAction="#goWyslanie" prefHeight="100.0" prefWidth="150.0" styleClass="menu-button" text="Wysłane">
+            <JFXButton fx:id="Button_Wyslane" focusTraversable="false" onAction="#goWyslanie" prefHeight="100.0" prefWidth="150.0" styleClass="menu-button" text="Wysłane" textFill="WHITE">
                <graphic>
                   <FontAwesomeIconView />
                </graphic>
@@ -36,7 +38,7 @@
                   <Insets bottom="5.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="Button_Wiadomosci" focusTraversable="false" onAction="#goNowaWiadomosc" prefHeight="100.0" prefWidth="150.0" styleClass="menu-button" text="Nowa wiadomość" textAlignment="CENTER" wrapText="true">
+            <JFXButton fx:id="Button_Wiadomosci" focusTraversable="false" onAction="#goNowaWiadomosc" prefHeight="100.0" prefWidth="150.0" styleClass="menu-button" text="Nowa wiadomość" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <graphic>
                   <FontAwesomeIconView />
                </graphic>
@@ -44,7 +46,7 @@
                   <Insets bottom="5.0" />
                </VBox.margin>
             </JFXButton>
-            <JFXButton fx:id="Button_Wstecz" focusTraversable="false" onAction="#goWstecz" prefHeight="100.0" prefWidth="150.0" styleClass="menu-button" text="Wstecz">
+            <JFXButton fx:id="Button_Wstecz" focusTraversable="false" onAction="#goWstecz" prefHeight="100.0" prefWidth="150.0" styleClass="menu-button" text="Wstecz" textFill="WHITE">
                <graphic>
                   <FontAwesomeIconView />
                </graphic>
@@ -57,45 +59,48 @@
               <columns>
                 <TableColumn fx:id="Tab_Lp" prefWidth="75.0" text="Lp." />
                 <TableColumn fx:id="Tab_Nadawca" prefWidth="301.0" text="Nadawca" />
-                  <TableColumn fx:id="Tab_Temat" prefWidth="517.0" text="Temat" />
-                  <TableColumn fx:id="Tab_Data" prefWidth="102.0" text="Data" />
+                  <TableColumn fx:id="Tab_Temat" prefWidth="352.0" text="Temat" />
+                  <TableColumn fx:id="Tab_Data" prefWidth="199.0" text="Data" />
+                  <TableColumn fx:id="Tab_Status" prefWidth="143.0" text="Status" />
+                  <TableColumn fx:id="Tab_ID" prefWidth="75.0" text="Column X" visible="false" />
               </columns>
             </TableView>
             <Pane fx:id="Pane_tresc" layoutY="348.0" prefHeight="337.0" prefWidth="1097.0">
                <children>
                   <VBox prefHeight="337.0" prefWidth="1097.0">
                      <children>
-                        <JFXTextField fx:id="Text_Field_Nadawca" disable="true" focusColor="#ffff8d" labelFloat="true" promptText="Nadawaca" unFocusColor="#ffff8d">
+                        <JFXTextField fx:id="Text_Field_Nadawca" disable="true" editable="false" focusColor="WHITE" labelFloat="true" prefHeight="30.0" prefWidth="297.0" promptText="Nadawca" styleClass="text-field" unFocusColor="#ffff8d">
                            <VBox.margin>
-                              <Insets bottom="5.0" right="800.0" top="5.0" />
+                              <Insets bottom="10.0" right="800.0" top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="Text_Field_Temat" disable="true" focusColor="#ffff8d" unFocusColor="#ffff8d">
+                        <JFXTextField fx:id="Text_Field_Temat" disable="true" focusColor="WHITE" labelFloat="true" promptText="Temat" unFocusColor="#ffff8d">
                            <VBox.margin>
-                              <Insets bottom="5.0" right="700.0" top="10.0" />
+                              <Insets bottom="15.0" right="700.0" top="20.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
                         </JFXTextField>
-                        <JFXTextArea fx:id="Text_Area_Wiadomosc" focusColor="#ffff8d" promptText="Wiadomośc..." unFocusColor="#ffff8d">
+                        <JFXTextArea fx:id="Text_Area_Wiadomosc" disable="true" editable="false" focusColor="WHITE" labelFloat="true" promptText="Treść" unFocusColor="#ffff8d">
                            <VBox.margin>
-                              <Insets bottom="10.0" right="100.0" top="10.0" />
+                              <Insets bottom="10.0" right="100.0" top="15.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
                         </JFXTextArea>
                         <HBox prefHeight="89.0" prefWidth="1097.0">
                            <children>
-                              <JFXButton fx:id="Button_Odpisz" onAction="#goOdpisz" prefHeight="50.0" prefWidth="100.0" text="Odpisz">
-                                 <HBox.margin>
-                                    <Insets bottom="10.0" left="800.0" right="10.0" top="10.0" />
-                                 </HBox.margin>
-                                 <graphic>
-                                    <FontAwesomeIconView />
-                                 </graphic>
-                              </JFXButton>
-                              <JFXButton fx:id="Button_Usun" onAction="#goUsun" prefHeight="50.0" prefWidth="100.0" text="Usun">
+                              <JFXButton fx:id="Button_Usun" onAction="#goUsun_Odebrane" prefHeight="50.0" prefWidth="100.0" text="Usun" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets bottom="10.0" left="10.0" top="10.0" />
                                  </HBox.margin>
                                  <graphic>
-                                    <FontAwesomeIconView />
+                                    <FontAwesomeIconView glyphName="DELETE" />
                                  </graphic>
                               </JFXButton>
                            </children>
@@ -111,35 +116,45 @@
             <TableView fx:id="Tabela_Wyslane" layoutY="14.0" prefHeight="300.0" prefWidth="1073.0">
                <columns>
                   <TableColumn fx:id="Tab_Lp_Wyslane" prefWidth="75.0" text="Lp." />
-                  <TableColumn fx:id="Tab_Adresta_Wyslane" prefWidth="301.0" text="Nadawca" />
+                  <TableColumn fx:id="Tab_Adresta_Wyslane" prefWidth="301.0" text="Odbiorca" />
                   <TableColumn fx:id="Tab_Temat_Wyslane" prefWidth="517.0" text="Temat" />
                   <TableColumn fx:id="Tab_Data_Wyslane" prefWidth="168.0" text="Data" />
+                  <TableColumn fx:id="Tab_ID_Wyslane" prefWidth="75.0" text="Column X" visible="false" />
                </columns>
             </TableView>
             <Pane fx:id="Pane_tresc_wyslane" layoutY="348.0" prefHeight="337.0" prefWidth="1097.0">
                <children>
                   <VBox prefHeight="337.0" prefWidth="1097.0">
                      <children>
-                        <JFXTextField fx:id="Text_Field_Adresta" disable="true" focusColor="#ffff8d" labelFloat="true" promptText="Nadawaca" unFocusColor="#ffff8d">
+                        <JFXTextField fx:id="Text_Field_Adresta" disable="true" focusColor="WHITE" labelFloat="true" promptText="Odbiorca" unFocusColor="#ffff8d">
                            <VBox.margin>
-                              <Insets bottom="5.0" right="800.0" top="5.0" />
+                              <Insets bottom="10.0" right="800.0" top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="Text_Field_Temat_Wyslane" disable="true" focusColor="#ffff8d" unFocusColor="#ffff8d">
+                        <JFXTextField fx:id="Text_Field_Temat_Wyslane" disable="true" focusColor="WHITE" labelFloat="true" promptText="Temat" unFocusColor="#ffff8d">
                            <VBox.margin>
-                              <Insets bottom="5.0" right="700.0" top="10.0" />
+                              <Insets bottom="15.0" right="700.0" top="20.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
                         </JFXTextField>
-                        <JFXTextArea fx:id="Text_Area_Wiadomosc_Wyslane" disable="true" focusColor="#ffff8d" promptText="Wiadomośc..." unFocusColor="#ffff8d">
+                        <JFXTextArea fx:id="Text_Area_Wiadomosc_Wyslane" disable="true" focusColor="WHITE" labelFloat="true" promptText="Wiadomośc..." unFocusColor="#ffff8d">
                            <VBox.margin>
-                              <Insets bottom="10.0" right="100.0" top="10.0" />
+                              <Insets bottom="10.0" right="100.0" top="15.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="19.0" />
+                           </font>
                         </JFXTextArea>
                         <HBox prefHeight="89.0" prefWidth="1097.0">
                            <children>
-                              <JFXButton fx:id="Button_Usun_Wyslanie" onAction="#goUsun" prefHeight="50.0" prefWidth="100.0" text="Usun">
+                              <JFXButton fx:id="Button_Usun_Wyslanie" onAction="#goUsunWyslane" prefHeight="50.0" prefWidth="100.0" text="Usun" textFill="WHITE">
                                  <HBox.margin>
-                                    <Insets bottom="10.0" left="1000.0" top="10.0" />
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
                                  </HBox.margin>
                                  <graphic>
                                     <FontAwesomeIconView />
@@ -157,29 +172,38 @@
          <children>
             <VBox prefHeight="696.0" prefWidth="1116.0">
                <children>
-                  <JFXTextField fx:id="Text_Nadawca" disable="true" focusColor="#ffff8d" labelFloat="true" unFocusColor="#ffff8d">
+                  <JFXTextField fx:id="Text_Nadawca" disable="true" focusColor="#ffff8d" labelFloat="true" promptText="Nadawca" unFocusColor="#ffff8d">
                      <VBox.margin>
-                        <Insets bottom="10.0" right="800.0" top="15.0" />
+                        <Insets bottom="20.0" right="800.0" top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
                   </JFXTextField>
-                  <JFXTextField fx:id="Text_Odbioraca" focusColor="#ffff8d" labelFloat="true" promptText="Adresat" unFocusColor="#ffff8d">
+                  <JFXComboBox id="moj_combox" fx:id="ComboOdbiorca" focusColor="#ffff8d" labelFloat="true" prefHeight="31.0" prefWidth="378.0" promptText="Odbiorca" unFocusColor="#ffff8d">
                      <VBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="800.0" top="15.0" />
+                        <Insets bottom="20.0" right="750.0" top="20.0" />
                      </VBox.margin>
-                  </JFXTextField>
+                  </JFXComboBox>
                   <JFXTextField fx:id="Text_Temat" focusColor="#ffff8d" labelFloat="true" promptText="Temat" unFocusColor="#ffff8d">
                      <VBox.margin>
-                        <Insets bottom="10.0" right="700.0" top="15.0" />
+                        <Insets bottom="20.0" right="700.0" top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                   </JFXTextField>
-                  <JFXTextArea fx:id="Text_Tresc_Wiadomosci" focusColor="#ffff8d" promptText="Wiadomość..." unFocusColor="#ffff8d">
+                  <JFXTextArea id="moj_combo" fx:id="Text_Tresc_Wiadomosci" focusColor="#ffff8d" labelFloat="true" promptText="Wiadomość..." unFocusColor="#ffff8d">
                      <VBox.margin>
-                        <Insets bottom="5.0" right="200.0" top="5.0" />
+                        <Insets bottom="20.0" right="200.0" top="20.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                   </JFXTextArea>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <JFXButton fx:id="Button_Wyslij_Nowa" prefHeight="50.0" prefWidth="150.0" text="Wyślij">
+                        <JFXButton fx:id="Button_Wyslij_Nowa" onAction="#WysalnieWiadomosci" prefHeight="50.0" prefWidth="150.0" text="Wyślij" textFill="WHITE">
                            <graphic>
                               <FontAwesomeIconView />
                            </graphic>
@@ -187,7 +211,7 @@
                               <Insets left="800.0" right="15.0" top="25.0" />
                            </HBox.margin>
                         </JFXButton>
-                        <JFXButton fx:id="Button_Anuluj" onAction="#Anuluj_wyslanie" prefHeight="50.0" prefWidth="150.0" text="Anuluj">
+                        <JFXButton fx:id="Button_Anuluj" onAction="#Anuluj_wyslanie" prefHeight="50.0" prefWidth="150.0" text="Anuluj" textFill="WHITE">
                            <graphic>
                               <FontAwesomeIconView />
                            </graphic>
