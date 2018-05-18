@@ -193,13 +193,13 @@ public class FXMLRaportyController implements Initializable {
                     + " where t.id_pracownika=r.id_pracownika and r.id_placowki=p.id_placowki and t.data "
                     + "GROUP by p.miejscowosc_placowki, p.adres_placowki";
             wykres_metoda(query, Wykres_placowki);
-
         }
 
     }
 
     @FXML
     private void StatsProdukty(ActionEvent event) {
+        //
         try {
             String index = (dane_combo.ladujliste("SELECT id_placowki FROM Placowka ORDER by id_placowki", "id_placowki").get(Combo_Placowki_Produkty.getSelectionModel().getSelectedIndex()).toString());
             String dataod = Data_Od_Produkty.getValue().toString();
