@@ -6,7 +6,9 @@
 package mkl_shop.admin.modele;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -19,8 +21,8 @@ public class Pracownik {
     private IntegerProperty id_pracownika;
     private StringProperty imie_pracownika;
     private StringProperty nazwisko_pracownika;
-    private IntegerProperty pesel_pracownika;
-    private IntegerProperty telefon_pracownika;
+    private StringProperty pesel_pracownika;
+    private StringProperty telefon_pracownika;
     private StringProperty login;
     private StringProperty haslo;
     private StringProperty rola;
@@ -30,12 +32,12 @@ public class Pracownik {
     
     //      ***Konstruktory***
     
-    public Pracownik (int id_pracownika, String imie_pracownika,String nazwisko_pracownika, int pesel_pracownika, int telefon_pracownika, String login, String haslo, String rola, String adres_placowki){
+    public Pracownik (int id_pracownika, String imie_pracownika,String nazwisko_pracownika, String pesel_pracownika, String telefon_pracownika, String login, String haslo, String rola, String adres_placowki){
         this.id_pracownika = new SimpleIntegerProperty(id_pracownika);
         this.imie_pracownika = new SimpleStringProperty(imie_pracownika);
         this.nazwisko_pracownika = new SimpleStringProperty(nazwisko_pracownika);
-        this.pesel_pracownika = new SimpleIntegerProperty(pesel_pracownika);
-        this.telefon_pracownika = new SimpleIntegerProperty(telefon_pracownika);
+        this.pesel_pracownika = new SimpleStringProperty(pesel_pracownika);
+        this.telefon_pracownika = new SimpleStringProperty(telefon_pracownika);
         this.login = new SimpleStringProperty(login);
         this.haslo = new SimpleStringProperty(haslo);
         this.rola = new SimpleStringProperty(rola);
@@ -56,11 +58,11 @@ public class Pracownik {
         return nazwisko_pracownika.get();
     }
     
-    public int getPesel_pracownika(){
+    public String getPesel_pracownika(){
         return pesel_pracownika.get();
     }
     
-    public int getTelefon_pracownika(){
+    public String getTelefon_pracownika(){
         return telefon_pracownika.get();
     }
     
@@ -92,11 +94,11 @@ public class Pracownik {
         nazwisko_pracownika.set(value);
     }
     
-    public void setPesel_pracownika(int value){
+    public void setPesel_pracownika(String value){
         pesel_pracownika.set(value);
     }
     
-    public void setTelefon_pracownika (int value){
+    public void setTelefon_pracownika (String value){
         telefon_pracownika.set(value);
     }
     
@@ -132,11 +134,11 @@ public class Pracownik {
         return nazwisko_pracownika;
     }
     
-    public IntegerProperty pesel_pracownikaProperty(){
+    public StringProperty pesel_pracownikaProperty(){
         return pesel_pracownika;
     }
     
-    public IntegerProperty telefon_pracownikaProperty(){
+    public StringProperty telefon_pracownikaProperty(){
         return telefon_pracownika;
     }
     

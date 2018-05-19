@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -107,6 +108,8 @@ public class AdminFXMLController implements Initializable {
     private JFXComboBox<String> cbRola;
     private ObservableList<Pracownik> data;
     private ObservableList<Placowka> data1;
+    @FXML
+    private JFXButton btnHasloAdmina;
 
     /**
      * Initializes the controller class.
@@ -114,22 +117,22 @@ public class AdminFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cbRola.getItems().addAll(
-                "Pracownik",
+                "sprzedawca",
                 "Kierownik",
-                "Menadżer"
+                "Menager"
         );
         LoadDataPracownik();
+        LoadDataPlacowka();
     }
 
     public void LoadDataPracownik() {
         Connection conn = DBConnection.Connect();
         try {
             Statement ps = conn.createStatement();
-            ResultSet rs = ps.executeQuery("SELECT id_pracownika,imie_pracownika,nazwisko_pracownika,pesel_pracownika,"
-                    + "telefon_pracownika,login,haslo,rola,adres_placowki FROM pracownik,placowka where pracownik.id_placowki = "
-                    + "placowka.id_placowki  " + ";");
+            data = FXCollections.observableArrayList();
+            ResultSet rs = ps.executeQuery("SELECT id_pracownika,imie_pracownika,nazwisko_pracownika,pesel_pracownika,telefon_pracownika,login,haslo,rola,adres_placowki FROM pracownik,placowka where pracownik.id_placowki = placowka.id_placowki;");
             while (rs.next()) {
-                data.add(new Pracownik(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+                data.add(new Pracownik(rs.getInt("id_pracownika"), rs.getString("imie_pracownika"), rs.getString("nazwisko_pracownika"), rs.getString("pesel_pracownika"), rs.getString("telefon_pracownika"), rs.getString("login"), rs.getString("haslo"), rs.getString("rola"), rs.getString("adres_placowki")));
             }
             colImie.setCellValueFactory(new PropertyValueFactory<>("imie_pracownika"));
             colNazwisko.setCellValueFactory(new PropertyValueFactory<>("nazwisko_pracownika"));
@@ -146,17 +149,14 @@ public class AdminFXMLController implements Initializable {
 
                     txImie.setText(tableKonta.getSelectionModel().getSelectedItem().getImie_pracownika());
                     txNazwisko.setText(tableKonta.getSelectionModel().getSelectedItem().getNazwisko_pracownika());
-                    int p2 = tableKonta.getSelectionModel().getSelectedItem().getPesel_pracownika();
-                    txPesel.setText(Integer.toString(p2));
-                    int tel2 = tableKonta.getSelectionModel().getSelectedItem().getTelefon_pracownika();
-                    txNumerTel.setText(Integer.toString(tel2));
+                    txPesel.setText(tableKonta.getSelectionModel().getSelectedItem().getPesel_pracownika());
+                    txNumerTel.setText(tableKonta.getSelectionModel().getSelectedItem().getTelefon_pracownika());
                     txLogin.setText(tableKonta.getSelectionModel().getSelectedItem().getLogin());
                     txHaslo.setText(tableKonta.getSelectionModel().getSelectedItem().getHaslo());
                     cbRola.setValue(tableKonta.getSelectionModel().getSelectedItem().getRola());
                     txPlacowka.setText(tableKonta.getSelectionModel().getSelectedItem().getAdres_placowki());
                 }
             });
-
             conn.close();
             ps.close();
             rs.close();
@@ -170,9 +170,10 @@ public class AdminFXMLController implements Initializable {
         Connection conn = DBConnection.Connect();
         try {
             Statement ps = conn.createStatement();
+            data1 = FXCollections.observableArrayList();
             ResultSet rs = ps.executeQuery("SELECT * from placowka;");
             while (rs.next()) {
-                data1.add(new Placowka(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                data1.add(new Placowka(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             }
             colMiejscowosc.setCellValueFactory(new PropertyValueFactory<>("miejscowosc_placowki"));
             colAdres.setCellValueFactory(new PropertyValueFactory<>("adres_placowki"));
@@ -188,8 +189,7 @@ public class AdminFXMLController implements Initializable {
                     txMiejscowosc.setText(tablePlacowki.getSelectionModel().getSelectedItem().getMiejscowosc_placowki());
                     txAdres.setText(tablePlacowki.getSelectionModel().getSelectedItem().getAdres_placowki());
                     txKodPocztowy.setText(tablePlacowki.getSelectionModel().getSelectedItem().getKod_pocztowy_placowki());
-                    int p2 = tablePlacowki.getSelectionModel().getSelectedItem().getTelefon_placowki();
-                    txTelefonKontaktowyPlacowki.setText(Integer.toString(p2));
+                    txTelefonKontaktowyPlacowki.setText(tablePlacowki.getSelectionModel().getSelectedItem().getTelefon_placowki());
                 }
             });
 
@@ -248,6 +248,10 @@ public class AdminFXMLController implements Initializable {
     private void Wyjscie(ActionEvent event) {
         Stage stage = (Stage) btnWyjscie.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void ZmienHasloAdmina(ActionEvent event) {
     }
 
 }
