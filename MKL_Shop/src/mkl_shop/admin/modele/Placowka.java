@@ -17,15 +17,15 @@ import javafx.beans.property.StringProperty;
 public class Placowka {
 
     private IntegerProperty id_placowki;
-    private IntegerProperty telefon_placowki;
+    private StringProperty telefon_placowki;
     private StringProperty kod_pocztowy_placowki;
     private StringProperty miejscowosc_placowki;
     private StringProperty adres_placowki;
 
     //      ***Konstruktory***
-    public Placowka(int id_placowki, int telefon_placowki, String kod_pocztowy_placowki, String miejscowosc_placowki, String adres_placowki) {
+    public Placowka(int id_placowki, String telefon_placowki, String kod_pocztowy_placowki, String miejscowosc_placowki, String adres_placowki) {
         this.id_placowki = new SimpleIntegerProperty(id_placowki);
-        this.telefon_placowki = new SimpleIntegerProperty(telefon_placowki);
+        this.telefon_placowki = new SimpleStringProperty(telefon_placowki);
         this.kod_pocztowy_placowki = new SimpleStringProperty(kod_pocztowy_placowki);
         this.miejscowosc_placowki = new SimpleStringProperty(miejscowosc_placowki);
         this.adres_placowki = new SimpleStringProperty(adres_placowki);
@@ -36,7 +36,7 @@ public class Placowka {
         return id_placowki.get();
     }
 
-    public int getTelefon_placowki() {
+    public String getTelefon_placowki() {
         return telefon_placowki.get();
     }
 
@@ -53,7 +53,7 @@ public class Placowka {
     }
 
     //      ***Settery***
-    public void setTelefon_placowki(int value) {
+    public void setTelefon_placowki(String value) {
         telefon_placowki.set(value);
     }
 
@@ -74,7 +74,7 @@ public class Placowka {
     public IntegerProperty id_placowkiProperty(){
         return id_placowki;
     }
-       public IntegerProperty telefon_placowkiProperty(){
+       public StringProperty telefon_placowkiProperty(){
         return telefon_placowki;
     }
     
