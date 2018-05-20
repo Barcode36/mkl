@@ -89,6 +89,7 @@ public class FXMLZakupyController implements Initializable {
     public static ObservableList<Produkt> dataRachunek;
     public static Klient k1;
     Integer idKlienta;
+    private static Double price;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -114,11 +115,20 @@ public class FXMLZakupyController implements Initializable {
                         suma += p1.getSuma();
                     }
                     lSumaWartosc.setText(suma.toString() + " zł");
+                    setCena(suma);
                 }
             }
 
         });
 
+    }
+    
+    private void setCena(double cena){
+        price = cena;
+    }
+    
+    public static Double getCena(){
+        return price;
     }
 
     @FXML

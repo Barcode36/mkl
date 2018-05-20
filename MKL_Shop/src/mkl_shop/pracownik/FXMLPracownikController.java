@@ -39,6 +39,7 @@ public class FXMLPracownikController implements Initializable {
 
     
     public static Integer idPlacowki = 1; //tymczasowo
+    public static Integer idPracownika = 1; //tymczasowo
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

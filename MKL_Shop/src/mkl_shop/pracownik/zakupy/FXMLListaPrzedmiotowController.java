@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.logging.Level;
@@ -33,6 +34,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import mkl_shop.alert.AlertMaker;
 import mkl_shop.connection.DBConnection;
 import mkl_shop.pracownik.FXMLPracownikController;
 import mkl_shop.pracownik.modele.Produkt;
@@ -95,14 +97,9 @@ public class FXMLListaPrzedmiotowController implements Initializable {
                 }
             }
         });
-        
-        
-        
-        
-        
 
         dataProdukt = FXCollections.observableArrayList();
-
+        boolean dodaj = true;
         Connection conn = DBConnection.Connect();
 
         try {
@@ -113,7 +110,16 @@ public class FXMLListaPrzedmiotowController implements Initializable {
                     + "AND placowka.id_placowki = placowka_produkt.id_placowki AND placowka_produkt.id_produktu = produkty.id_produktu;");
 
             while (rs.next()) {
-                dataProdukt.add(new Produkt(rs.getInt("produkty.id_produktu"), rs.getString("produkty.nazwa_produktu"), rs.getDouble("produkty.cena_produktu"), rs.getString("produkty.opis_produktu"), rs.getInt("placowka_produkt.ilosc_produktow")));
+                for (Produkt p1 : FXMLZakupyController.dataRachunek) {
+                    if (p1.getId_produktu() == rs.getInt(1)) {
+                        dodaj = false;
+                    }
+                }
+                if (dodaj) {
+                    dataProdukt.add(new Produkt(rs.getInt("produkty.id_produktu"), rs.getString("produkty.nazwa_produktu"), rs.getDouble("produkty.cena_produktu"), rs.getString("produkty.opis_produktu"), rs.getInt("placowka_produkt.ilosc_produktow")));
+
+                }
+                dodaj = true;
             }
 
             rs.close();
@@ -124,6 +130,10 @@ public class FXMLListaPrzedmiotowController implements Initializable {
             Logger.getLogger(FXMLProduktyController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+//        for (Produkt p1 : dataProdukt){
+//            if (FXMLZakupyController.dataRachunek.contains(p1))
+//                dataProdukt.remove(p1);
+//        }
         columnIdPrzedmiotu.setCellValueFactory(new PropertyValueFactory<>("id_produktu"));
         columnNazwa.setCellValueFactory(new PropertyValueFactory<>("nazwa_produktu"));
         columnNaStanie.setCellValueFactory(new PropertyValueFactory<>("ilosc_produktow"));
@@ -161,20 +171,21 @@ public class FXMLListaPrzedmiotowController implements Initializable {
 
     @FXML
     private void dodajDoRachunku(ActionEvent event) {
-
-        Double suma = Integer.parseInt(tfIlosc.getText()) * tablePrzedmioty.getSelectionModel().getSelectedItem().getCena_produktu();
-
-        p = new Produkt(tablePrzedmioty.getSelectionModel().getSelectedItem().getId_produktu(), tablePrzedmioty.getSelectionModel().getSelectedItem().getNazwa_produktu(), tablePrzedmioty.getSelectionModel().getSelectedItem().getCena_produktu(), tablePrzedmioty.getSelectionModel().getSelectedItem().getOpis_produktu(), Integer.parseInt(tfIlosc.getText()), suma);
-
-        FXMLZakupyController.dataRachunek.add(p);
-
-        Stage stage = (Stage) bWyjscie.getScene().getWindow();
-        stage.close();
+        if (Integer.parseInt(tfIlosc.getText()) <= tablePrzedmioty.getSelectionModel().getSelectedItem().getIlosc_produktow()) {
+            Double suma = Integer.parseInt(tfIlosc.getText()) * tablePrzedmioty.getSelectionModel().getSelectedItem().getCena_produktu();
+            p = new Produkt(tablePrzedmioty.getSelectionModel().getSelectedItem().getId_produktu(), tablePrzedmioty.getSelectionModel().getSelectedItem().getNazwa_produktu(), tablePrzedmioty.getSelectionModel().getSelectedItem().getCena_produktu(), tablePrzedmioty.getSelectionModel().getSelectedItem().getOpis_produktu(), Integer.parseInt(tfIlosc.getText()), suma);
+            FXMLZakupyController.dataRachunek.add(p);
+            Stage stage = (Stage) bWyjscie.getScene().getWindow();
+            stage.close();
+        } else {
+            JFXButton bOkay = new JFXButton("Ok");
+            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay), "Wystąpił błąd!", "Próba dodania do rachunku nie powiodła się. \nSprawdź czy żądana ilość jest na stanie.");
+        }
     }
 
     @FXML
     private void zaznaczProdukt(MouseEvent event) {
-        if (tablePrzedmioty.getSelectionModel().getSelectedItem() != null){
+        if (tablePrzedmioty.getSelectionModel().getSelectedItem() != null) {
             bDodaj.setDisable(false);
         }
     }
