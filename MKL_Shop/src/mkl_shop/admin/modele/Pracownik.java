@@ -17,7 +17,7 @@ import javafx.beans.property.StringProperty;
  * @author Łukasz
  */
 public class Pracownik {
-        
+
     private IntegerProperty id_pracownika;
     private StringProperty imie_pracownika;
     private StringProperty nazwisko_pracownika;
@@ -27,12 +27,10 @@ public class Pracownik {
     private StringProperty haslo;
     private StringProperty rola;
     private StringProperty adres_placowki;
-    
-    
-    
+    private StringProperty status_konta;
+
     //      ***Konstruktory***
-    
-    public Pracownik (int id_pracownika, String imie_pracownika,String nazwisko_pracownika, String pesel_pracownika, String telefon_pracownika, String login, String haslo, String rola, String adres_placowki){
+    public Pracownik(int id_pracownika, String imie_pracownika, String nazwisko_pracownika, String pesel_pracownika, String telefon_pracownika, String login, String haslo, String rola, String adres_placowki, String status_konta) {
         this.id_pracownika = new SimpleIntegerProperty(id_pracownika);
         this.imie_pracownika = new SimpleStringProperty(imie_pracownika);
         this.nazwisko_pracownika = new SimpleStringProperty(nazwisko_pracownika);
@@ -42,119 +40,125 @@ public class Pracownik {
         this.haslo = new SimpleStringProperty(haslo);
         this.rola = new SimpleStringProperty(rola);
         this.adres_placowki = new SimpleStringProperty(adres_placowki);
+        this.status_konta = new SimpleStringProperty(status_konta);
     }
-    
-    
+
     //      ***Gettery***
-    public int getId_pracownika(){
+    public int getId_pracownika() {
         return id_pracownika.get();
     }
-    
-    public String getImie_pracownika(){
+
+    public String getImie_pracownika() {
         return imie_pracownika.get();
     }
-    
-    public String getNazwisko_pracownika(){
+
+    public String getNazwisko_pracownika() {
         return nazwisko_pracownika.get();
     }
-    
-    public String getPesel_pracownika(){
+
+    public String getPesel_pracownika() {
         return pesel_pracownika.get();
     }
-    
-    public String getTelefon_pracownika(){
+
+    public String getTelefon_pracownika() {
         return telefon_pracownika.get();
     }
-    
-    public String getLogin(){
+
+    public String getLogin() {
         return login.get();
     }
-    
-    public String getHaslo(){
+
+    public String getHaslo() {
         return haslo.get();
     }
-    
-    public String getRola(){
+
+    public String getRola() {
         return rola.get();
     }
-    
-    public String getAdres_placowki(){
+
+    public String getAdres_placowki() {
         return adres_placowki.get();
     }
     
-    
-    
+    public String getStatus_konta() {
+        return status_konta.get();
+    }
+
     //      ***Settery***
-    
-    public void setImie_pracownika(String value){
+    public void setImie_pracownika(String value) {
         imie_pracownika.set(value);
     }
-    
-    public void setNazwisko_pracownika (String value){
+
+    public void setNazwisko_pracownika(String value) {
         nazwisko_pracownika.set(value);
     }
-    
-    public void setPesel_pracownika(String value){
+
+    public void setPesel_pracownika(String value) {
         pesel_pracownika.set(value);
     }
-    
-    public void setTelefon_pracownika (String value){
+
+    public void setTelefon_pracownika(String value) {
         telefon_pracownika.set(value);
     }
-    
-    public void setLogin (String value){
+
+    public void setLogin(String value) {
         login.set(value);
     }
-    
-    public void setHaslo (String value){
+
+    public void setHaslo(String value) {
         haslo.set(value);
     }
-    
-    public void setRola(String value){
+
+    public void setRola(String value) {
         rola.set(value);
     }
-    
-    public void setAdres_placowki (String value){
+
+    public void setAdres_placowki(String value) {
         adres_placowki.set(value);
     }
     
-    
-    
+    public void setStatus_konta(String value){
+        status_konta.set(value);
+    }
+
     //      ***Properties***
-    
-    public IntegerProperty id_pracownikaProperty(){
+    public IntegerProperty id_pracownikaProperty() {
         return id_pracownika;
     }
-    
-    public StringProperty imie_pracownikaProperty(){
+
+    public StringProperty imie_pracownikaProperty() {
         return imie_pracownika;
     }
-    
-    public StringProperty nazwisko_pracownikaProperty(){
+
+    public StringProperty nazwisko_pracownikaProperty() {
         return nazwisko_pracownika;
     }
-    
-    public StringProperty pesel_pracownikaProperty(){
+
+    public StringProperty pesel_pracownikaProperty() {
         return pesel_pracownika;
     }
-    
-    public StringProperty telefon_pracownikaProperty(){
+
+    public StringProperty telefon_pracownikaProperty() {
         return telefon_pracownika;
     }
-    
-    public StringProperty loginProperty(){
+
+    public StringProperty loginProperty() {
         return login;
     }
-    
-    public StringProperty hasloProperty(){
+
+    public StringProperty hasloProperty() {
         return haslo;
     }
-    
-    public StringProperty rolaProperty(){
+
+    public StringProperty rolaProperty() {
         return rola;
     }
-    
-    public StringProperty adres_placowkiProperty(){
+
+    public StringProperty adres_placowkiProperty() {
         return adres_placowki;
+    }
+    
+    public StringProperty status_kontaProperty() {
+        return status_konta;
     }
 }
