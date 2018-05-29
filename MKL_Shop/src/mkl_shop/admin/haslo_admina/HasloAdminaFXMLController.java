@@ -8,6 +8,11 @@ package mkl_shop.admin.haslo_admina;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import mkl_shop.alert.AlertMaker;
+import mkl_shop.connection.DBConnection;
 
 /**
  * FXML Controller class
@@ -49,22 +55,32 @@ public class HasloAdminaFXMLController implements Initializable {
     }
 
     @FXML
-    private void Akceptuj(ActionEvent event) {
-        JFXButton bOk = new JFXButton("TAK");
-        JFXButton bExit = new JFXButton("NIE");
-        AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOk, bExit), "Potwierdź decyzję", "Czy na pewno chcesz zmienić hasło administratora?");
-        bOk.setOnAction((ActionEvent event1) -> {
-            try {
-
-            } catch (Exception exp) {
-
-            }
-        });
-
+    private void Akceptuj(ActionEvent event) throws SQLException {
+        JFXButton bOkk = new JFXButton("OK");
+        JFXButton bOk = new JFXButton("OK");
+        Connection conn = DBConnection.Connect();
+        Statement ps2 = conn.createStatement();
+        ResultSet rs = ps2.executeQuery("SELECT haslo_administratora from administrator");
+        rs.next();
+        if (psStareHaslo.getText().isEmpty() || psNoweHaslo.getText().isEmpty() || psPotwierdzNoweHaslo.getText().isEmpty()) {
+            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkk), "Błąd ze zmianą hasła", "Uzupełnij wszystkie wymagane pola.");
+        } else if (psStareHaslo.getText().equals(rs.getString(1)) && psNoweHaslo.getText().equals(psPotwierdzNoweHaslo.getText())) {
+            String query = "UPDATE `administrator` SET `haslo_administratora`=" + psNoweHaslo.getText();
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            preparedStmt.executeUpdate();
+            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOk), "POTWIERDZENIE", "Zmiana hasła administratora została przeprowadzona pomyślnie.");
+            bOk.setOnAction((ActionEvent event1) -> {
+                Stage stage = (Stage) btnWyjscie.getScene().getWindow();
+                stage.close();
+            });
+        } else {
+            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkk), "Błąd ze zmianą hasła", "Podano niepoprawne stare hasło lub nowe hasła nie są identyczne.");
+        }
     }
 
     @FXML
-    private void Wyjscie(ActionEvent event) {
+    private void Wyjscie(ActionEvent event
+    ) {
         Stage stage = (Stage) btnWyjscie.getScene().getWindow();
         stage.close();
     }
