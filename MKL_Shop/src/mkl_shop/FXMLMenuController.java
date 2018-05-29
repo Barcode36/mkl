@@ -50,7 +50,7 @@ public class FXMLMenuController implements Initializable {
         stage = new Stage();
         root = FXMLLoader.load(getClass().getResource("admin/AdminFXML.fxml"));
         stage.setScene(new Scene(root));
-        //root.getStylesheets().add(MKL_Shop.class.getResource("admin/fxmladmin.css").toExternalForm());
+        root.getStylesheets().add(MKL_Shop.class.getResource("admin/fxmladmin.css").toExternalForm());
         stage.setTitle("Panel administracyjny");
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="spMain" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mkl_shop.admin.haslo_admina.HasloAdminaFXMLController">
+   <children>
+      <AnchorPane id="AnchorPane" fx:id="apMain" prefHeight="381.0" prefWidth="287.0">
+         <children>
+            <JFXPasswordField fx:id="psStareHaslo" layoutX="76.0" layoutY="40.0" promptText="Stare hasło" />
+            <JFXPasswordField fx:id="psNoweHaslo" layoutX="76.0" layoutY="93.0" promptText="Nowe hasło" />
+            <JFXPasswordField fx:id="psPotwierdzNoweHaslo" layoutX="76.0" layoutY="148.0" promptText="Powtórz nowe hasło" />
+            <JFXButton fx:id="btnOk" layoutX="76.0" layoutY="227.0" onAction="#Akceptuj" text="OK" />
+            <JFXButton fx:id="btnWyjscie" layoutX="155.0" layoutY="227.0" onAction="#Wyjscie" text="Wyjście" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
