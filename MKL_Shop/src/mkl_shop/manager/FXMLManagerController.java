@@ -42,6 +42,8 @@ public class FXMLManagerController implements Initializable {
     private JFXButton Button_Pracownicy;
     @FXML
     private JFXButton Button_Raporty;
+    
+    public static Integer idManagera;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -30,6 +30,7 @@ import javafx.stage.Stage;
 import mkl_shop.alert.AlertMaker;
 import mkl_shop.connection.DBConnection;
 import mkl_shop.kierownik.FXMLKierownikController;
+import mkl_shop.manager.FXMLManagerController;
 import mkl_shop.pracownik.FXMLPracownikController;
 
 /**
@@ -73,7 +74,7 @@ public class FXMLLogowanieController implements Initializable {
         try {
             
             Statement ps = conn.createStatement();
-            ResultSet rs = ps.executeQuery("SELECT login,haslo FROM admin WHERE login='"+tfLogin.getText()+"' AND haslo='"+tfHaslo.getText()+"';");
+            ResultSet rs = ps.executeQuery("SELECT login,haslo_administratora FROM administrator WHERE login='"+tfLogin.getText()+"' AND haslo_administratora='"+tfHaslo.getText()+"';");
             
             if (!rs.isBeforeFirst()){
                 rola = "admin";
@@ -108,6 +109,7 @@ public class FXMLLogowanieController implements Initializable {
                     
                 case "manager":
                     //okno managera
+                    FXMLManagerController.idManagera=idPracownika;
                     stage = (Stage) bWyjscie.getScene().getWindow();
                     root = FXMLLoader.load(getClass().getResource("manager/FXMLManager.fxml"));
                     stage.setScene(new Scene(root));
