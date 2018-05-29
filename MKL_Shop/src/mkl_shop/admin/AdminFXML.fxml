@@ -26,7 +26,7 @@
                                     <TableColumn fx:id="colNrTel" prefWidth="105.0" text="Numer telefonu" />
                                     <TableColumn fx:id="colPlacowka" prefWidth="161.0" text="Placówka" />
                                     <TableColumn fx:id="colLogin" prefWidth="96.0" text="Login" />
-                                    <TableColumn fx:id="colStatus" prefWidth="96.0" text="Status konta" />
+                                    <TableColumn fx:id="colStatusKonta" prefWidth="96.0" text="Status konta" />
                                 </columns>
                               </TableView>
                               <JFXTextField fx:id="txSzukaj" layoutX="867.0" layoutY="19.0" prefHeight="30.0" prefWidth="135.0" />
@@ -78,12 +78,15 @@
                                     <TableColumn fx:id="colStatus" prefWidth="117.0" text="Status wiadomości" />
                                 </columns>
                               </TableView>
-                              <Label layoutX="14.0" layoutY="268.0" text="Treść wiadomości:">
+                              <Label fx:id="labelTresc" layoutX="14.0" layoutY="268.0" text="Treść wiadomości:">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <JFXButton fx:id="btnOdpowiedz" layoutX="747.0" layoutY="378.0" onAction="#Odpowiedz" prefHeight="61.0" prefWidth="152.0" text="Odpowiedz" />
+                              <JFXButton fx:id="btnOdpowiedz" layoutX="747.0" layoutY="378.0" onAction="#Odpowiedz" prefHeight="61.0" prefWidth="152.0" text="Odpowiedz">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></JFXButton>
                               <Label layoutX="747.0" layoutY="20.0" text="Temat wiadomości:" />
                               <Label layoutX="747.0" layoutY="111.0" text="Treść wiadomości:" />
                               <JFXTextArea fx:id="taOdpowiedz" layoutX="747.0" layoutY="168.0" prefHeight="201.0" prefWidth="364.0" />
