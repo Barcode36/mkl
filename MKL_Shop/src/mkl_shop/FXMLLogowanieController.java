@@ -27,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import mkl_shop.alert.AlertMaker;
 import mkl_shop.connection.DBConnection;
 import mkl_shop.kierownik.FXMLKierownikController;
@@ -76,16 +77,19 @@ public class FXMLLogowanieController implements Initializable {
             Statement ps = conn.createStatement();
             ResultSet rs = ps.executeQuery("SELECT login,haslo_administratora FROM administrator WHERE login='"+tfLogin.getText()+"' AND haslo_administratora='"+tfHaslo.getText()+"';");
             
-            if (!rs.isBeforeFirst()){
+            if (rs.isBeforeFirst()){
+                //rs.next();
                 rola = "admin";
             }
             
             
             
             
-            if (rola.equals("")){
+            if (!rola.equals("admin")){
                 rs = ps.executeQuery("SELECT id_pracownika,id_placowki,login,haslo,rola FROM pracownik WHERE login='"+tfLogin.getText()+"' AND haslo='"+tfHaslo.getText()+"';");
-                while(rs.next()){
+                if(rs.isBeforeFirst()){
+                    rs.next();
+                    System.out.println(rs.getString("rola"));
                     rola = rs.getString("rola");
                     idPracownika = rs.getInt("id_pracownika");
                     idPlacowki = rs.getInt("id_placowki");
@@ -105,40 +109,45 @@ public class FXMLLogowanieController implements Initializable {
                     
                     root = FXMLLoader.load(getClass().getResource("admin/AdminFXML.fxml"));
                     stage.setScene(new Scene(root));
+                    stage.initStyle(StageStyle.UNDECORATED);
                     stage.centerOnScreen();
-                    
-                case "manager":
+                    break;
+                case "Menager":
                     //okno managera
                     FXMLManagerController.idManagera=idPracownika;
                     stage = (Stage) bWyjscie.getScene().getWindow();
                     root = FXMLLoader.load(getClass().getResource("manager/FXMLManager.fxml"));
                     stage.setScene(new Scene(root));
+                    stage.initStyle(StageStyle.UNDECORATED);
                     stage.centerOnScreen();
-                    
-                case "kierownik":
+                    break;
+                case "Kierownik":
                     //okno kierownika
                     stage = (Stage) bWyjscie.getScene().getWindow();
                     root = FXMLLoader.load(getClass().getResource("kierownik/FXMLKierownik.fxml"));
                     stage.setScene(new Scene(root));
+                    stage.initStyle(StageStyle.UNDECORATED);
                     stage.centerOnScreen();
                     
                     FXMLKierownikController.idPlacowki = idPlacowki;
                     FXMLKierownikController.idPracownika = idPracownika;
-                    
-                case "pracownik":
+                    break;
+                case "sprzedawca":
                     //okno pracownika
                     stage = (Stage) bWyjscie.getScene().getWindow();
                     root = FXMLLoader.load(getClass().getResource("pracownik/FXMLPracownik.fxml"));
                     stage.setScene(new Scene(root));
+                    stage.initStyle(StageStyle.UNDECORATED);
                     stage.centerOnScreen();
                     
                     
                     FXMLPracownikController.idPlacowki = idPlacowki;
                     FXMLPracownikController.idPracownika = idPracownika;
-                    
+                    break;
                 default :
                     JFXButton bCancel1 = new JFXButton("Ok");
                     AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bCancel1), "Błąd", "Sprawdź poprawność wpisanego loginu i hasła!");
+                    break;
             }
             
             
