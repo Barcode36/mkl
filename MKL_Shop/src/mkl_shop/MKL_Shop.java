@@ -19,7 +19,7 @@ public class MKL_Shop extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLLogowanie.fxml"));
         
         Scene scene = new Scene(root);
         

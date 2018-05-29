@@ -183,10 +183,17 @@ public class FXMLZakupyController implements Initializable {
     private void finalizujTransakcje(ActionEvent event) throws IOException {
         Stage stage;
         Parent root;
+        
+        if (!dataRachunek.isEmpty()){
 
-        stage = (Stage) bWyjscie.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("FXMLFinalizacja.fxml"));
-        stage.setScene(new Scene(root));
+            stage = (Stage) bWyjscie.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("FXMLFinalizacja.fxml"));
+            stage.setScene(new Scene(root));
+        } else {
+            JFXButton bCancel1 = new JFXButton("Ok");
+            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bCancel1), "Błąd", "Aby sfinalizować transakcję, na rachunku muszą znajdować się produkty.");
+   
+        }
     }
 
     @FXML

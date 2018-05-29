@@ -38,8 +38,8 @@ public class FXMLPracownikController implements Initializable {
     private JFXButton bKlient;
 
     
-    public static Integer idPlacowki = 1; //tymczasowo
-    public static Integer idPracownika = 1; //tymczasowo
+    public static Integer idPlacowki; //tymczasowo
+    public static Integer idPracownika; //tymczasowo
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

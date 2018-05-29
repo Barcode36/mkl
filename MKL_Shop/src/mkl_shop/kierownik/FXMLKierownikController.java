@@ -22,7 +22,11 @@ public class FXMLKierownikController implements Initializable {
 
     @FXML
     private JFXButton Button_Wyjscie;
+    
 
+    public static Integer idPracownika;
+    public static Integer idPlacowki;
+    
     /**
      * Initializes the controller class.
      */
