@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -20,7 +21,7 @@ public class MKL_Shop extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLLogowanie.fxml"));
-        
+        stage.initStyle(StageStyle.UNDECORATED);
         Scene scene = new Scene(root);
         
         stage.setScene(scene);

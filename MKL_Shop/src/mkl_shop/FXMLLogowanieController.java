@@ -26,6 +26,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import mkl_shop.alert.AlertMaker;
@@ -109,7 +110,7 @@ public class FXMLLogowanieController implements Initializable {
                     
                     root = FXMLLoader.load(getClass().getResource("admin/AdminFXML.fxml"));
                     stage.setScene(new Scene(root));
-                    stage.initStyle(StageStyle.UNDECORATED);
+                    
                     stage.centerOnScreen();
                     break;
                 case "Menager":
@@ -118,15 +119,16 @@ public class FXMLLogowanieController implements Initializable {
                     stage = (Stage) bWyjscie.getScene().getWindow();
                     root = FXMLLoader.load(getClass().getResource("manager/FXMLManager.fxml"));
                     stage.setScene(new Scene(root));
-                    stage.initStyle(StageStyle.UNDECORATED);
+                    
                     stage.centerOnScreen();
                     break;
                 case "Kierownik":
                     //okno kierownika
                     stage = (Stage) bWyjscie.getScene().getWindow();
                     root = FXMLLoader.load(getClass().getResource("kierownik/FXMLKierownik.fxml"));
-                    stage.setScene(new Scene(root));
-                    stage.initStyle(StageStyle.UNDECORATED);
+                    
+                    stage.setScene(new Scene(root));     
+                    
                     stage.centerOnScreen();
                     
                     FXMLKierownikController.idPlacowki = idPlacowki;
@@ -137,7 +139,7 @@ public class FXMLLogowanieController implements Initializable {
                     stage = (Stage) bWyjscie.getScene().getWindow();
                     root = FXMLLoader.load(getClass().getResource("pracownik/FXMLPracownik.fxml"));
                     stage.setScene(new Scene(root));
-                    stage.initStyle(StageStyle.UNDECORATED);
+                    
                     stage.centerOnScreen();
                     
                     
