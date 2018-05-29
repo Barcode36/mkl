@@ -15,7 +15,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.logging.Level;
@@ -32,6 +34,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -42,9 +45,12 @@ import javafx.stage.StageStyle;
 import mkl_shop.MKL_Shop;
 import mkl_shop.admin.modele.Pracownik;
 import mkl_shop.admin.modele.Placowka;
+import mkl_shop.admin.modele.Wiadomosci;
 import mkl_shop.alert.AlertMaker;
 import mkl_shop.connection.DBConnection;
+import mkl_shop.manager.klasy.Alert;
 import mkl_shop.manager.klasy.Ladowanie_danych;
+import mkl_shop.manager.wiadomosci.WiadomosciClassa;
 import mkl_shop.pracownik.klient.FXMLEdytujKlientaController;
 import mkl_shop.pracownik.modele.Klient;
 import mkl_shop.sprawdzanie.Sprawdzanie;
@@ -120,6 +126,7 @@ public class AdminFXMLController implements Initializable {
     private JFXComboBox<String> cbRola;
     private ObservableList<Pracownik> data;
     private ObservableList<Placowka> data1;
+    private ObservableList<Wiadomosci> data2;
     @FXML
     private JFXButton btnHasloAdmina;
     Ladowanie_danych dane_combo;
@@ -134,6 +141,23 @@ public class AdminFXMLController implements Initializable {
     JFXButton bOk = new JFXButton("OK");
     @FXML
     private JFXButton btnAktywuj;
+    @FXML
+    private TableView<Wiadomosci> tableWiadomosci;
+    @FXML
+    private TableColumn<Wiadomosci, String> colNadawca;
+    @FXML
+    private TableColumn<Wiadomosci, String> colTemat;
+    @FXML
+    private TableColumn<Wiadomosci, String> colData;
+    @FXML
+    private TextArea taTresc;
+    @FXML
+    private JFXButton btnOdpowiedz;
+    @FXML
+    private TextArea taOdpowiedz;
+    @FXML
+    private JFXTextField txTemat;
+    Date currentDate = new Date();
 
     /**
      * Initializes the controller class.
@@ -147,6 +171,7 @@ public class AdminFXMLController implements Initializable {
         );
         LoadDataPracownik();
         LoadDataPlacowka();
+        LoadDataWiadomosci();
         dane_combo = new Ladowanie_danych();
         dane_combo.ladujCombo("SELECT CONCAT(adres_placowki)AS Adres,id_placowki FROM placowka order by id_placowki", cbPlacowka, "Adres");
 
@@ -174,7 +199,7 @@ public class AdminFXMLController implements Initializable {
         try {
             Statement ps = conn.createStatement();
             data = FXCollections.observableArrayList();
-            ResultSet rs = ps.executeQuery("SELECT id_pracownika,imie_pracownika,nazwisko_pracownika,pesel_pracownika,telefon_pracownika,login,haslo,rola,adres_placowki,status_konta FROM pracownik,placowka where pracownik.id_placowki = placowka.id_placowki;");
+            ResultSet rs = ps.executeQuery("SELECT id_pracownika,imie_pracownika,nazwisko_pracownika,pesel_pracownika,telefon_pracownika,login,haslo,rola,adres_placowki,status_konta FROM pracownik,placowka where pracownik.id_placowki = placowka.id_placowki  and imie_pracownika != 'Administrator';");
             while (rs.next()) {
                 data.add(new Pracownik(rs.getInt("id_pracownika"), rs.getString("imie_pracownika"), rs.getString("nazwisko_pracownika"), rs.getString("pesel_pracownika"), rs.getString("telefon_pracownika"), rs.getString("login"), rs.getString("haslo"), rs.getString("rola"), rs.getString("adres_placowki"), rs.getString("status_konta")));
             }
@@ -225,6 +250,7 @@ public class AdminFXMLController implements Initializable {
                 colAdres.setCellValueFactory(new PropertyValueFactory<>("adres_placowki"));
                 colKodPocztowy.setCellValueFactory(new PropertyValueFactory<>("kod_pocztowy_placowki"));
                 colTelKontaktowyPlacowki.setCellValueFactory(new PropertyValueFactory<>("telefon_placowki"));
+
                 tablePlacowki.setItems(null);
                 tablePlacowki.setItems(data1);
                 tablePlacowki.setOnMousePressed((MouseEvent event) -> {
@@ -245,6 +271,37 @@ public class AdminFXMLController implements Initializable {
 
     }
 
+    public void LoadDataWiadomosci() {
+        Connection conn = DBConnection.Connect();
+        try {
+            data2 = FXCollections.observableArrayList();
+            ResultSet res = conn.createStatement().executeQuery("Select Concat(p.imie_pracownika,\" \", p.nazwisko_pracownika, \" \",p.rola)As Nadawca, "
+                    + "w.temat_wiadomosci,w.data,w.status_wiadomosci, w.id_wiadomosci, w.tresc_wiadomosci "
+                    + "from wiadomosci w, pracownik p "
+                    + "where  p.id_pracownika=w.id_pracownika_nadawcy and w.id_pracownika_odbiorca=9");
+            while (res.next()) {
+                data2.add(new Wiadomosci(res.getString(1), res.getString(2), res.getString(3), res.getString(4), res.getInt(5), res.getString(6)));
+
+            }
+            colNadawca.setCellValueFactory(new PropertyValueFactory<>("id_nadawcy"));
+            colTemat.setCellValueFactory(new PropertyValueFactory<>("temat_wiadomosci"));
+            colData.setCellValueFactory(new PropertyValueFactory<>("data"));
+            colStatus.setCellValueFactory(new PropertyValueFactory<>("status_wiadomosci"));
+            tableWiadomosci.setItems(null);
+            tableWiadomosci.setItems(data2);
+            tableWiadomosci.setOnMousePressed((MouseEvent event) -> {
+                if (tableWiadomosci.getSelectionModel().getSelectedItem() != null) {
+                    taTresc.setText(tableWiadomosci.getSelectionModel().getSelectedItem().getTresc_wiadomosci());
+                }
+            });
+            conn.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLEdytujKlientaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     @FXML
     private void DodajKonto(ActionEvent event) {
         if (txImie.getText().isEmpty() || txNazwisko.getText().isEmpty() || txPesel.getText().isEmpty() || txNumerTel.getText().isEmpty() || txLogin.getText().isEmpty() || txHaslo.getText().isEmpty()) {
@@ -259,7 +316,7 @@ public class AdminFXMLController implements Initializable {
                 Statement ps = conn.createStatement();
                 ResultSet rs = ps.executeQuery("SELECT id_placowki from placowka where adres_placowki = '" + cbPlacowka.getValue() + "'");
                 rs.next();
-                conn.createStatement().executeUpdate("INSERT INTO pracownik(id_pracownika, imie_pracownika, nazwisko_pracownika, pesel_pracownika, telefon_pracownika,login,haslo,rola,id_placowki,status_konta) Values (null,'" + txImie.getText() + "','" + txNazwisko.getText() + "','" + txPesel.getText() + "','" + txNumerTel.getText() + "','" + txLogin.getText() + "','" + txHaslo.getText() + "','" + cbRola.getValue() + "','" + rs.getInt(1) + ",aktywne')");
+                conn.createStatement().executeUpdate("INSERT INTO pracownik(id_pracownika, imie_pracownika, nazwisko_pracownika, pesel_pracownika, telefon_pracownika,login,haslo,rola,id_placowki,status_konta) Values (null,'" + txImie.getText() + "','" + txNazwisko.getText() + "','" + txPesel.getText() + "','" + txNumerTel.getText() + "','" + txLogin.getText() + "','" + txHaslo.getText() + "','" + cbRola.getValue() + "','" + rs.getInt(1) + "','" + "aktywne')");
                 LoadDataPracownik();
                 conn.close();
             } catch (SQLException e) {
@@ -423,5 +480,41 @@ public class AdminFXMLController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(btnHasloAdmina.getScene().getWindow());
         stage.showAndWait();
+    }
+
+    @FXML
+    private void Odpowiedz(ActionEvent event) throws SQLException {
+        Connection conn = DBConnection.Connect();
+        Statement statement = conn.createStatement();
+
+        tableWiadomosci.setOnMousePressed((MouseEvent event1) -> {
+            if (tableWiadomosci.getSelectionModel().getSelectedItem() != null) {
+                try {
+                    String query = "UPDATE `wiadomosci` SET `status_wiadomosci`='Odebrane' where id_wiadomosci=" + tableWiadomosci.getSelectionModel().getSelectedItem().getId_wiadomosci();
+                    PreparedStatement preparedStmt = conn.prepareStatement(query);
+                    preparedStmt.executeUpdate();
+                    LoadDataWiadomosci();
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(AdminFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        if (txTemat.getText().isEmpty() || taOdpowiedz.getText().isEmpty()) {
+            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOk), "Błąd z odpowiedzią", "Uzupełnij wszystkie wymagane pola.");
+        } else {
+            String odbiorca = tableWiadomosci.getSelectionModel().getSelectedItem().getId_nadawcy();
+            String temat = txTemat.getText().toString();
+            String tresc = taOdpowiedz.getText().toString();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String dateString = dateFormat.format(currentDate);
+            Statement ps2 = conn.createStatement();
+            ResultSet rs = ps2.executeQuery("SELECT id_pracownika_nadawcy from wiadomosci where id_wiadomosci = '" + tableWiadomosci.getSelectionModel().getSelectedItem().getId_wiadomosci() + "'");
+            rs.next();
+            statement.executeUpdate("INSERT INTO `wiadomosci` (`id_pracownika_nadawcy`, `id_pracownika_odbiorca`, `temat_wiadomosci`, `tresc_wiadomosci`, `Data`, `status_wiadomosci`) "
+                    + "VALUES (" + 9 + ", " + rs.getInt(1) + ", '" + temat + "', '" + tresc + "', '" + dateString + "', 'Nieodebrana')");
+            taOdpowiedz.clear();
+            txTemat.clear();
+        }
     }
 }
