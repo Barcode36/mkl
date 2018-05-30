@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.logging.Level;
@@ -31,11 +33,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import mkl_shop.alert.AlertMaker;
 import mkl_shop.connection.DBConnection;
 import mkl_shop.pracownik.FXMLPracownikController;
 import mkl_shop.pracownik.modele.Produkt;
@@ -73,7 +77,7 @@ public class FXMLProduktyController implements Initializable {
     private AnchorPane apMain;
 
     private ObservableList<Produkt> dataProdukt;
-
+    private Produkt pr;
     /**
      * Initializes the controller class.
      */
@@ -143,6 +147,36 @@ public class FXMLProduktyController implements Initializable {
     private void zglosZapotrzebowanie(ActionEvent event) {
         //wyslanie wiadomosci do gory o brakach w magazynie i wyswietlenie komunikatu o wysłąniu prośby
 
+        
+        
+        JFXButton bCancel = new JFXButton("Anuluj");
+        JFXButton bOkay = new JFXButton("Zgłoś");
+        AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay,bCancel), "Zgłoś zapotrzebowanie", "Czy na pewno chcesz zgłosić zapotrzebowanie na wybrany produkt?");
+        
+        bOkay.setOnAction((ActionEvent event1) -> {
+            try {
+                Connection conn = DBConnection.Connect();
+                   
+                String tresc = "Na stanie brakuje produktu : " + pr.getNazwa_produktu() + " ID [" + pr.getId_produktu() + "]";
+                LocalDate ld = LocalDate.now();
+                conn.createStatement().executeUpdate("INSERT INTO wiadomosci (id_wiadomosci,id_pracownika_nadawcy,id_pracownika_odbiorca,temat_wiadomosci,tresc_wiadomosci,Data,status_wiadomosci) "
+                        + "VALUES (null,"+FXMLPracownikController.idPracownika+","+FXMLPracownikController.idKierownika+",'Na sklepie brakuje produktu.','"+tresc+"','"+ld.toString()+"','Nieodebrana');");
+                
+                JFXButton bOkay2 = new JFXButton("OK");
+                AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay2), "Zgłoszenie przesłane.", "Proces zgłoszenia przebiegł pomyślnie. Wiadomość o brakach została przekazana do kierownika oddziału.");
+        
+        
+        conn.close();
+            } catch (Exception exp) {
+                //nieobsłużone
+                //System.out.println(exp);
+            }
+        });
+        
+        
+        
+        
+        
     }
 
     @FXML
@@ -161,6 +195,13 @@ public class FXMLProduktyController implements Initializable {
         stage.initOwner(bNowyProdukt.getScene().getWindow());
         stage.showAndWait();
 
+    }
+
+    @FXML
+    private void zaznaczProdukt(MouseEvent event) {
+        
+        if (tableProdukty.getSelectionModel().getSelectedItem() != null) pr = tableProdukty.getSelectionModel().getSelectedItem();
+        
     }
 
 }

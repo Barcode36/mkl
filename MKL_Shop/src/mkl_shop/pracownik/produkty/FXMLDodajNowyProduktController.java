@@ -9,6 +9,10 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +20,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import mkl_shop.alert.AlertMaker;
+import mkl_shop.connection.DBConnection;
+import mkl_shop.pracownik.FXMLPracownikController;
 
 /**
  * FXML Controller class
@@ -55,9 +62,31 @@ public class FXMLDodajNowyProduktController implements Initializable {
     }
 
     @FXML
-    private void zamowProdukt(ActionEvent event) {
+    private void zamowProdukt(ActionEvent event) throws SQLException {
         //wyslanie prosby o zamowienie nowego produktu do kierownika placówki
+        JFXButton bCancel = new JFXButton("Anuluj");
+        JFXButton bOkay = new JFXButton("Zamów");
+        AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay,bCancel), "Zamówienie produktu", "Czy na pewno chcesz złożyć to zamówienie?");
         
+        bOkay.setOnAction((ActionEvent event1) -> {
+            try {
+                Connection conn = DBConnection.Connect();
+                   
+                String tresc = "Opis produktu, który należy sprowadzić do sklepu : " + tfOpis.getText();
+                LocalDate ld = LocalDate.now();
+                conn.createStatement().executeUpdate("INSERT INTO wiadomosci (id_wiadomosci,id_pracownika_nadawcy,id_pracownika_odbiorca,temat_wiadomosci,tresc_wiadomosci,Data,status_wiadomosci) "
+                        + "VALUES (null,"+FXMLPracownikController.idPracownika+","+FXMLPracownikController.idKierownika+",'Produkt do zamówienia - "+tfNazwa.getText()+"','"+tresc+"','"+ld.toString()+"','Nieodebrana');");
+                
+                JFXButton bOkay2 = new JFXButton("OK");
+                AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay2), "Zamówienie złożone", "Proces zamówienia przebiegł pomyślnie. Wiadomość została przekazana do kierownika oddziału.");
+        
+        
+        conn.close();
+            } catch (Exception exp) {
+                //nieobsłużone
+                //System.out.println(exp);
+            }
+        });
         
         
         
