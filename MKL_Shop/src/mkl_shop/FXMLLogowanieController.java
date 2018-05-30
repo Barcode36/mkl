@@ -109,6 +109,7 @@ public class FXMLLogowanieController implements Initializable {
                     stage = (Stage) bWyjscie.getScene().getWindow();
                     
                     root = FXMLLoader.load(getClass().getResource("admin/AdminFXML.fxml"));
+                    root.getStylesheets().add(mkl_shop.admin.AdminFXMLController.class.getResource("fxmladmin.css").toExternalForm());
                     stage.setScene(new Scene(root));
                     
                     stage.centerOnScreen();

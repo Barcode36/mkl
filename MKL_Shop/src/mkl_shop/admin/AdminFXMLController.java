@@ -32,6 +32,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -133,7 +134,7 @@ public class AdminFXMLController implements Initializable {
     @FXML
     private JFXComboBox<String> cbPlacowka;
     @FXML
-    private TableColumn<Pracownik, String> colStatus;
+    private TableColumn<Wiadomosci, String> colStatus;
     @FXML
     private StackPane spMain;
     @FXML
@@ -158,6 +159,10 @@ public class AdminFXMLController implements Initializable {
     @FXML
     private JFXTextField txTemat;
     Date currentDate = new Date();
+    @FXML
+    private Label labelTresc;
+    @FXML
+    private TableColumn<Pracownik, String> colStatusKonta;
 
     /**
      * Initializes the controller class.
@@ -209,7 +214,7 @@ public class AdminFXMLController implements Initializable {
             colNrTel.setCellValueFactory(new PropertyValueFactory<>("telefon_pracownika"));
             colPlacowka.setCellValueFactory(new PropertyValueFactory<>("adres_placowki"));
             colLogin.setCellValueFactory(new PropertyValueFactory<>("login"));
-            colStatus.setCellValueFactory(new PropertyValueFactory<>("status_konta"));
+            colStatusKonta.setCellValueFactory(new PropertyValueFactory<>("status_konta"));
 
             tableKonta.setItems(null);
             tableKonta.setItems(data);
@@ -273,6 +278,8 @@ public class AdminFXMLController implements Initializable {
 
     public void LoadDataWiadomosci() {
         Connection conn = DBConnection.Connect();
+        taTresc.setVisible(false);
+        labelTresc.setVisible(false);
         try {
             data2 = FXCollections.observableArrayList();
             ResultSet res = conn.createStatement().executeQuery("Select Concat(p.imie_pracownika,\" \", p.nazwisko_pracownika, \" \",p.rola)As Nadawca, "
@@ -291,6 +298,8 @@ public class AdminFXMLController implements Initializable {
             tableWiadomosci.setItems(data2);
             tableWiadomosci.setOnMousePressed((MouseEvent event) -> {
                 if (tableWiadomosci.getSelectionModel().getSelectedItem() != null) {
+                    taTresc.setVisible(true);
+                    labelTresc.setVisible(true);
                     taTresc.setText(tableWiadomosci.getSelectionModel().getSelectedItem().getTresc_wiadomosci());
                 }
             });
