@@ -76,7 +76,7 @@ public class FXMLEdytujKlientaController implements Initializable {
         try {
             Statement ps = conn.createStatement();
             ResultSet rs = ps.executeQuery("SELECT id_klienta,imie_klienta,nazwisko_klienta,adres_klienta,"
-                    + "kod_pocztowy_klienta,miejscowosc_klienta,numer_karty,telefon_klienta FROM klient WHERE "
+                    + "kod_pocztowy_klienta,miejscowosc_klienta,id_klienta as numer_karty,telefon_klienta FROM klient WHERE "
                     + "id_klienta="+ FXMLKlientController.idKlienta+";");
             rs.next();
             
