@@ -143,6 +143,12 @@ public class FXMLLogowanieController implements Initializable {
                     stage.centerOnScreen();
                     
                     
+                    ResultSet rs2 = conn.createStatement().executeQuery("SELECT id_pracownika FROM pracownik WHERE rola='Kierownik' AND id_placowki="+idPlacowki+";");
+                    rs2.next();
+                    FXMLPracownikController.idKierownika = rs2.getInt("id_pracownika");
+                    
+                    rs2.close();
+                    
                     FXMLPracownikController.idPlacowki = idPlacowki;
                     FXMLPracownikController.idPracownika = idPracownika;
                     break;

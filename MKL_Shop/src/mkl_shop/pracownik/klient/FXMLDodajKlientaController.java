@@ -8,6 +8,8 @@ package mkl_shop.pracownik.klient;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import mkl_shop.connection.DBConnection;
+import mkl_shop.sprawdzanie.Sprawdzanie;
 
 /**
  * FXML Controller class
@@ -67,8 +71,19 @@ public class FXMLDodajKlientaController implements Initializable {
     }
 
     @FXML
-    private void dodajKlienta(ActionEvent event) {
+    private void dodajKlienta(ActionEvent event) throws SQLException {
+        Connection conn = DBConnection.Connect();
         
+        if (Sprawdzanie.czyLitery(tfImie.getText()) && Sprawdzanie.czyLitery(tfNazwisko.getText()) && Sprawdzanie.czyKodPocztowy(tfKodPocztowy.getText()) && Sprawdzanie.czyLitery(tfMiejscowosc.getText()) && !tfAdres.getText().isEmpty() && Sprawdzanie.czyLiczby(tfNrTelefonu.getText()) && tfNrTelefonu.getText().length()==9 ){
+            conn.createStatement().executeUpdate("INSERT INTO klient (id_klienta, imie_klienta, nazwisko_klienta, kod_pocztowy_klienta, miejscowosc_klienta,adres_klienta,"
+                    + " telefon_klienta, liczba_punktow) VALUES (NULL,'"+tfImie.getText()+"','"+tfNazwisko.getText()+"','"+tfKodPocztowy.getText()+"','"+tfMiejscowosc.getText()+"'"
+                            + ",'"+tfAdres.getText()+"','"+tfNrTelefonu.getText()+"',0);");
+        } else {
+            //alert
+            
+        }
+        
+        //powrót do innego okna
         
         
     }

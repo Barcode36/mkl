@@ -11,6 +11,10 @@ import com.jfoenix.controls.JFXTextField;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,6 +28,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import mkl_shop.alert.AlertMaker;
+import mkl_shop.connection.DBConnection;
+import mkl_shop.pracownik.FXMLPracownikController;
 import mkl_shop.pracownik.modele.Produkt;
 
 /**
@@ -61,8 +68,28 @@ public class FXMLDodajReklamacjeController implements Initializable {
     }    
 
     @FXML
-    private void dodajReklamacje(ActionEvent event) {
+    private void dodajReklamacje(ActionEvent event) throws SQLException {
         //insert do bazy :)
+        
+        Connection conn = DBConnection.Connect();
+        
+        
+        if (!tfOpis.getText().isEmpty() && p != null){
+            LocalDate ld = LocalDate.now();
+            conn.createStatement().executeUpdate("INSERT INTO reklamacja (id_placowki,id_produktu,id_reklamacji,opis,stan,data) "
+                    + "VALUES ("+FXMLPracownikController.idPlacowki+","+p.getId_produktu()+",null,\""+tfOpis.getText()+"\",\"W trakcie\",'"+ ld.toString() +"');");
+        Stage stage = (Stage) bWyjscie.getScene().getWindow();
+        stage.close();
+        p = null;
+        
+        } else {
+            JFXButton bCancel1 = new JFXButton("Ok");
+            AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bCancel1), "Błąd", "Wystąpił błąd podczas dodawania reklamacji. \n Sprawdź poprawność wpisanych danych.");
+   
+        }
+        
+        
+        
        
     }
 
