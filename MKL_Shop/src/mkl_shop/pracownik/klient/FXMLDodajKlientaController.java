@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import mkl_shop.alert.AlertMaker;
 import mkl_shop.connection.DBConnection;
 import mkl_shop.sprawdzanie.Sprawdzanie;
 
@@ -78,8 +80,15 @@ public class FXMLDodajKlientaController implements Initializable {
             conn.createStatement().executeUpdate("INSERT INTO klient (id_klienta, imie_klienta, nazwisko_klienta, kod_pocztowy_klienta, miejscowosc_klienta,adres_klienta,"
                     + " telefon_klienta, liczba_punktow) VALUES (NULL,'"+tfImie.getText()+"','"+tfNazwisko.getText()+"','"+tfKodPocztowy.getText()+"','"+tfMiejscowosc.getText()+"'"
                             + ",'"+tfAdres.getText()+"','"+tfNrTelefonu.getText()+"',0);");
+            
+            Stage stage = (Stage) bWyjscie.getScene().getWindow();
+            stage.close();
+            
         } else {
             //alert
+            JFXButton bOkay2 = new JFXButton("OK");
+                AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay2), "Wystąpił błąd.", "Sprawdź czy pola zostały uzupełnione prawidłowo.");
+            
             
         }
         

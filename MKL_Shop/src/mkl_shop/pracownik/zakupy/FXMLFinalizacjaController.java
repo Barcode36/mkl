@@ -68,7 +68,7 @@ public class FXMLFinalizacjaController implements Initializable {
         dataRachunek = FXCollections.observableArrayList();
         dataRachunek = FXMLZakupyController.dataRachunek;
         
-        lSumaWartosc.setText(FXMLZakupyController.getCena().toString());
+        lSumaWartosc.setText(FXMLZakupyController.getCena().toString() + " zł");
         
         
         columnIdProduktu.setCellValueFactory(new PropertyValueFactory<>("id_produktu"));

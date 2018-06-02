@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import mkl_shop.alert.AlertMaker;
 import mkl_shop.connection.DBConnection;
+import mkl_shop.sprawdzanie.Sprawdzanie;
 
 /**
  * FXML Controller class
@@ -111,10 +114,27 @@ public class FXMLEdytujKlientaController implements Initializable {
     }
 
     @FXML
-    private void zapiszZmiany(ActionEvent event) {
+    private void zapiszZmiany(ActionEvent event) throws SQLException {
         
         //usunac stara karte z bazy, lub wyzerowac je stan i nadac nowy numer
         // if nowakarta true wyrobic nowa, jak false to nie
+        
+        Connection conn = DBConnection.Connect();
+        
+         if (Sprawdzanie.czyLitery(tfImie.getText()) && Sprawdzanie.czyLitery(tfNazwisko.getText()) && Sprawdzanie.czyKodPocztowy(tfKodPocztowy.getText()) && Sprawdzanie.czyLitery(tfMiejscowosc.getText()) && !tfAdres.getText().isEmpty() && Sprawdzanie.czyLiczby(tfNrTelefonu.getText()) && tfNrTelefonu.getText().length()==9 ){
+        conn.createStatement().executeUpdate("UPDATE klient SET imie_klienta = '"+tfImie.getText()+"', nazwisko_klienta = '"+tfNazwisko.getText()+"', kod_pocztowy_klienta = '"+tfKodPocztowy.getText()+"', "
+                + "miejscowosc_klienta = '"+tfMiejscowosc.getText()+"', adres_klienta = '"+tfAdres.getText()+"', telefon_klienta = '"+tfNrTelefonu.getText()+"' WHERE id_klienta="+ FXMLKlientController.idKlienta +";");
+        
+        Stage stage = (Stage) bWyjscie.getScene().getWindow();
+        stage.close();
+        
+         }
+         else {
+             JFXButton bOkay2 = new JFXButton("OK");
+                AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay2), "Wystąpił błąd.", "Sprawdź czy pola zostały uzupełnione prawidłowo.");
+         }
+        
+        conn.close();
         
         
         
