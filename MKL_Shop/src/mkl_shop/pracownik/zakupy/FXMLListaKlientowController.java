@@ -73,7 +73,7 @@ public class FXMLListaKlientowController implements Initializable {
         try {
             Statement ps = conn.createStatement();
             ResultSet rs = ps.executeQuery("SELECT id_klienta, imie_klienta, nazwisko_klienta, kod_pocztowy_klienta, "
-                    + "miejscowosc_klienta, adres_klienta, telefon_klienta, numer_karty, liczba_punktow "
+                    + "miejscowosc_klienta, adres_klienta, telefon_klienta, id_klienta as numer_karty, liczba_punktow "
                     + "FROM klient;");
 
             while (rs.next()) {
@@ -112,6 +112,7 @@ public class FXMLListaKlientowController implements Initializable {
     private void zamknijOkno(ActionEvent event) {
         Stage stage = (Stage) bWyjscie.getScene().getWindow();
         stage.close();
+        
     }
 
     @FXML

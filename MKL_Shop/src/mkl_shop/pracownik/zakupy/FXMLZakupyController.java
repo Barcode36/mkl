@@ -10,10 +10,14 @@ import com.jfoenix.controls.JFXCheckBox;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -37,6 +41,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import mkl_shop.MKL_Shop;
 import mkl_shop.alert.AlertMaker;
+import mkl_shop.connection.DBConnection;
 import mkl_shop.pracownik.modele.Klient;
 import mkl_shop.pracownik.modele.Produkt;
 import static mkl_shop.pracownik.zakupy.FXMLListaKlientowController.k;
@@ -150,6 +155,7 @@ public class FXMLZakupyController implements Initializable {
     private void zamknijOkno(ActionEvent event) {
         Stage stage = (Stage) bWyjscie.getScene().getWindow();
         stage.close();
+        k1 = null;
     }
 
     @FXML
@@ -181,19 +187,62 @@ public class FXMLZakupyController implements Initializable {
 
     @FXML
     private void finalizujTransakcje(ActionEvent event) throws IOException {
-        Stage stage;
-        Parent root;
+        
         
         if (!dataRachunek.isEmpty()){
 
-            stage = (Stage) bWyjscie.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("FXMLFinalizacja.fxml"));
-            stage.setScene(new Scene(root));
+            JFXButton bOkay = new JFXButton("Tak");
+        JFXButton bCancel = new JFXButton("Anuluj");
+        AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay, bCancel), "Potwierdzenie transakcji", "Czy na pewno chcesz zatwierdzić transakcję?");
+        bOkay.setOnAction((ActionEvent event1) -> {
+            
+            
+            
+                try {
+                    Stage stage = (Stage) bWyjscie.getScene().getWindow();
+                    Parent root = FXMLLoader.load(getClass().getResource("FXMLFinalizacja.fxml"));
+                    stage.setScene(new Scene(root));
+                    
+                    //insert do bazy i update , staly klient i punkty
+                    //k1 dataRachunek price -> pola
+                    
+                    Connection conn = DBConnection.Connect();
+                    
+                    
+                    if (cStalyKlient.isSelected()){
+                        //inserty do ilosci punktow na karcie klienta
+                        
+                        
+                    }
+                    
+                    //inserty do koszyka(transakcje)
+                    
+                    
+                    
+                    conn.close();
+                    k1 = null;
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLZakupyController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(FXMLZakupyController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+            
+            
+            });
+            
+            
         } else {
             JFXButton bCancel1 = new JFXButton("Ok");
             AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bCancel1), "Błąd", "Aby sfinalizować transakcję, na rachunku muszą znajdować się produkty.");
    
         }
+        
+        
+        
+        
+        
+        
     }
 
     @FXML
