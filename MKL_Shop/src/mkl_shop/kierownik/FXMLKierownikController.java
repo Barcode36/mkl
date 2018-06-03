@@ -6,12 +6,20 @@
 package mkl_shop.kierownik;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import mkl_shop.MKL_Shop;
+import mkl_shop.pracownik.FXMLPracownikController;
 
 /**
  * FXML Controller class
@@ -39,6 +47,26 @@ public class FXMLKierownikController implements Initializable {
     private void Wyjscie(ActionEvent event) {
         Stage stage = (Stage) Button_Wyjscie.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void obsluga(ActionEvent event) throws IOException {
+        
+        Stage stage;
+        Parent root;
+        
+        stage = new Stage();
+        root = FXMLLoader.load(MKL_Shop.class.getResource("pracownik/FXMLPracownik.fxml"));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Panel reklamacji");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(Button_Wyjscie.getScene().getWindow());
+        stage.showAndWait();
+        FXMLPracownikController.idKierownika = idPracownika;
+        FXMLPracownikController.idPlacowki = idPlacowki;
+        FXMLPracownikController.idPracownika = idPracownika;
+        
     }
     
 }
