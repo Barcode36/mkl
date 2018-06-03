@@ -214,7 +214,7 @@ public class FXMLZakupyController implements Initializable {
                     Connection conn = DBConnection.Connect();
                     String insertSQL;
                     
-                    if (cStalyKlient.isSelected()){
+                    if (cStalyKlient.isSelected() && k1 != null){
                         //inserty do ilosci punktow na karcie klienta
                         Integer punkty = k1.getLiczba_punktow() + (int)(getCena()/10);
                         

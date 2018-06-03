@@ -13,9 +13,11 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,6 +33,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import mkl_shop.alert.AlertMaker;
 import mkl_shop.pracownik.modele.Produkt;
 import static mkl_shop.pracownik.zakupy.FXMLZakupyController.dataRachunek;
 
@@ -118,7 +121,7 @@ public class FXMLFinalizacjaController implements Initializable {
                 saveLoc = new File(saveLoc.getAbsolutePath() + ".pdf");
             }
         
-        
+        final File saveLoc2 = saveLoc;
         Document document = new Document();
 
         try {
@@ -179,8 +182,31 @@ public class FXMLFinalizacjaController implements Initializable {
             document.add(table);
 
             document.close();
+            
+            
+            
+            
+            
+        JFXButton okayBtn = new JFXButton("Anuluj");
+        JFXButton openBtn = new JFXButton("Tak");
+        AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(openBtn, okayBtn), "Wygenerowano rachunek.", "Czy chcesz go otworzyć?");
+        openBtn.setOnAction((ActionEvent event1) -> {
+            try {
+                Desktop.getDesktop().open(saveLoc2);
+            } catch (Exception exp) {
+                
+            }
+        });
+            
+            
+            
+            
+            
+            
+            
         } catch(Exception e){
-
+JFXButton openBtn = new JFXButton("Anuluj");
+        AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(openBtn), "Błąd", "Podczas wykonywania operacji wystąpił nieoczekiwany błąd.");
         }
     }
         
