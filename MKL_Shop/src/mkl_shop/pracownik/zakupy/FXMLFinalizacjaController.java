@@ -5,7 +5,16 @@
  */
 package mkl_shop.pracownik.zakupy;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -20,6 +29,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import mkl_shop.pracownik.modele.Produkt;
 import static mkl_shop.pracownik.zakupy.FXMLZakupyController.dataRachunek;
@@ -95,7 +105,94 @@ public class FXMLFinalizacjaController implements Initializable {
     @FXML
     private void eksportujPdf(ActionEvent event) {
         
+        Stage stage = (Stage) bPdf.getScene().getWindow();
+        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save as PDF");
+        FileChooser.ExtensionFilter extFilter
+                = new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.pdf");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File saveLoc = fileChooser.showSaveDialog(stage);
+        
+        if (!saveLoc.getName().endsWith(".pdf")) {
+                saveLoc = new File(saveLoc.getAbsolutePath() + ".pdf");
+            }
+        
+        
+        Document document = new Document();
+
+        try {
+            PdfWriter.getInstance(document,
+                new FileOutputStream(saveLoc));
+
+            document.open();
+
+            
+            
+            
+            
+            PdfPTable table = new PdfPTable(5); 
+            
+            //szerokosc
+            float[] columnWidths = {0.5f, 2f, 1f, 1f, 1f};
+
+            table.setWidths(columnWidths);
+            
+            
+            BaseFont helvetica = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1250, BaseFont.EMBEDDED);
+            Font helvetica16=new Font(helvetica,12);
+            
+            
+
+            PdfPCell cell1 = new PdfPCell(new Paragraph("ID",helvetica16));
+            PdfPCell cell2 = new PdfPCell(new Paragraph("Nazwa",helvetica16));
+            PdfPCell cell3 = new PdfPCell(new Paragraph("Cena szt.",helvetica16));            
+            PdfPCell cell4 = new PdfPCell(new Paragraph("Ilość",helvetica16));
+            PdfPCell cell5 = new PdfPCell(new Paragraph("Cena",helvetica16));
+
+            table.addCell(cell1);
+            table.addCell(cell2);
+            table.addCell(cell3);            
+            table.addCell(cell4);
+            table.addCell(cell5);
+            
+            String sztuki;
+            
+            for (Produkt pr : dataRachunek){
+                table.addCell(new Paragraph(" "+pr.getId_produktu().toString(),helvetica16));
+                table.addCell(new Paragraph(pr.getNazwa_produktu(),helvetica16));
+                table.addCell(new Paragraph(pr.getCena_produktu().toString(),helvetica16));
+                sztuki = pr.getSztuki()+"";
+                table.addCell(new Paragraph(sztuki,helvetica16));
+                table.addCell(new Paragraph(pr.getSuma().toString(),helvetica16));
+            }
+            
+            table.addCell(new Paragraph(" "));
+            table.addCell(new Paragraph(" "));
+            table.addCell(new Paragraph(" "));
+            table.addCell(new Paragraph("Suma",helvetica16));
+            table.addCell(new Paragraph(lSumaWartosc.getText(),helvetica16));
+            
+
+            //table.addCell(new Paragraph("123321421"));
+            
+            document.add(table);
+
+            document.close();
+        } catch(Exception e){
+
+        }
     }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
 
     @FXML
     private void zaznaczonyPrzedmiot(MouseEvent event) {
