@@ -88,6 +88,7 @@ public class Klient {
         imie_klienta.set(value);
     }
     
+    
     public void setNazwisko_klienta (String value){
         nazwisko_klienta.set(value);
     }

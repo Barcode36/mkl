@@ -59,7 +59,7 @@ public class FXMLListaKlientowController implements Initializable {
     public static Integer idKlienta;
     public static Klient k;
 
-    //FXMLListaKlientowController flkc = new FXMLListaKlientowController();
+   
     /**
      * Initializes the controller class.
      */
@@ -120,9 +120,7 @@ public class FXMLListaKlientowController implements Initializable {
         if (k != null) {
             FXMLZakupyController fzc = new FXMLZakupyController();            
             fzc.setKlient(k);    
-            //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLZakupy.fxml"));
-            //fxmlLoader.getNamespace().put("lKlient", k.getImie_klienta()+ " " + k.getNazwisko_klienta() + " (" + k.getNumer_karty() + ")");
-            
+         
             FXMLZakupyController.k1 = new Klient (k.getId_klienta(),k.getImie_klienta(),k.getNazwisko_klienta(),k.getKod_pocztowy_klienta(),k.getMiejscowosc_klienta(),k.getAdres_klienta(),k.getTelefon_klienta(),k.getNumer_karty(),k.getLiczba_punktow());
             
             
@@ -137,6 +135,6 @@ public class FXMLListaKlientowController implements Initializable {
     private void wybranyKlient(MouseEvent event) {
         k = lvKlienci.getSelectionModel().getSelectedItem();
         
-        //System.out.println(k.getImie_klienta()+ " " + k.getNazwisko_klienta() + " (" + k.getNumer_karty() + ")");
+       
     }
 }

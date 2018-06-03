@@ -145,8 +145,6 @@ public class FXMLProduktyController implements Initializable {
 
     @FXML
     private void zglosZapotrzebowanie(ActionEvent event) {
-        //wyslanie wiadomosci do gory o brakach w magazynie i wyswietlenie komunikatu o wysłąniu prośby
-
         
         
         JFXButton bCancel = new JFXButton("Anuluj");
@@ -181,8 +179,7 @@ public class FXMLProduktyController implements Initializable {
 
     @FXML
     private void zamowNowyProdukt(ActionEvent event) throws IOException {
-        //wyslanie wiadomosci do góry o prośbie dodania nowego produktu
-
+       
         Stage stage;
         Parent root;
 

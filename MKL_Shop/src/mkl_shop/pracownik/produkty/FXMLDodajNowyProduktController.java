@@ -63,7 +63,7 @@ public class FXMLDodajNowyProduktController implements Initializable {
 
     @FXML
     private void zamowProdukt(ActionEvent event) throws SQLException {
-        //wyslanie prosby o zamowienie nowego produktu do kierownika placówki
+     
         JFXButton bCancel = new JFXButton("Anuluj");
         JFXButton bOkay = new JFXButton("Zamów");
         AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkay,bCancel), "Zamówienie produktu", "Czy na pewno chcesz złożyć to zamówienie?");

@@ -177,7 +177,6 @@ public class FXMLFinalizacjaController implements Initializable {
             table.addCell(new Paragraph(lSumaWartosc.getText(),helvetica16));
             
 
-            //table.addCell(new Paragraph("123321421"));
             
             document.add(table);
 

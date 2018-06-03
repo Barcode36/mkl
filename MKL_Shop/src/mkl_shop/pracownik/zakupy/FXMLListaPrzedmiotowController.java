@@ -82,7 +82,7 @@ public class FXMLListaPrzedmiotowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        //odblokowac przy wyborze przedmiotu z tabeli oraz wpisaniu ilosci produktow (domyslnie uzupelniac 1)
+      
         bDodaj.setDisable(true);
         tfIlosc.setText("1");
         tfIlosc.setFocusTraversable(true);
@@ -130,10 +130,6 @@ public class FXMLListaPrzedmiotowController implements Initializable {
             Logger.getLogger(FXMLProduktyController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-//        for (Produkt p1 : dataProdukt){
-//            if (FXMLZakupyController.dataRachunek.contains(p1))
-//                dataProdukt.remove(p1);
-//        }
         columnIdPrzedmiotu.setCellValueFactory(new PropertyValueFactory<>("id_produktu"));
         columnNazwa.setCellValueFactory(new PropertyValueFactory<>("nazwa_produktu"));
         columnNaStanie.setCellValueFactory(new PropertyValueFactory<>("ilosc_produktow"));

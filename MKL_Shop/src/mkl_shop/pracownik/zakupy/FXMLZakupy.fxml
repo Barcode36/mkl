@@ -75,12 +75,17 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </JFXCheckBox>
-            <Label fx:id="lStalyKlient" alignment="CENTER" layoutX="336.0" layoutY="352.0" prefHeight="62.0" prefWidth="410.0">
+            <Label fx:id="lStalyKlient" alignment="CENTER" layoutX="392.0" layoutY="358.0" prefHeight="62.0" prefWidth="410.0">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
             <FontAwesomeIconView id="lista-przedmiotow" fx:id="bListaKlientow" accessibleRole="BUTTON" disable="true" glyphName="USERS" layoutX="160.0" layoutY="460.0" onMouseClicked="#wybierzKlientaZListy" size="35" />
+            <JFXButton fx:id="bNagroda" contentDisplay="TOP" focusTraversable="false" layoutX="944.0" layoutY="352.0" onAction="#wybierzNagrode" prefHeight="73.0" prefWidth="184.0" styleClass="menu-button" text="Nagroda">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>

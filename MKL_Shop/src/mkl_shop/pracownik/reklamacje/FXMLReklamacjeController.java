@@ -92,7 +92,7 @@ public class FXMLReklamacjeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         tfOpis.setFocusTraversable(true);
-        //tfOpis.setDisable(true);
+        
         tfOpis.setEditable(false);
         tfOpis.setText(" ");
         
@@ -150,8 +150,6 @@ public class FXMLReklamacjeController implements Initializable {
     @FXML
     private void finalizujReklamacje(ActionEvent event) throws SQLException {
         
-        //zmiana stanu
-        //wyslanie wiadomosci o przyjeciu reklamacji do kierownika lub odrzuceniu
         
         JFXButton bCancel = new JFXButton("Odrzuć");
         JFXButton bOkay = new JFXButton("Akceptuj");

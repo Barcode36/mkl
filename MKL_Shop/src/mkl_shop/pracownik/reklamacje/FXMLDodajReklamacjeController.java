@@ -69,7 +69,7 @@ public class FXMLDodajReklamacjeController implements Initializable {
 
     @FXML
     private void dodajReklamacje(ActionEvent event) throws SQLException {
-        //insert do bazy :)
+       
         
         Connection conn = DBConnection.Connect();
         

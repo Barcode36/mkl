@@ -64,7 +64,7 @@ public class FXMLKlientController implements Initializable {
     private AnchorPane apMain;
 
     public static Integer idKlienta;
-    //private ObservableList <Klient> dataKlienci;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,7 +73,6 @@ public class FXMLKlientController implements Initializable {
         bNowyKlient.setFocusTraversable(false);
         tfWyszukaj.setFocusTraversable(false);
 
-        //dataKlienci = FXCollections.observableArrayList();
         Connection conn = DBConnection.Connect();
 
         try {
@@ -158,7 +157,7 @@ public class FXMLKlientController implements Initializable {
 
     @FXML
     private void usun(ActionEvent event) {
-        //okno dialogowe TAK/NIE czy usunac klienta
+       
 
         if (lvKlienci.getSelectionModel().getSelectedItem() != null) {
 
@@ -176,8 +175,7 @@ public class FXMLKlientController implements Initializable {
 
                     conn.close();
                 } catch (Exception exp) {
-                    //nieobsłużone
-                    //System.out.println(exp);
+                    
                 }
             });
 

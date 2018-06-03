@@ -60,8 +60,6 @@ public class FXMLDodajKlientaController implements Initializable {
         bWyjscie.setFocusTraversable(false);
 
 
-        //wczytac nowy numer dla karty
-        //dodac nowa karte z zerowa iloscia punktow
         
         
     }    
@@ -92,7 +90,7 @@ public class FXMLDodajKlientaController implements Initializable {
             
         }
         
-        //powrót do innego okna
+        
         
         
     }

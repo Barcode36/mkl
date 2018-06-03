@@ -72,8 +72,6 @@ public class FXMLEdytujKlientaController implements Initializable {
         bWyjscie.setFocusTraversable(false);
         nowaKarta = false;
         
-        //wczytac stary numer karty i pola
-        //int id = FXMLKlientController.idKlienta;
         
         Connection conn = DBConnection.Connect();
         try {
@@ -116,8 +114,7 @@ public class FXMLEdytujKlientaController implements Initializable {
     @FXML
     private void zapiszZmiany(ActionEvent event) throws SQLException {
         
-        //usunac stara karte z bazy, lub wyzerowac je stan i nadac nowy numer
-        // if nowakarta true wyrobic nowa, jak false to nie
+       
         
         Connection conn = DBConnection.Connect();
         
@@ -145,7 +142,7 @@ public class FXMLEdytujKlientaController implements Initializable {
         System.out.println("generuje nowy numer karty");
         
         if (!nowaKarta){
-            //generowanie nowego numeru, tylko raz na sesje
+            
             
             nowaKarta = true;
         }
