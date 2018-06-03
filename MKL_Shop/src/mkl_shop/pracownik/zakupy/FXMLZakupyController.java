@@ -11,7 +11,11 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,6 +46,7 @@ import javafx.stage.StageStyle;
 import mkl_shop.MKL_Shop;
 import mkl_shop.alert.AlertMaker;
 import mkl_shop.connection.DBConnection;
+import mkl_shop.pracownik.FXMLPracownikController;
 import mkl_shop.pracownik.modele.Klient;
 import mkl_shop.pracownik.modele.Produkt;
 import static mkl_shop.pracownik.zakupy.FXMLListaKlientowController.k;
@@ -207,18 +212,59 @@ public class FXMLZakupyController implements Initializable {
                     //k1 dataRachunek price -> pola
                     
                     Connection conn = DBConnection.Connect();
-                    
+                    String insertSQL;
                     
                     if (cStalyKlient.isSelected()){
                         //inserty do ilosci punktow na karcie klienta
+                        Integer punkty = k1.getLiczba_punktow() + (int)(getCena()/10);
                         
+                        conn.createStatement().executeUpdate("UPDATE klient SET liczba_punktow="+punkty+" WHERE id_klienta="+k1.getId_klienta()+";");
                         
+                        insertSQL = "INSERT INTO transakcja (id_transakcji,id_pracownika,id_klienta,data,calkowity_koszt) VALUES "
+                                + "(null,"+FXMLPracownikController.idPracownika+","+k1.getId_klienta()+",'"+LocalDate.now().toString()+"',"+getCena()+");";
+                        
+                        //ps.executeUpdate("INSERT INTO transakcja (id_transakcji,id_pracownika,id_klienta,data,calkowity_koszt) VALUES "
+                        //        + "null,"+FXMLPracownikController.idPracownika+","+k1.getId_klienta()+",'"+LocalDate.now().toString()+"','"+getCena()+"');");
+                    } else {
+                        //ps.executeUpdate("INSERT INTO transakcja (id_transakcji,id_pracownika,id_klienta,data,calkowity_koszt) VALUES "
+                        //        + "null,"+FXMLPracownikController.idPracownika+",null,'"+LocalDate.now().toString()+"','"+getCena()+"');");
+                        
+                        insertSQL = "INSERT INTO transakcja (id_transakcji,id_pracownika,id_klienta,data,calkowity_koszt) VALUES "
+                                + "(null,"+FXMLPracownikController.idPracownika+",null,'"+LocalDate.now().toString()+"',"+getCena()+")";
+                    }
+                    
+                    
+                    //conn.createStatement().executeUpdate(insertSQL);
+                    
+                    
+                    String generatedColumns[] = { "id_transakcji" };
+                    PreparedStatement stmtInsert = conn.prepareStatement(insertSQL, generatedColumns);
+                    
+                    stmtInsert.executeUpdate();
+                    ResultSet rs = stmtInsert.getGeneratedKeys();
+                    int idTransakcji = 0;
+                    if (rs.next()) {
+                        idTransakcji = rs.getInt(1);
+                        System.out.println(idTransakcji);
                     }
                     
                     //inserty do koszyka(transakcje)
                     
+                    for (Produkt produkt : dataRachunek){
+                        conn.createStatement().executeUpdate("INSERT INTO transakcja_produkty (id_transakcja_produkty,id_produktu,id_transakcji,ilosc_produktow,cena_transakcji) "
+                                + "VALUES (null,"+produkt.getId_produktu()+","+idTransakcji+","+produkt.getSztuki()+",'"+produkt.getSuma()+"');");
+                        
+                        //zmiana stanu na magazynie (odejmowanie)
+                        
+                        int aktualnyStan = produkt.getIlosc_produktow() - produkt.getSztuki();
+                        
+                        conn.createStatement().executeUpdate("UPDATE placowka_produkt SET ilosc_produktow="+aktualnyStan+" WHERE id_placowki="+FXMLPracownikController.idPlacowki+" AND id_produktu="+produkt.getId_produktu()+";");
+                    }
                     
                     
+                    
+                    rs.close();
+                    stmtInsert.close();
                     conn.close();
                     k1 = null;
                 } catch (IOException ex) {

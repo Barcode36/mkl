@@ -173,7 +173,7 @@ public class FXMLListaPrzedmiotowController implements Initializable {
     private void dodajDoRachunku(ActionEvent event) {
         if (Integer.parseInt(tfIlosc.getText()) <= tablePrzedmioty.getSelectionModel().getSelectedItem().getIlosc_produktow()) {
             Double suma = Integer.parseInt(tfIlosc.getText()) * tablePrzedmioty.getSelectionModel().getSelectedItem().getCena_produktu();
-            p = new Produkt(tablePrzedmioty.getSelectionModel().getSelectedItem().getId_produktu(), tablePrzedmioty.getSelectionModel().getSelectedItem().getNazwa_produktu(), tablePrzedmioty.getSelectionModel().getSelectedItem().getCena_produktu(), tablePrzedmioty.getSelectionModel().getSelectedItem().getOpis_produktu(), Integer.parseInt(tfIlosc.getText()), suma);
+            p = new Produkt(tablePrzedmioty.getSelectionModel().getSelectedItem().getId_produktu(), tablePrzedmioty.getSelectionModel().getSelectedItem().getNazwa_produktu(), tablePrzedmioty.getSelectionModel().getSelectedItem().getCena_produktu(), tablePrzedmioty.getSelectionModel().getSelectedItem().getOpis_produktu(), Integer.parseInt(tfIlosc.getText()), suma,tablePrzedmioty.getSelectionModel().getSelectedItem().getIlosc_produktow());
             FXMLZakupyController.dataRachunek.add(p);
             Stage stage = (Stage) bWyjscie.getScene().getWindow();
             stage.close();
