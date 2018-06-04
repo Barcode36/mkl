@@ -11,7 +11,7 @@
         <URL value="@fxmlkierownik.css" />
     </stylesheets>
    <children>
-      <JFXButton contentDisplay="TOP" focusTraversable="false" layoutX="522.0" layoutY="208.0" prefHeight="142.0" prefWidth="237.0" styleClass="menu-button" text="Pracownicy">
+      <JFXButton fx:id="bPracownicy" contentDisplay="TOP" focusTraversable="false" layoutX="522.0" layoutY="208.0" onAction="#otworzPracownicy" prefHeight="142.0" prefWidth="237.0" styleClass="menu-button" text="Pracownicy">
          <graphic>
             <FontAwesomeIconView glyphName="USER_ALT" size="50" />
          </graphic>
@@ -35,7 +35,7 @@
             <Font name="System Bold" size="35.0" />
          </font>
       </JFXButton>
-      <JFXButton contentDisplay="TOP" layoutX="773.0" layoutY="208.0" prefHeight="142.0" prefWidth="237.0" styleClass="menu-button" text="Produkty">
+      <JFXButton fx:id="bProdukty" contentDisplay="TOP" layoutX="773.0" layoutY="208.0" onAction="#otworzProdukty" prefHeight="142.0" prefWidth="237.0" styleClass="menu-button" text="Produkty">
          <graphic>
             <FontAwesomeIconView glyphName="CUBE" size="50" />
          </graphic>

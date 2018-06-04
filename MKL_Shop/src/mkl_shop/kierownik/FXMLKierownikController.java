@@ -34,6 +34,10 @@ public class FXMLKierownikController implements Initializable {
 
     public static Integer idPracownika;
     public static Integer idPlacowki;
+    @FXML
+    private JFXButton bPracownicy;
+    @FXML
+    private JFXButton bProdukty;
     
     /**
      * Initializes the controller class.
@@ -67,6 +71,36 @@ public class FXMLKierownikController implements Initializable {
         FXMLPracownikController.idPlacowki = idPlacowki;
         FXMLPracownikController.idPracownika = idPracownika;
         
+    }
+
+    @FXML
+    private void otworzPracownicy(ActionEvent event) throws IOException {
+                Stage stage;
+        Parent root;
+        
+        stage = new Stage();
+        root = FXMLLoader.load(MKL_Shop.class.getResource("kierownik/FXMLPracownicy.fxml"));
+        stage.setScene(new Scene(root));
+        //stage.setTitle("Panel reklamacji");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(Button_Wyjscie.getScene().getWindow());
+        stage.showAndWait();
+    }
+
+    @FXML
+    private void otworzProdukty(ActionEvent event) throws IOException {
+                Stage stage;
+        Parent root;
+        
+        stage = new Stage();
+        root = FXMLLoader.load(MKL_Shop.class.getResource("kierownik/FXMLProdukty.fxml"));
+        stage.setScene(new Scene(root));
+        //stage.setTitle("Panel reklamacji");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(Button_Wyjscie.getScene().getWindow());
+        stage.showAndWait();
     }
     
 }
