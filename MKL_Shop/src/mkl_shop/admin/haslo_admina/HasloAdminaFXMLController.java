@@ -53,7 +53,11 @@ public class HasloAdminaFXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
+/**
+ * Metoda zajmująca się obsługą przycisku potwierdzenia zmiany hasła.
+ * @param event
+ * @throws SQLException 
+ */
     @FXML
     private void Akceptuj(ActionEvent event) throws SQLException {
         JFXButton bOkk = new JFXButton("OK");
@@ -77,7 +81,10 @@ public class HasloAdminaFXMLController implements Initializable {
             AlertMaker.showMaterialDialog(spMain, apMain, Arrays.asList(bOkk), "Błąd ze zmianą hasła", "Podano niepoprawne stare hasło lub nowe hasła nie są identyczne.");
         }
     }
-
+/**
+ * Metoda zajmująca się obsługą przycisku zamknięcia okna zmiany hasła administratora.
+ * @param event 
+ */
     @FXML
     private void Wyjscie(ActionEvent event
     ) {

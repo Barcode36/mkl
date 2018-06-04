@@ -198,7 +198,9 @@ public class AdminFXMLController implements Initializable {
             tableKonta.setItems(sortedPracownik);
         });
     }
-
+/** 
+ * Metoda wczytująca dane do tabeli Pracownicy.
+ */
     public void LoadDataPracownik() {
         Connection conn = DBConnection.Connect();
         try {
@@ -240,7 +242,9 @@ public class AdminFXMLController implements Initializable {
         }
 
     }
-
+/**
+ * Metoda wczytująca dane do tabeli Placowki.
+ */
     public void LoadDataPlacowka() {
         Connection conn = DBConnection.Connect();
         try {
@@ -275,7 +279,9 @@ public class AdminFXMLController implements Initializable {
         }
 
     }
-
+/**
+ * Metoda wczytująca dane do tabeli Wiadomosci.
+ */
     public void LoadDataWiadomosci() {
         Connection conn = DBConnection.Connect();
         taTresc.setVisible(false);
@@ -310,7 +316,10 @@ public class AdminFXMLController implements Initializable {
         }
 
     }
-
+/**
+ * Metoda zajmująca się obsługą przycisku dodania konta.
+ * @param event 
+ */
     @FXML
     private void DodajKonto(ActionEvent event) {
         if (txImie.getText().isEmpty() || txNazwisko.getText().isEmpty() || txPesel.getText().isEmpty() || txNumerTel.getText().isEmpty() || txLogin.getText().isEmpty() || txHaslo.getText().isEmpty()) {
@@ -334,7 +343,10 @@ public class AdminFXMLController implements Initializable {
         }
 
     }
-
+/**
+ * Metoda czyszcząca pola związane z tworzeniem/edycją kont.
+ * @param event 
+ */
     @FXML
     private void WyczyscPolaKonta(ActionEvent event) {
         txImie.setText("");
@@ -346,7 +358,10 @@ public class AdminFXMLController implements Initializable {
         cbRola.setValue("");
         cbPlacowka.setValue("");
     }
-
+/**
+ * Metoda zajmująca się obsługą przycisku aktualizacji konta.
+ * @param event 
+ */
     @FXML
     private void AktualizujKonto(ActionEvent event) {
 
@@ -384,7 +399,10 @@ public class AdminFXMLController implements Initializable {
             }
         }
     }
-
+/**
+ * Metoda zajmująca się obsługą przycisku aktywacji konta.
+ * @param event 
+ */
     @FXML
     private void AktywujKonto(ActionEvent event) {
         if (tableKonta.getSelectionModel().getSelectedItem() == null) {
@@ -411,7 +429,10 @@ public class AdminFXMLController implements Initializable {
             System.out.println("error" + ex);
         }
     }
-
+/**
+ * Metoda zajmująca się obsługą przycisku dodania nowej placówki.
+ * @param event 
+ */
     @FXML
     private void DodajPlacowke(ActionEvent event) {
         if (txTelefonKontaktowyPlacowki.getText().isEmpty() || txKodPocztowy.getText().isEmpty() || txMiejscowosc.getText().isEmpty() || txAdres.getText().isEmpty()) {
@@ -431,7 +452,10 @@ public class AdminFXMLController implements Initializable {
             }
         }
     }
-
+/**
+ * Metoda zajmująca się obsługą przycisku aktualizacji placówki.
+ * @param event 
+ */
     @FXML
     private void AktualizujPlacowke(ActionEvent event) {
         if (tablePlacowki.getSelectionModel().getSelectedItem() == null) {
@@ -461,7 +485,10 @@ public class AdminFXMLController implements Initializable {
             }
         }
     }
-
+/**
+ * Metoda zajmująca się obsługą przycisku czyszczenia pól tekstowych.
+ * @param event 
+ */
     @FXML
     private void WyczyscPolaPlacowka(ActionEvent event) {
         txMiejscowosc.setText("");
@@ -469,13 +496,20 @@ public class AdminFXMLController implements Initializable {
         txKodPocztowy.setText("");
         txTelefonKontaktowyPlacowki.setText("");
     }
-
+/**
+ * Metoda zajmująca się obsługą przycisku zamknięcia okna aplikacji.
+ * @param event 
+ */
     @FXML
     private void Wyjscie(ActionEvent event) {
         Stage stage = (Stage) btnWyjscie.getScene().getWindow();
         stage.close();
     }
-
+/**
+ * Metoda zajmująca się obsługą przycisku zmiany hasła administratora.
+ * @param event
+ * @throws IOException 
+ */
     @FXML
     private void ZmienHasloAdmina(ActionEvent event) throws IOException {
         Stage stage;
@@ -490,7 +524,11 @@ public class AdminFXMLController implements Initializable {
         stage.initOwner(btnHasloAdmina.getScene().getWindow());
         stage.showAndWait();
     }
-
+/**
+ * Metoda zajmująca się obsługą przycisku odpowiedzi na wiadomość.
+ * @param event
+ * @throws SQLException 
+ */
     @FXML
     private void Odpowiedz(ActionEvent event) throws SQLException {
         Connection conn = DBConnection.Connect();
