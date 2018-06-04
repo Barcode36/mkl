@@ -140,14 +140,27 @@ public class FXMLZakupyController implements Initializable {
 
     }
     
+    /** 
+     * Przypisanie do pola price nowej wartości typu Double.
+     * @param cena 
+     */
     private void setCena(double cena){
         price = cena;
     }
     
+    /**
+     * Umożliwia otrzymanie aktualnej ceny.
+     * @return Zwraca cenę, typu double.
+     */
     public static Double getCena(){
         return price;
     }
 
+    /**
+     * Otwiera nowe okno umożliwiające dodawanie produktów do bieżącego rachunku.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void dodajDoRachunku(ActionEvent event) throws IOException {
         Stage stage;
@@ -163,6 +176,7 @@ public class FXMLZakupyController implements Initializable {
         stage.showAndWait();
     }
 
+    
     @FXML
     private void zamknijOkno(ActionEvent event) {
         Stage stage = (Stage) bWyjscie.getScene().getWindow();
@@ -170,6 +184,10 @@ public class FXMLZakupyController implements Initializable {
         k1 = null;
     }
 
+    /**
+     * Usuwanie z rachunku wybranego przedmiotu.
+     * @param event 
+     */
     @FXML
     private void usunZRachunku(ActionEvent event) {
        
@@ -194,6 +212,11 @@ public class FXMLZakupyController implements Initializable {
         
     }
 
+    /**
+     * Wyświetla okienko z pytaniem, czy chcemy sfinalizowac transakcję i dodanie tego do bazy danych.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void finalizujTransakcje(ActionEvent event) throws IOException {
         
@@ -291,6 +314,11 @@ public class FXMLZakupyController implements Initializable {
         
     }
 
+    
+    /**
+     * Sprawdza czy jest ustawiony jakiś klient.
+     * @param event 
+     */
     @FXML
     private void wybierzKlienta(ActionEvent event) {
         if (cStalyKlient.isSelected()) {
@@ -300,6 +328,7 @@ public class FXMLZakupyController implements Initializable {
         }
     }
 
+    
     @FXML
     private void wybierzKlientaZListy(MouseEvent event) throws IOException {
         Stage stage;
@@ -315,11 +344,18 @@ public class FXMLZakupyController implements Initializable {
 
     }
 
+    
+    /**
+     * Przypisuje id klienta podanego jako parametr do pola idKlienta.
+     * @param k Obiekt klasy Klient.
+     */
     public void setKlient(Klient k) {
         idKlienta = k.getId_klienta();
        
     }
-
+/**
+ * Odświeżanie rachunku.
+ */
     public void odswiezRachunek() {
 
         columnIdProduktu.setCellValueFactory(new PropertyValueFactory<>("id_produktu"));

@@ -127,6 +127,11 @@ public class FXMLReklamacjeController implements Initializable {
         
     }    
 
+    /**
+     * Otworzenie okna umożliwiającego utworzenie nowej reklamacji.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void nowaReklamacja(ActionEvent event) throws IOException {
         Stage stage;
@@ -147,6 +152,11 @@ public class FXMLReklamacjeController implements Initializable {
         stage.close();
     }
 
+    /**
+     * Umożliwia przyjęcie lub odrzucenie wybranej z listy reklamacji.
+     * @param event
+     * @throws SQLException 
+     */
     @FXML
     private void finalizujReklamacje(ActionEvent event) throws SQLException {
         
@@ -198,6 +208,11 @@ public class FXMLReklamacjeController implements Initializable {
         
     }
 
+    /**
+     * Odświeżenie danych.
+     * @param event
+     * @throws SQLException 
+     */
     @FXML
     private void odswiez(MouseEvent event) throws SQLException {
         refresh();
@@ -238,6 +253,10 @@ public class FXMLReklamacjeController implements Initializable {
         
     }
 
+    /**
+     * Ustawienie opisu pod tabelą ze wskazanej reklamacji oraz przypisanie do obiektu klasy Reklamacja wartości obiektu wybranego z tabeli.
+     * @param event 
+     */
     @FXML
     private void wybierzReklamacje(MouseEvent event) {
         

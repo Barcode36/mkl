@@ -134,6 +134,10 @@ public class FXMLPrzedmiotyController implements Initializable {
         stage.close();
     }
 
+    /**
+     * Wybranie przedmiotu do reklamacji i przekazanie go do okna dodawania reklamacji.
+     * @param event 
+     */
     @FXML
     private void wybierz(ActionEvent event) {
         
@@ -145,6 +149,10 @@ public class FXMLPrzedmiotyController implements Initializable {
         }
     }
 
+    /**
+     * Utworzenie instancji klasy i przypisanie do niej wartości obiektu wybranego z listy.
+     * @param event 
+     */
     @FXML
     private void zaznaczPrzedmiot(MouseEvent event) {
         p = lvPrzedmioty.getSelectionModel().getSelectedItem();

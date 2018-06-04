@@ -104,7 +104,10 @@ public class FXMLFinalizacjaController implements Initializable {
         stage.close();
     }
 
-
+/**
+ * Eksportowanie rachunku do pdf.
+ * @param event 
+ */
     @FXML
     private void eksportujPdf(ActionEvent event) {
         

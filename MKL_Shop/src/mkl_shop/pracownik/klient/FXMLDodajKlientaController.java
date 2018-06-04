@@ -64,12 +64,24 @@ public class FXMLDodajKlientaController implements Initializable {
         
     }    
 
+    
+    /** 
+    * Metoda zamykająca okno.
+    * @param event
+    * 
+    */
     @FXML
     private void zamknijOkno(ActionEvent event) {
         Stage stage = (Stage) bWyjscie.getScene().getWindow();
         stage.close();
     }
 
+    
+    /**
+     * Metoda dodająca do bazy danych nowego klienta po uprzedniej walidacji danych.
+     * @param event 
+     * @throws SQLException 
+     */
     @FXML
     private void dodajKlienta(ActionEvent event) throws SQLException {
         Connection conn = DBConnection.Connect();

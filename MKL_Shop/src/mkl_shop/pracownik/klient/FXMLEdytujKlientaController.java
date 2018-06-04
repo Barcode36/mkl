@@ -111,6 +111,11 @@ public class FXMLEdytujKlientaController implements Initializable {
         stage.close();
     }
 
+    /** 
+     * Update danych klienta do bazy danych oraz walidacja wprowadzonych danych.
+     * @param event
+     * @throws SQLException 
+     */
     @FXML
     private void zapiszZmiany(ActionEvent event) throws SQLException {
         

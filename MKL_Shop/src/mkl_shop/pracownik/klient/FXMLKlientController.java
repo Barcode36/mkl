@@ -113,6 +113,11 @@ public class FXMLKlientController implements Initializable {
 
     }
 
+    /**
+     * Otworzenie nowego okna, umożliwiającego dodanie nowego klienta.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void dodajKlienta(ActionEvent event) throws IOException {
         Stage stage;
@@ -134,6 +139,11 @@ public class FXMLKlientController implements Initializable {
         stage.close();
     }
 
+    /**
+     * Otworzenie nowego okna umożliwiającego edycję wybranego z listy klienta.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void edytuj(ActionEvent event) throws IOException {
         if (lvKlienci.getSelectionModel().getSelectedItem() != null) {
@@ -154,7 +164,12 @@ public class FXMLKlientController implements Initializable {
 
         }
     }
-
+    
+    
+    /**
+     * Usunięcie klienta wybranego z listy i wyświetlenie okna dialogowego z potwierdzeniem naszej operacji.
+     * @param event 
+     */
     @FXML
     private void usun(ActionEvent event) {
        

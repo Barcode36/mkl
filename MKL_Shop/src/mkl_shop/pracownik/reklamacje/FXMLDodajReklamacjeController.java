@@ -67,6 +67,11 @@ public class FXMLDodajReklamacjeController implements Initializable {
         
     }    
 
+    /**
+     * Dodanie nowej reklamacji oraz walidacja danych.
+     * @param event
+     * @throws SQLException 
+     */
     @FXML
     private void dodajReklamacje(ActionEvent event) throws SQLException {
        
@@ -99,6 +104,11 @@ public class FXMLDodajReklamacjeController implements Initializable {
         stage.close();
     }
 
+    /**
+     * Otworzenie okna umożliwiającego wybranie przedmiotu do reklamacji.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void wybierzPrzedmiot(MouseEvent event) throws IOException {
         Stage stage;
@@ -113,6 +123,10 @@ public class FXMLDodajReklamacjeController implements Initializable {
         stage.showAndWait();
     }
 
+    /**
+     * Odświeżenie danych o produkcie do reklamacji.
+     * @param event 
+     */
     @FXML
     private void uzupelnijProdukt(MouseEvent event) {
         if (p != null)

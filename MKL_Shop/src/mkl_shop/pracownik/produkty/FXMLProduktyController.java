@@ -143,6 +143,10 @@ public class FXMLProduktyController implements Initializable {
 
     }
 
+    /**
+     * Wysłanie wiadomości do kierownika placówki, w której zgłaszana jest mała ilość danego produktu w sklepie.
+     * @param event 
+     */
     @FXML
     private void zglosZapotrzebowanie(ActionEvent event) {
         
@@ -177,6 +181,11 @@ public class FXMLProduktyController implements Initializable {
         
     }
 
+    /**
+     * Otworzenie okna umożliwiającego złożenie nowego zamówienia.
+     * @param event
+     * @throws IOException 
+     */
     @FXML
     private void zamowNowyProdukt(ActionEvent event) throws IOException {
        
@@ -194,6 +203,10 @@ public class FXMLProduktyController implements Initializable {
 
     }
 
+    /**
+     * Przypisanie do obiektu klasy Produkt wybranego obiektu z tabeli za pomocą kursora.
+     * @param event 
+     */
     @FXML
     private void zaznaczProdukt(MouseEvent event) {
         

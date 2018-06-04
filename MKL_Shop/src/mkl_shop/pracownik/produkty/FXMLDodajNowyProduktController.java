@@ -61,6 +61,11 @@ public class FXMLDodajNowyProduktController implements Initializable {
         stage.close();
     }
 
+    /**
+     * Wysłanie wiadomości do kierownika placówki z prośbą o zamówienie nowego produktu.
+     * @param event
+     * @throws SQLException 
+     */
     @FXML
     private void zamowProdukt(ActionEvent event) throws SQLException {
      
