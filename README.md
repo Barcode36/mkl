@@ -1,4 +1,4 @@
-Aplikacja desktopowa MKLShop
+#Aplikacja desktopowa MKLShop
 
 JavaFX + MySQL + Jfoenix
 Aplikacja do pełnego zarządzania sklepem sportowym.
