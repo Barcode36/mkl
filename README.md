@@ -3,4 +3,5 @@
 JavaFX + MySQL + Jfoenix
 Aplikacja do pełnego zarządzania sklepem sportowym.
 
-Dokumentacja, zdjęcia oraz opis:
+Skrócona dokumentacja, zdjęcia oraz opis:
+https://github.com/Krzysztofmal/mkl/blob/master/DokumentacjaMKL.pdf
